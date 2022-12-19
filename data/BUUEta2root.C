@@ -289,10 +289,12 @@ int etaDecayDielectronGamma(double _px, double _py, double _pz, double _E){
 	/// TGenPhaseSpace event;
 	TLorentzVector W(_px, _py, _pz, _E);
 	Double_t dielectronmass;
-	if(grandom3->Uniform(0,100)>1)
+
+	//if(grandom3->Uniform(0,100)>1)
 		dielectronmass = dileptonMassDist_TF1->GetRandom(2*0.000510999, 0.547);
-	else
-		dielectronmass = grandom3->Gaus(0.3, 0.002);
+	//else
+	//	dielectronmass = grandom3->Gaus(0.3, 0.002);
+	
 	Double_t masses[2] = {0, dielectronmass};
 	event.SetDecay(W, 2, masses);
 	Double_t weight = event.Generate();
