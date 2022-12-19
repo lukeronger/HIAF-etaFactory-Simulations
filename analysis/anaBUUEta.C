@@ -36,8 +36,19 @@ void anaBUUEta::Begin(TTree * /*tree*/)
    // The tree argument is deprecated (on PROOF 0 is passed).
 
    TString option = GetOption();
+
+   M2PipPi0 = M2PimPi0 = M2PipPim = 0;
+   M2EpG = M2EmG = M2EpEm = 0;
+
    outputfile = new TFile("output.root", "recreate");
    hmassmumu = new TH1D("hmassmumu","",100,0,1);
+   tree = new TTree("tree","analysis results");
+   tree->Branch("M2PipPi0", &M2PipPi0, "M2PipPi0/D");
+   tree->Branch("M2PimPi0", &M2PimPi0, "M2PimPi0/D");
+   tree->Branch("M2PipPim", &M2PipPim, "M2PipPim/D");
+   tree->Branch("M2EpG", &M2EpG, "M2EpG/D");
+   tree->Branch("M2EmG", &M2EmG, "M2EmG/D");
+   tree->Branch("M2EpEm", &M2EpEm, "M2EpEm/D");
 
 
 }
@@ -71,6 +82,17 @@ Bool_t anaBUUEta::Process(Long64_t entry)
    // The return value is currently not used.
 
    fReader.SetLocalEntry(entry);
+
+
+   M2PipPi0 = ((*eta_3piPip) + (*eta_3piPi0)).M2();
+   M2PimPi0 = ((*eta_3piPim) + (*eta_3piPi0)).M2();
+   M2PipPim = ((*eta_3piPip) + (*eta_3piPim)).M2();
+   M2EpG    = ((*eta_EEGEp)  + (*eta_EEGGamma)).M2();
+   M2EmG    = ((*eta_EEGEm)  + (*eta_EEGGamma)).M2();
+   M2EpEm   = ((*eta_EEGEp)  + (*eta_EEGEm)).M2();
+
+   tree->Fill();
+
    TLorentzVector mup_and_mum = (*eta_MuMuGMup) + (*eta_MuMuGMum);
    hmassmumu->Fill( mup_and_mum.M() );
 
@@ -94,5 +116,6 @@ void anaBUUEta::Terminate()
 
 	outputfile->cd();
 	hmassmumu->Write();
+	tree->Write();
 	outputfile->Close();
 }

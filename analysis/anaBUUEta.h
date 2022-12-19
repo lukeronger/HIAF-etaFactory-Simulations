@@ -19,6 +19,7 @@
 // Headers needed by this particular selector
 #include "TLorentzVector.h"
 #include "TH1D.h"
+#include "TTree.h"
 
 
 class anaBUUEta : public TSelector {
@@ -42,7 +43,13 @@ public :
    TTreeReaderValue<TLorentzVector> eta_EEGEm = {fReader, "eta_EEGEm"};
 
 
+
+
+   double M2PipPi0, M2PimPi0, M2PipPim;
+   double M2EpG, M2EmG, M2EpEm;
+
    TFile *outputfile;
+   TTree *tree;
    TH1D *hmassmumu;
 
 
