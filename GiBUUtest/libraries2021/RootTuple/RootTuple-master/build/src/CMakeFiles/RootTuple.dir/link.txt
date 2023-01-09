@@ -1,0 +1,2 @@
+/usr/bin/ar qc libRootTuple.a  CMakeFiles/RootTuple.dir/RootTuple.cxx.o CMakeFiles/RootTuple.dir/interface.cxx.o
+/usr/bin/ranlib libRootTuple.a

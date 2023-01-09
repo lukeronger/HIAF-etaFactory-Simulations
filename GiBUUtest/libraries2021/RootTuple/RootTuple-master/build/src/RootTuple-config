@@ -1,0 +1,21 @@
+#!/bin/sh
+
+case $1 in
+    --version)
+        echo 1.0.0;;
+    --prefix)
+        echo /usr/local;;
+    --libs)
+        rootlibs=$(echo "-L/home/rong/root/lib -lGui -lCore -lImt -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lROOTVecOps -lTree -lTreePlayer -lRint -lPostscript -lMatrix -lPhysics -lMathCore -lThread -lMultiProc -lROOTDataFrame -pthread -lm -ldl -rdynamic;-lTreePlayer" | tr ';' ' ');
+        echo -L/usr/local/lib -lRootTuple $rootlibs;;
+    --libdir)
+        echo /usr/local/lib /home/rong/root/lib;;
+    *)
+        echo "RootTuple-config: configuration tool for RootTuple library";
+        echo;
+        echo "Options:";
+        echo "  RootTuple-config --version : returns RootTuple version";
+        echo "  RootTuple-config --prefix  : returns installation path";
+        echo "  RootTuple-config --libs    : returns the relevant linker line";
+        echo "  RootTuple-config --libdir  : returns library path";;
+esac

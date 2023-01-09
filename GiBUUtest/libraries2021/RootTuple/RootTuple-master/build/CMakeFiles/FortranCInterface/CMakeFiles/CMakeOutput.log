@@ -1,0 +1,20 @@
+Performing C SOURCE FILE Test C_SUPPORTS_DOLLAR succeeded with the following output:
+Change Dir: /mnt/c/work2/HIAF-eta-factory/GiBUU/libraries/RootTuple/RootTuple-master/build/CMakeFiles/FortranCInterface/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a00a2/fast"
+make[2]: Entering directory '/mnt/c/work2/HIAF-eta-factory/GiBUU/libraries2021/RootTuple/RootTuple-master/build/CMakeFiles/FortranCInterface/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_a00a2.dir/build.make CMakeFiles/cmTC_a00a2.dir/build
+make[3]: Entering directory '/mnt/c/work2/HIAF-eta-factory/GiBUU/libraries2021/RootTuple/RootTuple-master/build/CMakeFiles/FortranCInterface/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a00a2.dir/src.c.o
+/usr/bin/cc   -DC_SUPPORTS_DOLLAR   -o CMakeFiles/cmTC_a00a2.dir/src.c.o   -c /mnt/c/work2/HIAF-eta-factory/GiBUU/libraries/RootTuple/RootTuple-master/build/CMakeFiles/FortranCInterface/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_a00a2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a00a2.dir/link.txt --verbose=1
+/usr/bin/cc  -DC_SUPPORTS_DOLLAR    CMakeFiles/cmTC_a00a2.dir/src.c.o  -o cmTC_a00a2 
+make[3]: Leaving directory '/mnt/c/work2/HIAF-eta-factory/GiBUU/libraries2021/RootTuple/RootTuple-master/build/CMakeFiles/FortranCInterface/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/mnt/c/work2/HIAF-eta-factory/GiBUU/libraries2021/RootTuple/RootTuple-master/build/CMakeFiles/FortranCInterface/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+extern int dollar$(void);
+int main() { return 0; }
+

@@ -1,0 +1,5 @@
+/mnt/c/work2/HIAF-eta-factory/GiBUU/libraries/RootTuple/RootTuple-master/build/CMakeFiles/FortranCInterface/CMakeFiles/edit_cache.dir
+/mnt/c/work2/HIAF-eta-factory/GiBUU/libraries/RootTuple/RootTuple-master/build/CMakeFiles/FortranCInterface/CMakeFiles/FortranCInterface.dir
+/mnt/c/work2/HIAF-eta-factory/GiBUU/libraries/RootTuple/RootTuple-master/build/CMakeFiles/FortranCInterface/CMakeFiles/myfort.dir
+/mnt/c/work2/HIAF-eta-factory/GiBUU/libraries/RootTuple/RootTuple-master/build/CMakeFiles/FortranCInterface/CMakeFiles/rebuild_cache.dir
+/mnt/c/work2/HIAF-eta-factory/GiBUU/libraries/RootTuple/RootTuple-master/build/CMakeFiles/FortranCInterface/CMakeFiles/symbols.dir

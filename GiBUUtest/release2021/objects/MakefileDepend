@@ -1,0 +1,590 @@
+pypcmp.o : pypcmp.f
+pyedit.o : pyedit.f
+um1.o : um1.f90
+besselk.o : besselk.f90
+kaonNucleon.o : kaonNucleon.f90 constants.o twoBodyTools.o random.o RMF.o mediumDefinition.o IdTable.o parametrizationBarMes.o particleDefinition.o preEventDefinition.o
+potentialMain.o : potentialMain.f90 IdTable.o selfenergy_mesons.o dichteDefinition.o baryonPotential.o particleDefinition.o density.o minkowski.o lorentzTrafo.o medium.o CallStack.o constants.o coulomb.o mediumDefinition.o particleProperties.o mesonPotential.o
+PartInfoList_rhoDiffractive.o : PartInfoList_rhoDiffractive.f90 PartInfoListIndex.o
+particlePointerListDefinition.o : particlePointerListDefinition.f90 particleDefinition.o
+pyrvsf.o : pyrvsf.f
+pyrvch.o : pyrvch.f
+residue.o : residue.f90 RMF.o input.o CallStack.o baryonPotential.o particleDefinition.o output.o energyDetermination.o density.o EventTypes.o hist.o
+baryonPotential.o : baryonPotential.f90 CallStack.o constants.o deuterium_PL.o NucDLDA.o particleProperties.o densityStatic.o EventTypes.o skyrme.o particleDefinition.o output.o yuka.o density.o nucleus.o mediumDefinition.o IdTable.o dichteDefinition.o nucleusDefinition.o coulomb.o minkowski.o input.o
+pyh2xx.o : pyh2xx.f
+ADI.o : ADI.f90 constants.o
+baryonWidthVacuum.o : baryonWidthVacuum.f90 quadpack.o rhoABIntegrandVariables.o output.o IdTable.o twoBodyTools.o constants.o distributions.o mesonWidthVacuum.o decayChannels.o particleProperties.o
+pyofsh.o : pyofsh.f
+particleProperties.o : particleProperties.f90 input.o constants.o CallStack.o decayChannels.o IdTable.o particleDefinition.o output.o
+pygrvd.o : pygrvd.f
+pyjoin.o : pyjoin.f
+mtlset.o : mtlset.f
+pycmq2.o : pycmq2.f
+pyct5m.o : pyct5m.f
+cl_splines.o : cl_splines.f90
+pysghf.o : pysghf.f
+pydiff.o : pydiff.f
+pyfisb.o : pyfisb.f
+pyexec.o : pyexec.f
+pysfdc.o : pysfdc.f
+pymemx.o : pymemx.f
+pyx2xg.o : pyx2xg.f
+resonanceCrossSections.o : resonanceCrossSections.f90 constants.o CallStack.o lorentzTrafo.o twoBodyTools.o minkowski.o RMF.o clebschGordan.o baryonWidth.o particleProperties.o coulomb.o mediumDefinition.o baryonWidthMedium.o IdTable.o selfenergy_baryons.o output.o particleDefinition.o baryonPotential.o
+determineSource.o : determineSource.f90 potentialMain.o constants.o lorentzTrafo.o coulomb.o history.o RMF.o clus.o IdTable.o NucDLDA.o particleDefinition.o density.o baryonPotential.o dichteDefinition.o nucleusDefinition.o sourceTypeDefinition.o
+dichteDefinition.o : dichteDefinition.f90
+winkelVerteilung.o : winkelVerteilung.f90 IdTable.o dimi.o NbarN_to_NbarDelta.o winkel_tools.o baryonWidthMedium.o output.o particleDefinition.o VecMesWinkel.o PartInfoList_mesonMom.o minkowski.o twoBodyTools.o lorentzTrafo.o constants.o mediumDefinition.o rotation.o mesonPotential.o barBar_barBar.o PartInfoList_rhoDiffractive.o RMF.o random.o
+IdTable.o : IdTable.f90
+medium.o : medium.f90 dichteDefinition.o density.o output.o minkowski.o thermoDyn.o mediumDefinition.o
+sugra.o : sugra.f
+pytbhg.o : pytbhg.f
+NNPION_NN.o : NNPION_NN.f90 threeBodyPhaseSpace.o barBar_barBarMes.o constants.o twoBodyTools.o
+jetset_73.o : jetset_73.f PythiaSpecFunc.o
+formfactors_A_pi0_proton.o : formfactors_A_pi0_proton.f90 output.o bzip.o formfactors_A_input.o
+pymaxi.o : pymaxi.f
+fhhiggscorr.o : fhhiggscorr.f
+pagend.o : pagend.f
+pyeig4.o : pyeig4.f
+pygbeh.o : pygbeh.f
+pydata.o : pydata.f
+pygamm.o : pygamm.f
+pyrvg3.o : pyrvg3.f
+hadronTensor_QE.o : hadronTensor_QE.f90 FF_QE_nucleonScattering.o minkowski.o constants.o leptonicID.o output.o
+hadronAnalysis.o : hadronAnalysis.f90 IdTable.o density.o particleDefinition.o output.o coulomb.o initHadron.o RMF.o
+GetJetsetVec.o : GetJetsetVec.f
+av18pot.o : av18pot.f90
+density.o : density.f90 mesonPotential.o constants.o CallStack.o EventTypes.o lorentzTrafo.o densityStatic.o RMF.o ADI.o particleDefinition.o output.o nucleus.o IdTable.o dichteDefinition.o input.o nucleusDefinition.o minkowski.o
+pycrth.o : pycrth.f
+photonXS.o : photonXS.f90 mediumDefinition.o particleProperties.o mesonPotential.o twoBodyPhaseSpace.o baryonWidth.o spline.o input.o constants.o quadpack.o output.o mesonWidthMedium.o threeBodyPhaseSpace.o IdTable.o
+pymihk.o : pymihk.f
+AnaEvent.o : AnaEvent.f90 neutrinoProdInfo.o particleProperties.o rotation.o degRad_conversion.o input.o minkowski.o constants.o CallStack.o AnaEventDefinition.o particleDefinition.o output.o hist2D.o initNeutrino.o particlePointerListDefinition.o IdTable.o particlePointerList.o hist.o
+omegaNucleon.o : omegaNucleon.f90 resonanceCrossSections.o twoBodyTools.o parametrizationBarMes_HighEnergy.o CallStack.o constants.o mediumDefinition.o particleProperties.o RMF.o random.o IdTable.o parametrizationBarMes.o preEventDefinition.o output.o particleDefinition.o
+NucDLDA.o : NucDLDA.f90 constants.o nucleusDefinition.o
+etaNucleon.o : etaNucleon.f90 parametrizationBarMes_HighEnergy.o constants.o twoBodyTools.o resonanceCrossSections.o RMF.o random.o particleProperties.o clebschGordan.o mediumDefinition.o parametrizationBarMes.o IdTable.o preEventDefinition.o particleDefinition.o
+hist2DMP.o : hist2DMP.f90 hist.o particleDefinition.o histMP.o
+pyxxga.o : pyxxga.f
+pysugi.o : pysugi.f
+header.o : header.f
+XS_VMD.o : XS_VMD.f90 constants.o parametrizationBarMes_HighEnergy.o
+rhoDelta.o : rhoDelta.f90 preEventDefinition.o particleDefinition.o IdTable.o random.o RMF.o mediumDefinition.o twoBodyTools.o resonanceCrossSections.o
+ariadne_402r.o : ariadne_402r.f
+pyindf.o : pyindf.f
+py4jtw.o : py4jtw.f
+groundState.o : groundState.f90 IdTable.o hist.o particleDefinition.o
+mesonWidth.o : mesonWidth.f90 decayChannels.o particleProperties.o constants.o CallStack.o mesonWidthVacuum.o output.o MassAssInfoDefinition.o IdTable.o
+pytbhs.o : pytbhs.f
+pybksb.o : pybksb.f
+PartInfoListIndex.o : PartInfoListIndex.f90 CallStack.o
+pyklim.o : pyklim.f
+pyckbd.o : pyckbd.f
+pyveto.o : pyveto.f
+neutrinoAnalysis.o : neutrinoAnalysis.f90 hist.o IdTable.o vector.o expNeutrinofluxes.o initNeutrino.o hist2D.o nucleusDefinition.o neutrinoInfoStorage.o particleDefinition.o output.o ZeroPionAnalysis.o neutrino_IDTable.o nucleus.o AnaEvent.o AnaEventDefinition.o constants.o CallStack.o Oscill_Parameters.o potentialMain.o minkowski.o degRad_conversion.o neutrinoProdInfo.o history.o rotation.o MultiplicityAnalysis.o
+pyrvi1.o : pyrvi1.f
+pyclus.o : pyclus.f
+singlePionProductionMAIDlike.o : singlePionProductionMAIDlike.f90 degRad_conversion.o random.o resonanceProduction.o eN_event.o leptonicID.o constants.o electronPionProduction_medium_eN.o minkowski.o eN_eventDefinition.o IdTable.o output.o particleDefinition.o
+um_tn.o : um_tn.f um1.o clebschGordan.o
+vector.o : vector.f90 degRad_conversion.o
+spectralFunc.o : spectralFunc.f90 selfenergy_baryons.o baryonWidthMedium_tables.o output.o particleDefinition.o baryonWidthMedium.o proton_neutron_width_medium.o IdTable.o particleProperties.o mediumDefinition.o constants.o medium.o potentialMain.o minkowski.o
+lowElectronAnalysis.o : lowElectronAnalysis.f90 hist2D.o particleDefinition.o output.o ZeroPionAnalysis.o AnaEvent.o Electron_origin.o EventTypes.o initLowPhoton.o lowElectron.o hist.o degRad_conversion.o input.o AnaEventDefinition.o
+spinprojector.o : spinprojector.f90 matrix_module.o particleProperties.o minkowski.o
+spectralFunc_mesons.o : spectralFunc_mesons.f90 potentialMain.o minkowski.o medium.o constants.o mediumDefinition.o particleProperties.o IdTable.o selfenergy_mesons.o output.o particleDefinition.o mesonWidthMedium.o
+pyeevt.o : pyeevt.f
+pylhef.o : pylhef.f
+DoColl_gammaN_exclPi.o : DoColl_gammaN_exclPi.f90 eN_eventDefinition.o particleDefinition.o
+HeavyIonAnalysis.o : HeavyIonAnalysis.f90 rotation.o history.o particleProperties.o histMP.o pauliBlocking.o RMF.o coulomb.o initHadron.o initElementary.o constants.o histMC_avg.o thermoDyn.o minkowski.o input.o potentialMain.o collisionNumbering.o EventTypes.o DileptonAnalysis.o nucleus.o output.o particleDefinition.o density.o nucleusDefinition.o TmunuDefinition.o hist.o twoBodyStatistics.o initHeavyIon.o IdTable.o histMC.o
+pysigh.o : pysigh.f
+relativeVelocity.o : relativeVelocity.f90 vector.o tabulation.o density.o quadpack.o constants.o
+analyzeSpectra.o : analyzeSpectra.f90 CallStack.o output.o particleDefinition.o histMC.o hist.o
+matrixElementQE.o : matrixElementQE.f90 FF_QE_nucleonScattering.o particleProperties.o minkowski.o constants.o leptonicID.o dichteDefinition.o output.o density.o IdTable.o
+random.o : random.f90 output.o constants.o
+PartInfoListCollected.o : PartInfoListCollected.f90 PartInfoList_rho0Dec.o PartInfoList_mesonMom.o PartInfoList_rhoDiffractive.o PartInfoList_omegaDec.o PartInfoList_nLead.o PartInfoList_FormInfo.o PartInfoList_freezout.o
+pymult.o : pymult.f
+CallStack.o : CallStack.F90  
+parametrizationBarMes_HighEnergy.o : parametrizationBarMes_HighEnergy.f90 constants.o particleProperties.o mediumDefinition.o IdTable.o parametrizationBarMes.o photonXS.o output.o
+initPion.o : initPion.f90 nucleusDefinition.o particleDefinition.o output.o energyDetermination.o collisionNumbering.o IdTable.o coulomb.o random.o input.o potentialMain.o coulombKorrektur.o constants.o
+pyxued.o : pyxued.f
+EventGenerator_TwoPi.o : EventGenerator_TwoPi.f90 random.o rotation.o mediumDefinition.o constants.o Amplitudes.o lorentzTrafo.o input.o minkowski.o
+FF_Delta_production.o : FF_Delta_production.f90 constants.o leptonicID.o output.o
+AnaEventDefinition.o : AnaEventDefinition.f90 particlePointerListDefinition.o IdTable.o
+threemeson.o : threemeson.f90 constants.o CallStack.o input.o VolumeElements.o random.o particleProperties.o history.o mesonPotential.o decayChannels.o mediumDefinition.o gauss_integration.o twoBodyStatistics.o IdTable.o mesonWidthMedium.o collisionNumbering.o particleDefinition.o output.o
+pyzdis.o : pyzdis.f
+pyqqbh.o : pyqqbh.f
+nucleus.o : nucleus.f90 NucD.o constants.o nucleusDefinition.o output.o densityStatic.o
+propagators.o : propagators.f90 spinprojector.o particleProperties.o baryonWidth.o minkowski.o constants.o
+DoColl_nuN.o : DoColl_nuN.f90 eN_event.o rotation.o DoCollTools.o CallStack.o hadronFormation.o constants.o lorentzTrafo.o minkowski.o PythiaSpecFunc.o EventInfo_HiLep.o eN_eventDefinition.o GetLeading.o particleDefinition.o output.o
+pygano.o : pygano.f
+pyx4jt.o : pyx4jt.f
+helicityAmplitudes.o : helicityAmplitudes.f90 IdTable.o
+pypdga.o : pypdga.f
+pyptfs.o : pyptfs.f
+VecMesWinkel.o : VecMesWinkel.f90 VecMesWinkel_muehlich.o random.o constants.o mesonWidthMedium.o baryonWidthMedium.o
+LowPhotonAnalysis.o : LowPhotonAnalysis.f90 degRad_conversion.o twoBodyTools.o hist_multipleRuns_MC.o input.o minkowski.o AnaEventDefinition.o constants.o lorentzTrafo.o dichteDefinition.o hist2D.o density.o particleDefinition.o output.o AnaEvent.o vector.o hist_multipleRuns.o Electron_origin.o particlePointerListDefinition.o lowElectronAnalysis.o PartInfoList_omegaDec.o lowElectron.o initLowPhoton.o IdTable.o hist.o
+collisionReporter.o : collisionReporter.f90 output.o
+py4jet.o : py4jet.f
+upveto.o : upveto.f
+pyapps.o : pyapps.f
+gauss_integration.o : gauss_integration.f90
+eventGenerator_eN_lowEnergy.o : eventGenerator_eN_lowEnergy.f90 quasiElastic.o DoColl_gammaN.o photonXS.o IdTable.o Electron_origin.o collisionNumbering.o gamma2Pi_Xsections.o master_2Body.o dichteDefinition.o eN_eventDefinition.o particleDefinition.o output.o energyDetermination.o density.o lepton2p2h.o DoCollTools.o lorentzTrafo.o CallStack.o medium.o constants.o electronPionProduction_medium_eN.o leptonicID.o PythiaSpecFunc.o monteCarlo.o PartInfoList_rhoDiffractive.o degRad_conversion.o RMF.o random.o pauliBlocking.o particleProperties.o resonanceProduction.o eN_event.o propagation.o offShellPotential.o nBodyPhaseSpace.o mediumDefinition.o ParamEP.o
+barAntiBar.o : barAntiBar.f90 IdTable.o output.o particleDefinition.o twoBodyTools.o constants.o mediumDefinition.o particleProperties.o
+twoBodyTools.o : twoBodyTools.f90 lorentzTrafo.o preEventDefinition.o particleDefinition.o IdTable.o
+VecMesWinkel_muehlich.o : VecMesWinkel_muehlich.f90 constants.o twoBodyTools.o random.o
+CollHistory.o : CollHistory.f90 preEventDefinition.o output.o particleDefinition.o PreEvList.o CallStack.o PreEvListDefinition.o
+initBox.o : initBox.f90 mediumDefinition.o baryonWidth.o insertion.o particleProperties.o mesonWidth.o random.o CallStack.o constants.o lorentzTrafo.o AssignMassMC.o output.o particleDefinition.o density.o collisionNumbering.o IdTable.o randomMaxwell.o besselk.o
+collisionNumbering.o : collisionNumbering.f90 input.o particleDefinition.o output.o collisionReporter.o
+pyldcm.o : pyldcm.f
+pionXsection.o : pionXsection.f90 lorentzTrafo.o history.o collisionNumbering.o initPion.o constants.o LowPhotonAnalysis.o input.o statistics.o IdTable.o output.o particleDefinition.o
+pytabu.o : pytabu.f
+pymsin.o : pymsin.f
+pyevwt.o : pyevwt.f
+antiBarBar_main.o : antiBarBar_main.f90 IdTable.o NbarN_to_NbarDelta.o preEventDefinition.o particleDefinition.o twoBodyTools.o RMF.o random.o mediumDefinition.o barAntiBar.o
+mesonWidthVacuum.o : mesonWidthVacuum.f90 particleProperties.o decayChannels.o gauss_integration.o constants.o twoBodyTools.o rhoABIntegrandVariables.o distributions.o output.o quadpack.o IdTable.o
+tabNuclearMass.o : tabNuclearMass.f90 input.o constants.o
+pyfscr.o : pyfscr.f
+pyupev.o : pyupev.f
+sourceAnalysis_Main.o : sourceAnalysis_Main.f90 input.o constants.o initHadron.o RMF.o sourceProperties.o determineSource.o initHeavyIon.o nucleusDefinition.o output.o particleDefinition.o
+findZero.o : findZero.f90
+PDFstub.orig.6225.o : PDFstub.orig.6225.f
+pycbal.o : pycbal.f
+pypdpr.o : pypdpr.f
+electronPionProduction_kine.o : electronPionProduction_kine.f90 IdTable.o eN_eventDefinition.o energyDetermination.o particleDefinition.o vector.o potentialMain.o minkowski.o constants.o lorentzTrafo.o random.o degRad_conversion.o rotation.o
+pypdfl.o : pypdfl.f
+HandleSFREP_S.o : HandleSFREP_S.f
+rhoNucleon.o : rhoNucleon.f90 parametrizationBarMes_HighEnergy.o particleProperties.o constants.o CallStack.o random.o RMF.o resonanceCrossSections.o preEventDefinition.o mediumDefinition.o IdTable.o particleDefinition.o parametrizationBarMes.o twoBodyTools.o
+pyevnw.o : pyevnw.f
+AssignMassMC.o : AssignMassMC.f90 baryonWidthMedium.o besselk.o IdTable.o mesonWidthMedium.o output.o MassAssInfoDefinition.o CallStack.o monteCarlo.o twoBodyTools.o particleProperties.o random.o mediumDefinition.o
+pycomp.o : pycomp.f
+eN_event.o : eN_event.f90 IdTable.o particleDefinition.o output.o eN_eventDefinition.o minkowski.o lorentzTrafo.o constants.o CallStack.o DoCollTools.o rotation.o random.o
+pymewt.o : pymewt.f
+pyfram.o : pyfram.f
+povray.o : povray.f90 particleProperties.o particleDefinition.o output.o IdTable.o input.o
+EventOutputFile.o : EventOutputFile.f90 neutrinoProdInfo.o initHadron.o ID_translation.o minkowski.o input.o EventInfo_HiLep.o particlePointerListDefinition.o EventTypes.o particleDefinition.o PartInfoListIndex.o FreezeoutAnalysis.o particlePointerList.o initHeavyIon.o IdTable.o PartInfoList_freezout.o
+pyct5l.o : pyct5l.f
+pyhist.o : pyhist.f
+FF_QE_nucleonScattering.o : FF_QE_nucleonScattering.f90 output.o constants.o leptonicID.o
+pytbhb.o : pytbhb.f
+pytbhq.o : pytbhq.f
+HiPionAnalysis.o : HiPionAnalysis.f90 hist.o particlePointerList.o DileptonAnalysis.o particlePointerListDefinition.o collisionNumbering.o collisionReporter.o hist2D.o preEventDefinition.o AnaEvent.o output.o particleDefinition.o initHiPion.o AnaEventDefinition.o constants.o PreEvList.o input.o PreEvListDefinition.o hist2DMP.o histMP.o CollHistory.o InvMassesAnalysis.o
+bzip.o : bzip.f90
+initHeavyIon.o : initHeavyIon.f90 density.o output.o nucleusDefinition.o distributions.o DileptonAnalysis.o constants.o CallStack.o coulombKorrektur.o random.o
+pymihg.o : pymihg.f
+pyrvg4.o : pyrvg4.f
+pycttr.o : pycttr.f
+vertices.o : vertices.f90 formFactor_ResProd.o particleProperties.o minkowski.o constants.o leptonicID.o matrix_module.o
+barBar_barBarMes.o : barBar_barBarMes.f90 output.o dimi.o IdTable.o random.o barBar_barBar.o particleProperties.o constants.o twoBodyTools.o
+pyremn.o : pyremn.f
+RMF.o : RMF.f90 output.o IdTable.o constants.o
+mesonWidthMedium_tables.o : mesonWidthMedium_tables.f90 output.o IdTable.o mediumDefinition.o bzip.o input.o tabulation.o
+pyrnm3.o : pyrnm3.f
+PartInfoList_nLead.o : PartInfoList_nLead.f90 PartInfoListIndex.o
+Amplitudes.o : Amplitudes.f90 baryonWidthMedium.o lorentzTrafo.o matrix_module.o constants.o minkowski.o potentialMain.o input4Amplitudes.o IdTable.o mediumDefinition.o gauss_integration.o output.o particleDefinition.o
+MomPart.o : MomPart.f
+pygram.o : pygram.f
+threeBarMes.o : threeBarMes.f90 twoBodyTools.o input.o VolumeElements.o CallStack.o constants.o lorentzTrafo.o finalStateModule.o omegaNucleon.o mediumDefinition.o threemeson.o decayChannels.o particleProperties.o history.o mesonWidth.o random.o pionNucleon.o IdTable.o collisionTools.o twoBodyStatistics.o particleDefinition.o phiNucleon.o preEventDefinition.o collisionNumbering.o
+antiKaonNucleon.o : antiKaonNucleon.f90 particleDefinition.o preEventDefinition.o parametrizationBarMes.o IdTable.o random.o RMF.o clebschGordan.o baryonWidth.o twoBodyPhaseSpace.o particleProperties.o mediumDefinition.o constants.o twoBodyTools.o resonanceCrossSections.o
+PreEvList.o : PreEvList.f90 particlePointerListDefinition.o particleDefinition.o AnaEventDefinition.o CallStack.o PreEvListDefinition.o Sorting.o particleProperties.o
+pycjdc.o : pycjdc.f
+radiativeDeltaDecay.o : radiativeDeltaDecay.f90 IdTable.o histMC.o output.o particleDefinition.o nucleus.o nucleusDefinition.o constants.o input.o baryonWidth.o
+ID_translation.o : ID_translation.f90 particleProperties.o CallStack.o particleDefinition.o IdTable.o
+PartInfoList_freezout.o : PartInfoList_freezout.f90 PartInfoListIndex.o
+pytaud.o : pytaud.f
+initInABox.o : initInABox.f90 IdTable.o density.o output.o particleDefinition.o dichteDefinition.o distributions.o constants.o CallStack.o lorentzTrafo.o insertion.o random.o
+pygrvs.o : pygrvs.f
+pyxtee.o : pyxtee.f
+histMP.o : histMP.f90 CallStack.o ID_translation.o particleDefinition.o hist.o
+leptonKinematics.o : leptonKinematics.f90 CallStack.o constants.o rotation.o degRad_conversion.o vector.o particleDefinition.o eN_eventDefinition.o
+pywaux.o : pywaux.f
+annihilation_channels.o : annihilation_channels.f90 EventTypes.o output.o particleDefinition.o IdTable.o particleProperties.o random.o constants.o twoBodyTools.o input.o
+pytbbn.o : pytbbn.f
+baryonWidthMedium.o : baryonWidthMedium.f90 CallStack.o constants.o deltaWidth.o mediumDefinition.o particleProperties.o baryonWidth.o IdTable.o proton_neutron_width_medium.o MassAssInfoDefinition.o output.o baryonWidthMedium_tables.o
+FragmentNucleons.o : FragmentNucleons.f90 density.o particleDefinition.o sourceTypeDefinition.o nucleusDefinition.o dichteDefinition.o EventInfo_HiLep.o insertion.o RMF.o potentialMain.o lorentzTrafo.o constants.o CallStack.o
+NievesHadronTensor.o : NievesHadronTensor.f90 constants.o leptonicID.o minkowski.o particleProperties.o FF_QE_nucleonScattering.o formFactor_ResProd.o matrix_module.o IdTable.o spinprojector.o spectralFunc.o output.o
+leptonicID.o : leptonicID.f90
+pycba2.o : pycba2.f
+fhsetpara.o : fhsetpara.f
+PythRand.o : PythRand.f
+gauss64.o : gauss64.f
+HandleSFREP.o : HandleSFREP.f
+pythru.o : pythru.f
+pyinbm.o : pyinbm.f
+initSRC.o : initSRC.f90 random.o densityStatic.o nucleus.o nucleusDefinition.o dichteDefinition.o
+py2frm.o : py2frm.f
+esample.o : esample.f90 input.o CallStack.o random.o output.o
+parametrizationBarMes.o : parametrizationBarMes.f90 cl_splines.o particleProperties.o constants.o input.o twoBodyTools.o IdTable.o output.o
+expNeutrinofluxes.o : expNeutrinofluxes.f90 minkowski.o input.o CallStack.o constants.o esample.o random.o particleProperties.o IdTable.o output.o
+pypdpo.o : pypdpo.f
+pysubh.o : pysubh.f
+BoxAnalysis.o : BoxAnalysis.f90 histMC.o hist.o particleDefinition.o output.o density.o TmunuDefinition.o collisionReporter.o CallStack.o history.o histMP.o
+deuterium_PL.o : deuterium_PL.f90 vector.o EventTypes.o output.o particleDefinition.o hist.o IdTable.o argonne.o CallStack.o constants.o input.o
+pythrg.o : pythrg.f
+pysave.o : pysave.f
+LUSTRF.orig.73.o : LUSTRF.orig.73.f
+quasiElastic.o : quasiElastic.f90 degRad_conversion.o constants.o minkowski.o potentialMain.o distributions.o spectralFunc.o output.o particleDefinition.o eN_eventDefinition.o hadronTensor_QE.o leptonTensor.o IdTable.o
+PyVP.o : PyVP.f90 rotation.o eN_event.o lorentzTrafo.o eN_eventDefinition.o
+selfenergy_mesons.o : selfenergy_mesons.f90 output.o quadpack.o tabulation.o mesonWidthMedium.o input.o constants.o mediumDefinition.o particleProperties.o
+pyresd.o : pyresd.f
+abend.o : abend.f
+constants.o : constants.f90
+pyhext.o : pyhext.f
+RootTuplestub.o : RootTuplestub.f
+nBodyPhaseSpace.o : nBodyPhaseSpace.f90 constants.o lorentzTrafo.o twoBodyTools.o minkowski.o um1.o random.o rotation.o threeBodyPhaseSpace.o
+pyoper.o : pyoper.f
+pymign.o : pymign.f
+pydcyk.o : pydcyk.f
+statistics.o : statistics.f90 input.o
+visaje.o : visaje.f
+DoColl_HypAntiHyp.o : DoColl_HypAntiHyp.f90 winkel_tools.o IdTable.o particleDefinition.o constants.o particleProperties.o RMF.o random.o
+hist_multipleRuns.o : hist_multipleRuns.f90 hist.o
+pyuedc.o : pyuedc.f
+pyxtot.o : pyxtot.f
+pylist.o : pylist.f
+pyrget.o : pyrget.f
+pyfeyn.o : pyfeyn.f
+masterNBody.o : masterNBody.f90 IdTable.o twoBodyStatistics.o preEventDefinition.o density.o energyDetermination.o particleDefinition.o dichteDefinition.o Annihilation.o XsectionRatios.o master_2Body.o input.o lorentzTrafo.o constants.o medium.o mediumDefinition.o nBodyPhaseSpace.o propagation.o offShellPotential.o random.o RMF.o
+pykfdi.o : pykfdi.f
+TransportGivenParticleAnalysis.o : TransportGivenParticleAnalysis.f90 input.o minkowski.o particleProperties.o hist.o IdTable.o particleDefinition.o output.o nucleus.o hist2D.o nucleusDefinition.o
+mesonPotential.o : mesonPotential.f90 pionPot.o constants.o CallStack.o particleProperties.o mediumDefinition.o IdTable.o particleDefinition.o output.o
+history.o : history.f90 twoBodyTools.o particleDefinition.o IdTable.o
+py4ent.o : py4ent.f
+pyupre.o : pyupre.f
+pygrvm.o : pygrvm.f
+deltaWidth.o : deltaWidth.f90 IdTable.o MassAssInfoDefinition.o density.o particleDefinition.o output.o dichteDefinition.o relativeVelocity.o input.o lorentzTrafo.o constants.o baryonWidth.o random.o
+matrix_module.o : matrix_module.f90
+pygraw.o : pygraw.f
+ValueRangeDefinition.o : ValueRangeDefinition.f90
+ssmssm.o : ssmssm.f
+pygau2.o : pygau2.f
+pystop.o : pystop.f
+inMediumWidth_rho.o : inMediumWidth_rho.f90 random.o mediumDefinition.o constants.o medium.o mesonWidthVacuum.o thermoDyn.o resonanceCrossSections.o twoBodyTools.o input.o master_2Body.o distributions.o density.o particleDefinition.o output.o preEventDefinition.o dichteDefinition.o IdTable.o bzip.o
+finalState_Full.o : finalState_Full.f90 mesonWidthMedium.o distributions.o output.o particleDefinition.o baryonWidthMedium.o IdTable.o random.o baryonWidthVacuum.o mesonPotential.o winkelVerteilung.o rotation.o particleProperties.o mediumDefinition.o nBodyPhaseSpace.o constants.o CallStack.o lorentzTrafo.o twoBodyTools.o
+ZeroPionAnalysis.o : ZeroPionAnalysis.f90 AnaEventDefinition.o particleProperties.o hist.o IdTable.o initNeutrino.o AnaEvent.o particleDefinition.o output.o
+DoColl_gammaN.o : DoColl_gammaN.f90 GetLeading.o eN_eventDefinition.o PyVP.o output.o particleDefinition.o PartInfoList_rhoDiffractive.o DoCollTools.o random.o hadronFormation.o eN_event.o constants.o
+py3ent.o : py3ent.f
+pionDelta.o : pionDelta.f90 constants.o twoBodyTools.o resonanceCrossSections.o RMF.o random.o particleProperties.o clebschGordan.o mediumDefinition.o parametrizationBarMes.o IdTable.o preEventDefinition.o particleDefinition.o
+initTransportGivenParticle.o : initTransportGivenParticle.f90 collisionNumbering.o particleProperties.o spectralFunc_mesons.o constants.o medium.o insertion.o spectralFunc.o random.o IdTable.o mediumDefinition.o nucleus.o energyDetermination.o output.o particleDefinition.o propagation.o input.o nucleusDefinition.o hist2D.o radiativeDeltaDecay.o TransportGivenParticleAnalysis.o offShellPotential.o
+pyname.o : pyname.f
+mesonMeson_Xsections.o : mesonMeson_Xsections.f90 twoBodyTools.o CallStack.o constants.o particleProperties.o mesonWidth.o random.o IdTable.o preEventDefinition.o output.o
+py4frm.o : py4frm.f
+pyalem.o : pyalem.f
+pyrvgl.o : pyrvgl.f
+pypole.o : pypole.f
+DileptonAnalysis.o : DileptonAnalysis.f90 EventInfo_HiLep.o mesonWidthMedium.o tabulation.o EventTypes.o nucleusDefinition.o helicityAmplitudes.o dichteDefinition.o eN_eventDefinition.o nucleus.o particleDefinition.o output.o density.o baryonWidthMedium.o master_1Body.o NDeltaFF_Ramalho.o IdTable.o readHAFT2.o histMC.o FF_QE_nucleonScattering.o random.o pauliBlocking.o history.o particleProperties.o rotation.o mesonWidth.o baryonWidth.o eN_event.o mediumDefinition.o readHAFT2.o lorentzTrafo.o hadronFormation.o mesonWidthVacuum.o medium.o constants.o leptonicID.o minkowski.o input.o twoBodyTools.o
+ElementaryAnalysis.o : ElementaryAnalysis.f90 hist2D.o XsectionRatios.o preEventDefinition.o AnaEvent.o output.o particleDefinition.o particlePointerListDefinition.o IdTable.o hist.o particlePointerList.o initElementary.o particleProperties.o twoBodyTools.o PreEvListDefinition.o AnaEventDefinition.o lorentzTrafo.o constants.o PreEvList.o
+pychge.o : pychge.f
+lepton2p2h.o : lepton2p2h.f90 twoBodyTools.o minkowski.o CallStack.o medium.o constants.o leptonicID.o lorentzTrafo.o propagation.o mediumDefinition.o random.o neutrinoparms.o FF_QE_nucleonScattering.o particleProperties.o IdTable.o baryonWidthMedium.o leptonTensor.o eN_eventDefinition.o nucleusDefinition.o particleDefinition.o energyDetermination.o density.o nucleus.o master_2Body.o AZN.o collisionNumbering.o
+yScalingAnalysis.o : yScalingAnalysis.f90 leptonKinematics.o lowElectron.o IdTable.o EventTypes.o initNeutrino.o nucleusDefinition.o nucleus.o neutrinoXsection.o particleDefinition.o output.o constants.o FF_QE_nucleonScattering.o degRad_conversion.o particleProperties.o tabNuclearMass.o
+pyeicg.o : pyeicg.f
+pygaga.o : pygaga.f
+pytune.o : pytune.f
+EventOutputAnalysis.o : EventOutputAnalysis.f90 output.o particleDefinition.o input.o EventOutputFile.o CallStack.o
+pyinki.o : pyinki.f
+pygfxx.o : pygfxx.f
+initNeutrino.o : initNeutrino.f90 hist.o residue.o IdTable.o collisionNumbering.o DoColl_nuN.o Electron_origin.o expNeutrinofluxes.o neutrino_IDTable.o eventGenerator_eN_lowEnergy.o neutrinoInfoStorage.o neutrinoXsection.o particleDefinition.o output.o nucleusDefinition.o hist2D.o eN_eventDefinition.o constants.o CallStack.o monteCarlo.o input.o minkowski.o formfactors_A_main.o neutrinoProdInfo.o eN_event.o insertion.o NuclearPDF.o random.o pauliBlocking.o esample.o propagation.o offShellPotential.o
+DoColl_Pythia.o : DoColl_Pythia.F90 DoCollTools.o hadronFormation.o ID_translation.o twoBodyTools.o particleProperties.o IdTable.o GetLeading.o output.o particleDefinition.o
+PartInfoList_rho0Dec.o : PartInfoList_rho0Dec.f90 PartInfoListIndex.o
+FreezeoutAnalysis.o : FreezeoutAnalysis.f90 output.o particleDefinition.o PartInfoList_freezout.o particleProperties.o potentialMain.o
+beta_filter.o : beta_filter.f
+initHiLepton.o : initHiLepton.f90 particleDefinition.o output.o energyDetermination.o baryonPotential.o eN_eventDefinition.o nucleusDefinition.o hist2D.o collisionNumbering.o vector.o EventInfo_HiLep.o shadowing.o DileptonAnalysis.o Electron_origin.o IdTable.o residue.o hist.o eventGenerator_eN_HiEnergy.o ParamEP.o checks.o sourceAnalysis_Main.o eN_event.o insertion.o CollHistory.o RMF.o random.o pauliBlocking.o PythiaSpecFunc.o CallStack.o hadronFormation.o constants.o lorentzTrafo.o
+monteCarlo.o : monteCarlo.f90 random.o CallStack.o
+itest.o : itest.f
+hadronTensor_ResProd.o : hadronTensor_ResProd.f90 output.o spinprojector.o matrix_module.o formFactor_ResProd.o particleProperties.o minkowski.o leptonicID.o constants.o
+photonPionProduction_medium.o : photonPionProduction_medium.f90 rotation.o degRad_conversion.o minkowski.o formfactors_A_main.o lorentzTrafo.o constants.o particleDefinition.o hadronTensor_NPi.o electronPionProduction_kine.o
+pyangl.o : pyangl.f
+AZN.o : AZN.f90 nucleus.o nucleusDefinition.o
+PythiaHermes.switch.o : PythiaHermes.switch.f
+mesonWidthMedium.o : mesonWidthMedium.f90 minkowski.o constants.o CallStack.o mediumDefinition.o rhoWidthMedium_tables.o mesonWidth.o particleProperties.o IdTable.o output.o mesonWidthMedium_tables.o MassAssInfoDefinition.o
+NbarN_to_NbarDelta.o : NbarN_to_NbarDelta.f90 random.o baryonWidth.o particleProperties.o constants.o output.o IdTable.o
+fritiof_702.KG.o : fritiof_702.KG.f
+pypdpi.o : pypdpi.f
+pyfowo.o : pyfowo.f
+energyDetermination.o : energyDetermination.f90 offShellPotential.o coulomb.o mediumDefinition.o RMF.o random.o mesonPotential.o potentialMain.o minkowski.o CallStack.o lorentzTrafo.o dichteDefinition.o hist2D.o density.o particleDefinition.o output.o baryonPotential.o IdTable.o
+LUSTRF.switch.o : LUSTRF.switch.f
+preEventDefinition.o : preEventDefinition.f90
+pyhfth.o : pyhfth.f
+pyrvg1.o : pyrvg1.f
+py6frm.o : py6frm.f
+mesonHyperon.o : mesonHyperon.f90 particleDefinition.o preEventDefinition.o parametrizationBarMes.o IdTable.o mediumDefinition.o random.o RMF.o clebschGordan.o baryonWidth.o particleProperties.o twoBodyTools.o resonanceCrossSections.o constants.o
+pypile.o : pypile.f
+argonne.o : argonne.f90 input.o constants.o av18pot.o
+baryonWidthMedium_tables.o : baryonWidthMedium_tables.f90 tabulation.o vector.o output.o IdTable.o bzip.o particleProperties.o deltaWidth.o mediumDefinition.o constants.o input.o minkowski.o
+pytime.o : pytime.f
+pykcut.o : pykcut.f
+pyxdif.o : pyxdif.f
+pyrghm.o : pyrghm.f
+pyspli.o : pyspli.f
+pyfact.o : pyfact.f
+pysghg.o : pysghg.f
+baryonWidth.o : baryonWidth.f90 bzip.o IdTable.o MassAssInfoDefinition.o output.o distributions.o input.o twoBodyTools.o leptonicID.o constants.o CallStack.o baryonWidthVacuum.o particleProperties.o hadronTensor_ResProd.o decayChannels.o
+DoColl_BaB.o : DoColl_BaB.f90 IdTable.o output.o particleDefinition.o GetLeading.o twoBodyTools.o ID_translation.o hadronFormation.o constants.o DoCollTools.o nBodyPhaseSpace.o random.o
+um2.o : um2.f90 output.o input.o
+pysgsu.o : pysgsu.f
+pyinom.o : pyinom.f
+electronPionProduction_medium_eN.o : electronPionProduction_medium_eN.f90 constants.o leptonicID.o lorentzTrafo.o formfactors_A_main.o minkowski.o degRad_conversion.o leptonTensor.o electronPionProduction_kine.o vector.o particleDefinition.o eN_eventDefinition.o hadronTensor_NPi.o
+pyx2xh.o : pyx2xh.f
+NDeltaFF_Ramalho.o : NDeltaFF_Ramalho.f90
+pykmap.o : pykmap.f
+initInABoxDelta.o : initInABoxDelta.f90 random.o IdTable.o particleDefinition.o
+pywdkk.o : pywdkk.f
+rhoABIntegrandVariables.o : rhoABIntegrandVariables.f90
+pyrset.o : pyrset.f
+winkel_tools.o : winkel_tools.f90 IdTable.o particleProperties.o random.o constants.o
+GetLeading.o : GetLeading.f90 ID_translation.o
+ParamEP.o : ParamEP.f90 constants.o CallStack.o input.o output.o
+threeBodyPhaseSpace.o : threeBodyPhaseSpace.f90 constants.o particleProperties.o mediumDefinition.o baryonWidthMedium.o IdTable.o mesonWidthMedium.o
+JPsiNucleon.o : JPsiNucleon.f90 random.o RMF.o twoBodyTools.o particleDefinition.o preEventDefinition.o IdTable.o parametrizationBarMes.o
+EventTypes.o : EventTypes.f90
+pypdel.o : pypdel.f
+pygdir.o : pygdir.f
+version.o : version.f90
+pyjmas.o : pyjmas.f
+InABoxAnalysisDelta.o : InABoxAnalysisDelta.f90 IdTable.o particleDefinition.o random.o
+gamma2Pi_Xsections.o : gamma2Pi_Xsections.f90 mediumDefinition.o input.o constants.o output.o threeBodyPhaseSpace.o cl_splines.o gamma2Pi_Xsections_luis.o
+TmunuDefinition.o : TmunuDefinition.f90 IdTable.o particleDefinition.o particleProperties.o
+pyradk.o : pyradk.f
+pyggam.o : pyggam.f
+eventGenerator_eN_HiEnergy.o : eventGenerator_eN_HiEnergy.f90 IdTable.o DoColl_gammaN.o eventGenerator_eN_lowEnergy.o output.o particleDefinition.o EventAnalysis.o eN_eventDefinition.o collisionNumbering.o DoColl_gammaN_exclPi.o PythiaSpecFunc.o CallStack.o constants.o PyVP.o eN_event.o
+pyadsh.o : pyadsh.f
+pystat.o : pystat.f
+coulombKorrektur.o : coulombKorrektur.f90 output.o particleDefinition.o nucleus.o nucleusDefinition.o input.o constants.o
+kaonLambda.o : kaonLambda.f90 IdTable.o parametrizationBarMes.o preEventDefinition.o output.o particleDefinition.o constants.o resonanceCrossSections.o twoBodyTools.o particleProperties.o clebschGordan.o RMF.o random.o mediumDefinition.o
+pymirm.o : pymirm.f
+pymass.o : pymass.f PythiaSpecFunc.o
+sourceTypeDefinition.o : sourceTypeDefinition.f90
+NucExRTF.o : NucExRTF.f90 spline.o RMF.o constants.o
+GridOrdering.o : GridOrdering.f90 Sorting.o random.o
+pybook.o : pybook.f
+formfactors_A_pi-_proton.o : formfactors_A_pi-_proton.f90 bzip.o formfactors_A_input.o output.o
+nuDispenser.o : nuDispenser.f90 insertion.o deuterium_PL.o particleProperties.o initNucPhaseSpace.o PartInfoListCollected.o random.o particleDefinition.o energyDetermination.o yuka.o density.o nucleus.o baryonPotential.o checks.o nucleusDefinition.o coulomb.o input.o version.o propagation.o
+PartInfoList_omegaDec.o : PartInfoList_omegaDec.f90 PartInfoListIndex.o
+pythia_55.o : pythia_55.f
+pyp.o : pyp.f
+pystbh.o : pystbh.f
+nucleusDefinition.o : nucleusDefinition.f90
+collisionCriteria.o : collisionCriteria.f90 random.o VolumeElements.o CallStack.o lorentzTrafo.o particleDefinition.o output.o hist.o
+EventAnalysis.o : EventAnalysis.f90 constants.o
+pygrvv.o : pygrvv.f
+pyrvgw.o : pyrvgw.f
+barBar_Main.o : barBar_Main.f90 preEventDefinition.o barBar_barBarMes.o particleDefinition.o IdTable.o HypBar_HypBar.o spline.o random.o particleProperties.o barBar_barBar.o mediumDefinition.o barBar_BarHypKaon.o constants.o input.o twoBodyTools.o
+pycteq.o : pycteq.f
+barbar_to_barbar_model.o : barbar_to_barbar_model.f90 spinprojector.o output.o quadpack.o matrix_module.o IdTable.o baryonWidth.o particleProperties.o random.o constants.o twoBodyTools.o minkowski.o
+coulomb.o : coulomb.f90 density.o output.o nucleus.o dichteDefinition.o nucleusDefinition.o EventTypes.o IdTable.o ADI.o particleProperties.o input.o constants.o CallStack.o
+selfenergy_baryons.o : selfenergy_baryons.f90 baryonWidthMedium_tables.o baryonWidthMedium.o tabulation.o particleProperties.o constants.o input.o potentialMain.o cernlib.o mediumDefinition.o IdTable.o baryonPotential.o output.o particleDefinition.o quadpack.o
+insertion.o : insertion.f90 particleDefinition.o output.o IdTable.o CollHistory.o
+shadowing.o : shadowing.f90 nucleusDefinition.o constants.o
+randomMaxwell.o : randomMaxwell.f90 random.o
+pycmqr.o : pycmqr.f
+gamma2Pi_Xsections_luis.o : gamma2Pi_Xsections_luis.f90 output.o input4Amplitudes.o gauss_integration.o mediumDefinition.o Amplitudes.o constants.o
+pyrvs.o : pyrvs.f
+fhsetflags.o : fhsetflags.f
+input.o : input.f90 nucleusDefinition.o nucleus.o particleDefinition.o output.o EventTypes.o CallStack.o
+inMediumWidth.o : inMediumWidth.f90 mediumDefinition.o random.o particleProperties.o input.o constants.o mesonWidthMedium_tables.o particleDefinition.o output.o baryonWidthMedium_tables.o master_2Body.o bzip.o IdTable.o master_1Body.o
+pysgex.o : pysgex.f
+pyinpr.o : pyinpr.f
+py2ent.o : py2ent.f
+phiNucleon.o : phiNucleon.f90 output.o particleDefinition.o preEventDefinition.o parametrizationBarMes.o IdTable.o mediumDefinition.o RMF.o random.o particleProperties.o twoBodyTools.o CallStack.o constants.o parametrizationBarMes_HighEnergy.o
+pyx3jt.o : pyx3jt.f
+py1ent.o : py1ent.f
+pyonof.o : pyonof.f
+determFermiMom.o : determFermiMom.f90 baryonPotential.o density.o particleDefinition.o NucDLDA.o mediumDefinition.o cernlib.o constants.o
+PartInfoList_FormInfo.o : PartInfoList_FormInfo.f90 PartInfoListIndex.o
+formfactors_A_input.o : formfactors_A_input.f90 CallStack.o output.o input.o
+PYSTRF.switch.o : PYSTRF.switch.f
+neutrinoInfoStorage.o : neutrinoInfoStorage.f90
+pyk.o : pyk.f
+pynull.o : pynull.f
+readHAFT2.o : readHAFT2.f90
+pionNucleon.o : pionNucleon.f90 mediumDefinition.o random.o RMF.o particleProperties.o clebschGordan.o twoBodyPhaseSpace.o twoBodyTools.o resonanceCrossSections.o monteCarlo.o parametrizationBarMes_HighEnergy.o constants.o CallStack.o preEventDefinition.o particleDefinition.o parametrizationBarMes.o IdTable.o
+barBar_BarHypKaon.o : barBar_BarHypKaon.f90 output.o particleDefinition.o preEventDefinition.o IdTable.o CallStack.o
+propagation_RMF.o : propagation_RMF.f90 input.o RMF.o propagation.o coulomb.o offShellPotential.o IdTable.o EventTypes.o density.o particleDefinition.o output.o
+pyboei.o : pyboei.f
+masterThreeBody.o : masterThreeBody.f90 baryonWidthMedium.o RMF.o random.o finalStateModule.o lorentzTrafo.o history.o collisionNumbering.o medium.o constants.o NNPION_NN.o barBar_barBar.o propagation.o input.o dichteDefinition.o offShellPotential.o IdTable.o mediumDefinition.o deltaWidth.o preEventDefinition.o output.o particleDefinition.o density.o energyDetermination.o
+pydecy.o : pydecy.f
+mediumDefinition.o : mediumDefinition.f90
+degRad_conversion.o : degRad_conversion.f90 constants.o
+pyglui.o : pyglui.f
+zerox64.o : zerox64.f
+singlePionProductionNHVlike.o : singlePionProductionNHVlike.f90 output.o particleDefinition.o electronPionProduction_kine.o leptonTensor.o IdTable.o NievesHadronTensor.o lepton_kinematics_free.o rotation.o particleProperties.o random.o degRad_conversion.o lorentzTrafo.o constants.o minkowski.o
+pysspa.o : pysspa.f
+master_2Body.o : master_2Body.f90 omegaNucleon.o mediumDefinition.o DoColl_Manni.o nBodyPhaseSpace.o offShellPotential.o propagation.o rhoDelta.o barAntiBar.o coulomb.o mesonPotential.o barBar_barBar.o deuterium_PL.o clebschGordan.o decayChannels.o twoBodyPhaseSpace.o etaNucleon.o particleProperties.o history.o random.o RMF.o DoColl_Elastic.o pionNucleon.o mesonMeson_Xsections.o JPsiNucleon.o kaonNucleon.o PythiaSpecFunc.o monteCarlo.o DoColl_Fritiof.o twoBodyTools.o kaonSigma.o etaDelta.o input.o minkowski.o constants.o hadronFormation.o medium.o CallStack.o pionDelta.o finalStateModule.o lorentzTrafo.o parametrizationBarMes_HighEnergy.o pionP1440.o DoColl_ChEx.o density.o energyDetermination.o output.o particleDefinition.o preEventDefinition.o phiNucleon.o dichteDefinition.o Annihilation.o XsectionRatios.o antiBarBar_main.o PartInfoList_mesonMom.o DoColl_Pythia.o mesonWidthMedium.o collisionCriteria.o DileptonAnalysis.o antiKaonNucleon.o mesonHyperon.o IdTable.o barBar_Main.o dimi.o residue.o rhoNucleon.o baryonWidthMedium.o sigmaNucleon.o kaonLambda.o DoColl_HypAntiHyp.o
+pygive.o : pygive.f
+pypdfu.o : pypdfu.f NuclearPDF.o
+pyplot.o : pyplot.f
+pyxjet.o : pyxjet.f
+pyptmi.o : pyptmi.f
+pysphe.o : pysphe.f
+pytbdy.o : pytbdy.f
+pyupin.o : pyupin.f
+clus.o : clus.f90 IdTable.o particleDefinition.o
+pyrvi3.o : pyrvi3.f
+pysgqc.o : pysgqc.f
+PreEvListDefinition.o : PreEvListDefinition.f90 preEventDefinition.o
+pyslha.o : pyslha.f
+densityStatic.o : densityStatic.f90 NucDLDA.o nucleusDefinition.o dichteDefinition.o output.o particleDefinition.o constants.o CallStack.o NucExRTF.o gauss_integration.o NucD.o
+pyprep.o : pyprep.f
+comptonScattering.o : comptonScattering.f90 propagators.o vector.o matrix_module.o IdTable.o degRad_conversion.o vertices.o constants.o minkowski.o twoBodyTools.o
+finalStateModule.o : finalStateModule.f90 particleDefinition.o NbarN_to_NbarDelta.o dimi.o IdTable.o winkelVerteilung.o particleProperties.o mediumDefinition.o CallStack.o constants.o finalState_Full.o twoBodyTools.o
+sourceProperties.o : sourceProperties.f90 RMF.o determineSource.o constants.o lorentzTrafo.o sourceTypeDefinition.o density.o output.o particleDefinition.o IdTable.o
+derivatives.o : derivatives.f90
+formFactor_ResProd.o : formFactor_ResProd.f90 output.o IdTable.o helicityAmplitudes.o minkowski.o leptonicID.o constants.o CallStack.o distributions.o particleProperties.o
+skyrme.o : skyrme.f90 constants.o derivatives.o findZero.o
+NuclearPDF.o : NuclearPDF.f90 CallStack.o output.o
+PythiaSpecFunc.o : PythiaSpecFunc.f90 CallStack.o medium.o AssignMassMC.o monteCarlo.o random.o mesonPotential.o baryonWidth.o particleProperties.o mediumDefinition.o IdTable.o mesonWidthMedium.o output.o MassAssInfoDefinition.o
+InvMassesAnalysis.o : InvMassesAnalysis.f90 history.o particleProperties.o AnaEventDefinition.o particlePointerListDefinition.o output.o particleDefinition.o hist.o histMC.o IdTable.o
+pionPot.o : pionPot.f90 constants.o
+clebschGordan.o : clebschGordan.f90
+pyshow.o : pyshow.f
+proton_neutron_width_medium.o : proton_neutron_width_medium.f90 output.o particleDefinition.o baryonPotential.o cl_splines.o mediumDefinition.o baryonic_mean_field.o input.o constants.o
+matrixelement.o : matrixelement.f90 output.o matrixElementQE.o IdTable.o FF_Delta_production.o leptonTensor.o matrixelement_RS.o hadronTensor_ResProd.o particleProperties.o minkowski.o constants.o leptonicID.o
+pykfin.o : pykfin.f
+pytbbc.o : pytbbc.f
+matrixelement_RS.o : matrixelement_RS.f90 IdTable.o neutrino_IDTable.o output.o leptonicID.o constants.o minkowski.o particleProperties.o
+NucD.o : NucD.f90
+particlePointerList.o : particlePointerList.f90 particlePointerListDefinition.o output.o particleDefinition.o random.o
+Oscill_Parameters.o : Oscill_Parameters.f90
+yuka.o : yuka.f90 constants.o output.o density.o
+pybesq.o : pybesq.f
+pystrf.o : pystrf.f
+lepton_kinematics_free.o : lepton_kinematics_free.f90 random.o minkowski.o
+PartInfoList_mesonMom.o : PartInfoList_mesonMom.f90 PartInfoListIndex.o
+MultiplicityAnalysis.o : MultiplicityAnalysis.f90 output.o particlePointerListDefinition.o IdTable.o particlePointerList.o AnaEventDefinition.o
+pyreco.o : pyreco.f
+pynjdc.o : pynjdc.f
+pytest.o : pytest.f
+hadronFormation.o : hadronFormation.f90 constants.o PartInfoList_FormInfo.o PartInfoList_nLead.o EventTypes.o input.o particleDefinition.o output.o IdTable.o
+pyevol.o : pyevol.f
+formfactors_A_pi0_neutron.o : formfactors_A_pi0_neutron.f90 bzip.o formfactors_A_input.o output.o
+resonanceProduction.o : resonanceProduction.f90 particleDefinition.o eN_eventDefinition.o spectralFunc.o IdTable.o leptonTensor.o baryonWidthMedium.o mediumDefinition.o baryonWidth.o hadronTensor_ResProd.o clebschGordan.o particleProperties.o degRad_conversion.o twoBodyTools.o minkowski.o CallStack.o leptonicID.o constants.o
+particleDefinition.o : particleDefinition.F90 CallStack.o
+master_1Body.o : master_1Body.f90 input.o minkowski.o constants.o medium.o CallStack.o finalStateModule.o lorentzTrafo.o mediumDefinition.o offShellPotential.o propagation.o clebschGordan.o decayChannels.o history.o particleProperties.o random.o RMF.o IdTable.o hist.o baryonWidthMedium.o density.o energyDetermination.o output.o particleDefinition.o dichteDefinition.o PartInfoList_omegaDec.o mesonWidthMedium.o
+histMC_avg.o : histMC_avg.f90
+MassAssInfoDefinition.o : MassAssInfoDefinition.f90 output.o CallStack.o
+dgs56p.o : dgs56p.f
+hist_multipleRuns_MC.o : hist_multipleRuns_MC.f90 histMC.o
+XsectionRatios.o : XsectionRatios.f90 nBodyPhaseSpace.o mediumDefinition.o RMF.o random.o particleProperties.o input.o minkowski.o twoBodyTools.o lorentzTrafo.o constants.o dichteDefinition.o density.o particleDefinition.o output.o EventTypes.o IdTable.o
+pycell.o : pycell.f
+neutrino2piBack.o : neutrino2piBack.f90 eN_eventDefinition.o particleDefinition.o energyDetermination.o eventGenerator_eN_lowEnergy.o distributions.o IdTable.o offShellPotential.o ParamEP.o mediumDefinition.o nBodyPhaseSpace.o neutrinoparms.o FF_QE_nucleonScattering.o eN_event.o monteCarlo.o medium.o leptonicID.o constants.o
+AddDecay.o : AddDecay.f90 particleProperties.o history.o insertion.o input.o ID_translation.o hadronFormation.o DoCollTools.o particleDefinition.o IdTable.o
+pydump.o : pydump.f
+offShellPotential.o : offShellPotential.f90 minkowski.o input.o potentialMain.o twoBodyTools.o lorentzTrafo.o medium.o CallStack.o constants.o mediumDefinition.o particleProperties.o mesonWidth.o mesonPotential.o IdTable.o selfenergy_mesons.o baryonWidthMedium.o hist2D.o dichteDefinition.o output.o particleDefinition.o baryonWidthMedium_tables.o mesonWidthMedium.o EventTypes.o
+upevnt.o : upevnt.f
+pylamf.o : pylamf.f
+eN_eventDefinition.o : eN_eventDefinition.f90 output.o particleDefinition.o particleProperties.o minkowski.o
+HiLeptonAnalysis.o : HiLeptonAnalysis.f90 IdTable.o histMC.o hist.o particlePointerList.o PartInfoList_rho0Dec.o AnaEvent.o preEventDefinition.o output.o particleDefinition.o hist2D.o collisionReporter.o particlePointerListDefinition.o EventInfo_HiLep.o vector.o Rho0Finder.o PreEvListDefinition.o minkowski.o twoBodyTools.o ValueRangeDefinition.o PreEvList.o CallStack.o PartInfoList_FormInfo.o constants.o AnaEventDefinition.o initHiLepton.o particleProperties.o history.o histMP.o InvMassesAnalysis.o CollHistory.o pauliBlocking.o
+twoBodyPhaseSpace.o : twoBodyPhaseSpace.f90 IdTable.o output.o constants.o particleProperties.o mesonWidth.o baryonWidth.o
+DoColl_ChEx.o : DoColl_ChEx.f90 particleDefinition.o IdTable.o winkel_tools.o random.o RMF.o constants.o
+pymael.o : pymael.f
+leptonTensor.o : leptonTensor.f90 constants.o leptonicID.o minkowski.o matrix_module.o
+pyinit.o : pyinit.f
+minkowski.o : minkowski.f90 matrix_module.o constants.o
+pyalps.o : pyalps.f
+pywidt.o : pywidt.f
+InABoxAnalysisPion.o : InABoxAnalysisPion.f90 initPion.o particleDefinition.o output.o collisionNumbering.o IdTable.o
+tabulation.o : tabulation.f90 output.o bzip.o
+etaDelta.o : etaDelta.f90 constants.o twoBodyTools.o random.o RMF.o pionNucleon.o clebschGordan.o mediumDefinition.o IdTable.o output.o particleDefinition.o preEventDefinition.o
+pycsrt.o : pycsrt.f
+lorentzTrafo.o : lorentzTrafo.f90 CallStack.o minkowski.o particleDefinition.o
+distributions.o : distributions.f90 constants.o
+pyrnmq.o : pyrnmq.f
+neutrinoXsection.o : neutrinoXsection.f90 particleProperties.o DoColl_nuN.o matrixelement.o leptonicID.o constants.o distributions.o CallStack.o eN_event.o neutrinoparms.o lepton2p2h.o neutrino2piBack.o spectralFunc.o random.o eventGenerator_eN_lowEnergy.o neutrino_IDTable.o IdTable.o gauss_integration.o singlePionProductionNHVlike.o singlePionProductionMAIDlike.o output.o particleDefinition.o minkowski.o eN_eventDefinition.o
+pycdiv.o : pycdiv.f
+pystrf_modif.o : pystrf_modif.f
+cernlib.o : cernlib.f90
+thermoDyn.o : thermoDyn.f90 IdTable.o particleDefinition.o output.o density.o minkowski.o constants.o
+neutrino_IDTable.o : neutrino_IDTable.f90
+Electron_origin.o : Electron_origin.f90 IdTable.o
+pynmes.o : pynmes.f
+input4Amplitudes.o : input4Amplitudes.f90
+twoBodyStatistics.o : twoBodyStatistics.f90 IdTable.o histMC.o preEventDefinition.o particleDefinition.o output.o density.o CallStack.o PreEvList.o PreEvListDefinition.o minkowski.o input.o twoBodyTools.o RMF.o
+pyfill.o : pyfill.f
+pygrvw.o : pygrvw.f
+pyptdi.o : pyptdi.f
+pymrun.o : pymrun.f
+initExternal.o : initExternal.f90 constants.o checks.o RMF.o random.o insertion.o residue.o initSRC.o nucleusDefinition.o baryonPotential.o density.o output.o particleDefinition.o collisionNumbering.o
+pyrvsb.o : pyrvsb.f
+rotation.o : rotation.f90 constants.o
+checks.o : checks.f90 potentialMain.o minkowski.o CallStack.o constants.o coulomb.o mediumDefinition.o RMF.o particleProperties.o IdTable.o NucDLDA.o hist.o dichteDefinition.o nucleusDefinition.o particleDefinition.o output.o density.o baryonPotential.o nucleus.o vector.o collisionNumbering.o EventTypes.o
+pyupda.o : pyupda.f
+pyrvg2.o : pyrvg2.f
+upinit.o : upinit.f
+pygrvl.o : pygrvl.f
+DoCollTools.o : DoCollTools.f90 IdTable.o particleDefinition.o output.o CallStack.o hadronFormation.o ID_translation.o
+initHadron.o : initHadron.f90 constants.o coulomb.o checks.o RMF.o random.o particleProperties.o IdTable.o residue.o nucleusDefinition.o density.o output.o particleDefinition.o nucleus.o DileptonAnalysis.o collisionNumbering.o
+pyhggm.o : pyhggm.f
+pyrobo.o : pyrobo.f
+pysgtc.o : pysgtc.f
+pyxkfl.o : pyxkfl.f
+DoColl_Fritiof.o : DoColl_Fritiof.f90 GetLeading.o particleDefinition.o output.o IdTable.o DoCollTools.o ID_translation.o hadronFormation.o twoBodyTools.o
+hist.o : hist.f90 distributions.o cl_splines.o spline.o CallStack.o
+neutrinoparms.o : neutrinoparms.f90 output.o AZN.o CallStack.o
+VolumeElements.o : VolumeElements.F90 decayChannels.o random.o CallStack.o constants.o input.o collisionNumbering.o EventTypes.o particlePointerListDefinition.o output.o particleDefinition.o density.o GridOrdering.o dichteDefinition.o particlePointerList.o IdTable.o
+hist2D.o : hist2D.f90 hist.o CallStack.o spline.o
+LUSTRF.Modif.73.o : LUSTRF.Modif.73.f
+spline.o : spline.f90
+pydocu.o : pydocu.f
+formfactors_A_pi+_neutron.o : formfactors_A_pi+_neutron.f90 formfactors_A_input.o bzip.o output.o
+hadronTensor_NPi.o : hadronTensor_NPi.f90 minkowski.o
+pyrvi2.o : pyrvi2.f
+pyevnt.o : pyevnt.f output.o
+baryonic_mean_field.o : baryonic_mean_field.f90 constants.o
+decayChannels.o : decayChannels.f90 output.o IdTable.o
+dimi.o : dimi.f90 random.o particleProperties.o baryonWidth.o twoBodyTools.o constants.o output.o IdTable.o
+pyrand.o : pyrand.f output.o
+Annihilation.o : Annihilation.f90 IdTable.o annihilation_channels.o particleDefinition.o output.o energyDetermination.o density.o finalState_Full.o lorentzTrafo.o hadronFormation.o constants.o twoBodyTools.o PythiaSpecFunc.o RMF.o random.o particleProperties.o DoColl_BaB.o propagation.o nBodyPhaseSpace.o mediumDefinition.o
+pyi3au.o : pyi3au.f
+collisionTools.o : collisionTools.f90 particleProperties.o coulomb.o CallStack.o medium.o lorentzTrafo.o potentialMain.o particleDefinition.o output.o density.o dichteDefinition.o IdTable.o
+pyinre.o : pyinre.f
+ertf1_21.o : ertf1_21.f
+pyfcmp.o : pyfcmp.f
+output.o : output.f90 particleDefinition.o minkowski.o CallStack.o mediumDefinition.o history.o
+pionP1440.o : pionP1440.f90 particleDefinition.o preEventDefinition.o IdTable.o mediumDefinition.o random.o RMF.o resonanceCrossSections.o twoBodyTools.o
+barBar_barBar.o : barBar_barBar.f90 particleDefinition.o output.o baryonWidthMedium.o IdTable.o dimi.o twoBodyPhaseSpace.o barbar_to_barbar_model.o particleProperties.o RMF.o random.o deltaWidth.o mediumDefinition.o constants.o twoBodyTools.o
+pyjurf.o : pyjurf.f
+pyonia.o : pyonia.f
+EventInfo_HiLep.o : EventInfo_HiLep.f90
+pydisg.o : pydisg.f
+pygvmd.o : pygvmd.f
+propagation.o : propagation.f90 offShellPotential.o coulomb.o yuka.o mediumDefinition.o CallStack.o medium.o potentialMain.o input.o minkowski.o EventTypes.o nucleusDefinition.o hist2D.o energyDetermination.o density.o particleDefinition.o output.o derivatives.o nucleus.o hist.o IdTable.o
+deuterium.o : deuterium.f90 nucleusDefinition.o output.o particleDefinition.o EventTypes.o IdTable.o argonne.o random.o deuterium_PL.o input.o constants.o lorentzTrafo.o
+dls_fine_filter_v4p1.o : dls_fine_filter_v4p1.f input.o
+py4jts.o : py4jts.f
+pysimp.o : pysimp.f
+cauchy64.o : cauchy64.f
+pyhepc.o : pyhepc.f
+neutrinoProdInfo.o : neutrinoProdInfo.f90
+Sorting.o : Sorting.f90
+pyrvr.o : pyrvr.f
+pyxxz6.o : pyxxz6.f
+initHiPion.o : initHiPion.f90 DileptonAnalysis.o master_2Body.o collisionNumbering.o nucleusDefinition.o output.o particleDefinition.o energyDetermination.o baryonPotential.o collisionTerm.o residue.o hist.o IdTable.o collisionTools.o pauliBlocking.o random.o insertion.o CollHistory.o particleProperties.o hadronFormation.o CallStack.o constants.o VolumeElements.o input.o Sorting.o
+rhoWidthMedium_tables.o : rhoWidthMedium_tables.f90 bzip.o input.o IdTable.o mediumDefinition.o output.o tabulation.o
+pyptis.o : pyptis.f
+formfactors_A_main.o : formfactors_A_main.f90 formfactors_A_pi0_neutron.o formfactors_A_pi-_proton.o formfactors_A_pi0_proton.o formfactors_A_pi+_neutron.o
+initNucPhaseSpace.o : initNucPhaseSpace.f90 dichteDefinition.o nucleusDefinition.o hist2D.o particleDefinition.o output.o energyDetermination.o density.o baryonPotential.o densityStatic.o EventTypes.o IdTable.o hist.o determFermiMom.o RMF.o random.o deuterium.o insertion.o potentialMain.o input.o CallStack.o constants.o lorentzTrafo.o
+mtlprt.o : mtlprt.f
+initElementary.o : initElementary.f90 master_2Body.o particleDefinition.o output.o preEventDefinition.o IdTable.o random.o insertion.o particleProperties.o mediumDefinition.o constants.o input.o
+pyerrm.o : pyerrm.f
+pythag.o : pythag.f
+pauliBlocking.o : pauliBlocking.f90 IdTable.o hist.o nucleus.o particleDefinition.o output.o density.o nucleusDefinition.o dichteDefinition.o EventTypes.o minkowski.o input.o lorentzTrafo.o CallStack.o constants.o random.o
+pi0eta_photoproduction.o : pi0eta_photoproduction.f90 lorentzTrafo.o particleProperties.o medium.o master_2Body.o constants.o spline.o RMF.o mediumDefinition.o IdTable.o particleDefinition.o density.o input.o dichteDefinition.o
+lowElectron.o : lowElectron.f90 nucleusDefinition.o eN_eventDefinition.o eventGenerator_eN_lowEnergy.o particleDefinition.o output.o Electron_origin.o vector.o IdTable.o leptonKinematics.o random.o pauliBlocking.o degRad_conversion.o eN_event.o insertion.o input.o
+rcspln64.o : rcspln64.f
+pyscat.o : pyscat.f
+InABoxAnalysis.o : InABoxAnalysis.f90 hist.o density.o output.o particleDefinition.o histMP.o
+pyrvne.o : pyrvne.f
+Rho0Finder.o : Rho0Finder.f90 lorentzTrafo.o constants.o CallStack.o particlePointerListDefinition.o vector.o output.o PartInfoList_rho0Dec.o particlePointerList.o
+DoColl_Manni.o : DoColl_Manni.f90 random.o twoBodyTools.o DoCollTools.o hadronFormation.o constants.o ID_translation.o GetLeading.o particleDefinition.o output.o IdTable.o
+collisionTerm.o : collisionTerm.f90 residue.o master_1Body.o twoBodyStatistics.o PartInfoList_rho0Dec.o AddDecay.o masterNBody.o IdTable.o collisionTools.o master_2Body.o collisionNumbering.o EventTypes.o DileptonAnalysis.o output.o particleDefinition.o XsectionRatios.o threeBarMes.o hist2D.o CallStack.o statistics.o twoBodyTools.o minkowski.o AntibaryonWidth.o input.o VolumeElements.o insertion.o CollHistory.o deuterium_PL.o pauliBlocking.o threemeson.o initHadron.o masterThreeBody.o
+writeFritiofCommons.o : writeFritiofCommons.f
+quadpack.o : quadpack.f90
+pyxdin.o : pyxdin.f
+pysgwz.o : pysgwz.f
+pyspen.o : pyspen.f
+pygaus.o : pygaus.f
+pyfint.o : pyfint.f
+histMC.o : histMC.f90 distributions.o
+sigmaNucleon.o : sigmaNucleon.f90 particleProperties.o clebschGordan.o RMF.o random.o mediumDefinition.o parametrizationBarMes_HighEnergy.o constants.o resonanceCrossSections.o twoBodyTools.o preEventDefinition.o particleDefinition.o IdTable.o
+dadapt.o : dadapt.f
+AntibaryonWidth.o : AntibaryonWidth.f90 dichteDefinition.o Annihilation.o XsectionRatios.o twoBodyTools.o nucleusDefinition.o input.o output.o particleDefinition.o density.o mediumDefinition.o IdTable.o nucleus.o preEventDefinition.o pauliBlocking.o RMF.o random.o insertion.o master_2Body.o constants.o densityStatic.o lorentzTrafo.o collisionNumbering.o
+HypBar_HypBar.o : HypBar_HypBar.f90 output.o particleDefinition.o preEventDefinition.o IdTable.o random.o particleProperties.o twoBodyTools.o constants.o
+DoColl_Elastic.o : DoColl_Elastic.f90 constants.o random.o RMF.o winkel_tools.o IdTable.o particleDefinition.o
+pytecm.o : pytecm.f
+kaonSigma.o : kaonSigma.f90 mediumDefinition.o clebschGordan.o particleProperties.o RMF.o random.o twoBodyTools.o constants.o output.o particleDefinition.o preEventDefinition.o IdTable.o parametrizationBarMes.o
+pylogo.o : pylogo.f
+pywidx.o : pywidx.f
+initLowPhoton.o : initLowPhoton.f90 hadronFormation.o medium.o constants.o lorentzTrafo.o EventGenerator_TwoPi.o formfactors_A_main.o minkowski.o input.o resonanceProduction.o insertion.o pi0eta_photoproduction.o clebschGordan.o deuterium_PL.o history.o particleProperties.o random.o RMF.o pauliBlocking.o nBodyPhaseSpace.o mediumDefinition.o offShellPotential.o propagation.o DoColl_gammaN.o hist.o XS_VMD.o IdTable.o collisionTools.o lowElectron.o histMC.o photonPionProduction_medium.o photonXS.o master_2Body.o gamma2Pi_Xsections.o collisionNumbering.o vector.o DileptonAnalysis.o Electron_origin.o particleDefinition.o output.o energyDetermination.o density.o collisionTerm.o dichteDefinition.o hist2D.o nucleusDefinition.o
