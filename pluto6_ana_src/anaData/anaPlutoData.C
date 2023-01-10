@@ -52,7 +52,21 @@ void anaPlutoData::Begin(TTree * /*tree*/)
 
    M2EpG = M2EmG = M2EpEm = 0;
 
-   fileout = new TFile("EtaDalitz_EpEmGamma.root","recreate");
+   L = 0;
+   TOF200 = 0;
+   TOF500 = 0;
+   TOF1000 = 0;
+   beta200_gamma = 0;
+   beta500_gamma = 0;
+   beta1000_gamma = 0;
+
+   Egamma1 = 0;
+   thetagamma1 = 0;
+
+   random3 = new TRandom3(321);
+
+
+   fileout = new TFile("Eta_1.8GeV.root","recreate");
    tree = new TTree("tree","analysis results");
    tree->Branch("s", &s, "s/D");
    tree->Branch("t", &t, "t/D");
@@ -63,6 +77,11 @@ void anaPlutoData::Begin(TTree * /*tree*/)
    tree->Branch("M2EpG", &M2EpG, "M2EpG/D");
    tree->Branch("M2EmG", &M2EmG, "M2EmG/D");
    tree->Branch("M2EpEm", &M2EpEm, "M2EpEm/D");
+   tree->Branch("beta200_gamma",  &beta200_gamma,  "beta200_gamma/D");
+   tree->Branch("beta500_gamma",  &beta500_gamma,  "beta500_gamma/D");
+   tree->Branch("beta1000_gamma", &beta1000_gamma, "beta1000_gamma/D");
+   tree->Branch("Egamma1", &Egamma1, "Egamma1/D");
+   tree->Branch("thetagamma1", &thetagamma1, "thetagamma1/D");
 
 
 
@@ -158,7 +177,32 @@ Bool_t anaPlutoData::Process(Long64_t entry)
       Y = 3.0/2.0/_meta/_Qeta * ((_meta-_mpi0)*(_meta-_mpi0)-s) - 1;
    }
 
+
+   beta200_gamma = beta500_gamma = beta1000_gamma = 0;
    if(v3gammas.size()>=2){
+      thetagamma1 = v3gammas.at(0).Theta();
+      if(v3gammas.at(0).Theta()*TMath::RadToDeg()>17)  L = 30 / sin(v3gammas.at(0).Theta()) + 5;
+      else L = 100 / cos(v3gammas.at(0).Theta()) + 5;
+
+      double _time = L/30.0;
+      double _delta = random3->Gaus(0, 0.2);
+      if(_delta<(-0.95*_time)) _delta = -0.99*_time;
+      TOF200  = _time + _delta;
+
+      _delta = random3->Gaus(0, 0.5);
+      if(_delta<(-0.95*_time)) _delta = -0.99*_time;
+      TOF500  = _time + _delta;
+      
+      _delta = random3->Gaus(0, 1);
+      if(_delta<(-0.95*_time)) _delta = -0.99*_time;
+      TOF1000 = _time + _delta;
+      
+      beta200_gamma = L / TOF200 / 30.0;
+      beta500_gamma = L / TOF500 / 30.0;
+      beta1000_gamma = L / TOF1000 / 30.0;
+
+      Egamma1 = v3gammas.at(0).Mag();
+
       twogamma_angle = acos(  v3gammas.at(0).Dot(v3gammas.at(1))/v3gammas.at(0).Mag()/v3gammas.at(1).Mag()  );
    }
 

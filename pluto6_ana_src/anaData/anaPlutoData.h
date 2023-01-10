@@ -22,7 +22,7 @@
 // Headers needed by this particular selector
 #include "TClonesArray.h"
 
-
+#include "TRandom3.h"
 
 class anaPlutoData : public TSelector {
 public :
@@ -54,8 +54,14 @@ public :
 
    double M2EpG, M2EmG, M2EpEm;
 
+   double L, TOF200, TOF500, TOF1000, beta200_gamma, beta500_gamma, beta1000_gamma;
+
+   double Egamma1, thetagamma1;
+
    TFile *fileout;
    TTree *tree;
+
+   TRandom3 *random3;
 
 
 

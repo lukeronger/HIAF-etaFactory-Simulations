@@ -4,7 +4,7 @@
 	
 
 
-	TFile ff("../mcdata/EventOutput.Real.00000001.root");
+	TFile ff("../release/testRun2/EventOutput.Real.00000001.root");
 
 
 

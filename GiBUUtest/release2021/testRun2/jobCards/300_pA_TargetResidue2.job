@@ -16,7 +16,7 @@
 ! file: code/inputOutput/input.f90
 &input
       eventtype       =         300 ! hadron induced
-      numEnsembles    =         5000
+      numEnsembles    =         200000
       numTimeSteps    =         400
       delta_T         =         0.2
       num_runs_SameEnergy=      1 ! number of runs per energy
@@ -24,7 +24,7 @@
 !      DoPrLevel(1) = .FALSE. ! set this for production runs
 !      DoPrLevel(2) = .FALSE. ! set this for production runs
 
-      path_To_Input   = '../../../GiBUU/buuinput'
+      path_To_Input   = '../../../GiBUUtest/buuinput'
 /
 
 
@@ -32,7 +32,7 @@
 &hadron
       impactParameter = -100.0 ! [fm] (<0: Monte-Carlo choice)
       bRaiseFlag      = T     ! if true, increase impact parameter b
-      deltaB          = 0.5    ! value to increase b with
+      deltaB          = 0.2    ! value to increase b with
       nRunsPerB       = 1     ! number of runs per b value
       particleId      =     1 ! projectile: id
       antiParticle    = F     ! projectile: antiparticle flag
