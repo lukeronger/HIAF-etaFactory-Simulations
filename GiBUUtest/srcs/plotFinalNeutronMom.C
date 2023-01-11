@@ -15,7 +15,8 @@
 		double thetaa = i * 10;
 		double thetab = (i+1) * 10;
 		opts = Form("sqrt(Px*Px+Py*Py+Pz*Pz)>>h%d(100,0,3)", i);
-		cuts = Form("barcode==2112 && acos(Pz/sqrt(Px*Px+Py*Py+Pz*Pz))*TMath::RadToDeg()>%lg && acos(Pz/sqrt(Px*Px+Py*Py+Pz*Pz))*TMath::RadToDeg()<%lg && E>0.940", thetaa, thetab);
+		//cuts = Form("barcode==2112 && acos(Pz/sqrt(Px*Px+Py*Py+Pz*Pz))*TMath::RadToDeg()>%lg && acos(Pz/sqrt(Px*Px+Py*Py+Pz*Pz))*TMath::RadToDeg()<%lg && E>0.940", thetaa, thetab);
+		cuts = Form("barcode==2112 && acos(Pz/sqrt(Px*Px+Py*Py+Pz*Pz))*TMath::RadToDeg()>%lg && acos(Pz/sqrt(Px*Px+Py*Py+Pz*Pz))*TMath::RadToDeg()<%lg", thetaa, thetab);
 
 		c1.cd(i);
 		RootTuple->Draw(opts, cuts, "colz");
