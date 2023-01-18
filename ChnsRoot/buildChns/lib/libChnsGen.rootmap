@@ -1,0 +1,6 @@
+[ ChnsGen.so ]
+# List of selected classes
+class ChnsEvtGenGenerator
+class Pythia6Generator
+header ChnsEvtGenGenerator.h
+header Pythia6Generator.h

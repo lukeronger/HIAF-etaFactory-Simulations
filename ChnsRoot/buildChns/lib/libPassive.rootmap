@@ -1,0 +1,12 @@
+[ Passive.so ]
+# List of selected classes
+class ChnsCave
+class ChnsGeoCave
+class ChnsMagnet
+class ChnsPassiveContFact
+class ChnsPipe
+header ChnsCave.h
+header ChnsGeoCave.h
+header ChnsMagnet.h
+header ChnsPassiveContFact.h
+header ChnsPipe.h

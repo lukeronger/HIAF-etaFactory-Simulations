@@ -1,0 +1,13 @@
+{
+    "cmake.configureOnOpen": false,
+    "files.associations": {
+        "emc_endcap_round.C": "cpp",
+        "create_rootgeom_emc_v3.C": "cpp",
+        "create_emc_geo.C": "cpp",
+        "unordered_map": "cpp",
+        "run_sim_tasks_addParas_test.C": "cpp",
+        "run_sim_emc.C": "cpp",
+        "eventDisplay.C": "cpp",
+        "emc_array_shashlik.C": "cpp"
+    }
+}

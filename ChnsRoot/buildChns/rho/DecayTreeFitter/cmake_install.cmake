@@ -1,0 +1,133 @@
+# Install script for directory: /home/hexh/simulation/ChnsRoot/rho/DecayTreeFitter
+
+# Set the install prefix
+if(NOT DEFINED CMAKE_INSTALL_PREFIX)
+  set(CMAKE_INSTALL_PREFIX "/usr/local")
+endif()
+string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
+
+# Set the install configuration name.
+if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
+  if(BUILD_TYPE)
+    string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
+           CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
+  else()
+    set(CMAKE_INSTALL_CONFIG_NAME "Debug")
+  endif()
+  message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
+endif()
+
+# Set the component getting installed.
+if(NOT CMAKE_INSTALL_COMPONENT)
+  if(COMPONENT)
+    message(STATUS "Install component: \"${COMPONENT}\"")
+    set(CMAKE_INSTALL_COMPONENT "${COMPONENT}")
+  else()
+    set(CMAKE_INSTALL_COMPONENT)
+  endif()
+endif()
+
+# Install shared libraries without execute permission?
+if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
+  set(CMAKE_INSTALL_SO_NO_EXE "1")
+endif()
+
+# Is this installation the result of a crosscompile?
+if(NOT DEFINED CMAKE_CROSSCOMPILING)
+  set(CMAKE_CROSSCOMPILING "FALSE")
+endif()
+
+# Set default install directory permissions.
+if(NOT DEFINED CMAKE_OBJDUMP)
+  set(CMAKE_OBJDUMP "/usr/bin/objdump")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES
+    "/home/hexh/simulation/ChnsRoot/rho/DecayTreeFitter/ErrCode.h"
+    "/home/hexh/simulation/ChnsRoot/rho/DecayTreeFitter/ChiSquare.h"
+    "/home/hexh/simulation/ChnsRoot/rho/DecayTreeFitter/Configuration.h"
+    "/home/hexh/simulation/ChnsRoot/rho/DecayTreeFitter/Constraint.h"
+    "/home/hexh/simulation/ChnsRoot/rho/DecayTreeFitter/DecayChain.h"
+    "/home/hexh/simulation/ChnsRoot/rho/DecayTreeFitter/LineTool.h"
+    "/home/hexh/simulation/ChnsRoot/rho/DecayTreeFitter/SortTool.h"
+    "/home/hexh/simulation/ChnsRoot/rho/DecayTreeFitter/FitParams.h"
+    "/home/hexh/simulation/ChnsRoot/rho/DecayTreeFitter/Fitter.h"
+    "/home/hexh/simulation/ChnsRoot/rho/DecayTreeFitter/InteractionPoint.h"
+    "/home/hexh/simulation/ChnsRoot/rho/DecayTreeFitter/InternalParticle.h"
+    "/home/hexh/simulation/ChnsRoot/rho/DecayTreeFitter/KalmanCalculator.h"
+    "/home/hexh/simulation/ChnsRoot/rho/DecayTreeFitter/MergedConstraint.h"
+    "/home/hexh/simulation/ChnsRoot/rho/DecayTreeFitter/MissingParticle.h"
+    "/home/hexh/simulation/ChnsRoot/rho/DecayTreeFitter/ParticleBase.h"
+    "/home/hexh/simulation/ChnsRoot/rho/DecayTreeFitter/Projection.h"
+    "/home/hexh/simulation/ChnsRoot/rho/DecayTreeFitter/RecoComposite.h"
+    "/home/hexh/simulation/ChnsRoot/rho/DecayTreeFitter/RecoParticle.h"
+    "/home/hexh/simulation/ChnsRoot/rho/DecayTreeFitter/RecoPhoton.h"
+    "/home/hexh/simulation/ChnsRoot/rho/DecayTreeFitter/RecoResonance.h"
+    "/home/hexh/simulation/ChnsRoot/rho/DecayTreeFitter/RecoTrack.h"
+    "/home/hexh/simulation/ChnsRoot/rho/DecayTreeFitter/RecoTrackStateProvider.h"
+    "/home/hexh/simulation/ChnsRoot/rho/DecayTreeFitter/Resonance.h"
+    "/home/hexh/simulation/ChnsRoot/rho/DecayTreeFitter/State.h"
+    )
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE FILE FILES
+    "/home/hexh/simulation/ChnsRoot/buildChns/lib/G__DecayTreeFitterDict_rdict.pcm"
+    "/home/hexh/simulation/ChnsRoot/buildChns/lib/libDecayTreeFitter.rootmap"
+    )
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  foreach(file
+      "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libDecayTreeFitter.so.0.0.0"
+      "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libDecayTreeFitter.so.0.0"
+      )
+    if(EXISTS "${file}" AND
+       NOT IS_SYMLINK "${file}")
+      file(RPATH_CHECK
+           FILE "${file}"
+           RPATH "")
+    endif()
+  endforeach()
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES
+    "/home/hexh/simulation/ChnsRoot/buildChns/lib/libDecayTreeFitter.so.0.0.0"
+    "/home/hexh/simulation/ChnsRoot/buildChns/lib/libDecayTreeFitter.so.0.0"
+    )
+  foreach(file
+      "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libDecayTreeFitter.so.0.0.0"
+      "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libDecayTreeFitter.so.0.0"
+      )
+    if(EXISTS "${file}" AND
+       NOT IS_SYMLINK "${file}")
+      file(RPATH_CHANGE
+           FILE "${file}"
+           OLD_RPATH "/home/eicc/software/FairSoft/install/lib:/home/eicc/FairRoot/build_18.4.2/lib:/home/hexh/simulation/ChnsRoot/buildChns/lib:"
+           NEW_RPATH "")
+      if(CMAKE_INSTALL_DO_STRIP)
+        execute_process(COMMAND "/usr/bin/strip" "${file}")
+      endif()
+    endif()
+  endforeach()
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libDecayTreeFitter.so" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libDecayTreeFitter.so")
+    file(RPATH_CHECK
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libDecayTreeFitter.so"
+         RPATH "")
+  endif()
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/hexh/simulation/ChnsRoot/buildChns/lib/libDecayTreeFitter.so")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libDecayTreeFitter.so" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libDecayTreeFitter.so")
+    file(RPATH_CHANGE
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libDecayTreeFitter.so"
+         OLD_RPATH "/home/eicc/software/FairSoft/install/lib:/home/eicc/FairRoot/build_18.4.2/lib:/home/hexh/simulation/ChnsRoot/buildChns/lib:"
+         NEW_RPATH "")
+    if(CMAKE_INSTALL_DO_STRIP)
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libDecayTreeFitter.so")
+    endif()
+  endif()
+endif()
+

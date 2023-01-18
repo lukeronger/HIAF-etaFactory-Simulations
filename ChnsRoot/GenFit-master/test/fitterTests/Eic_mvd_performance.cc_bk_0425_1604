@@ -1,0 +1,1137 @@
+#include <iostream>
+#include <execinfo.h>
+#include <signal.h>
+#include <stdlib.h>
+
+#include <AbsFinitePlane.h>
+#include <AbsFitterInfo.h>
+#include <AbsMeasurement.h>
+#include <PlanarMeasurement.h>
+#include <AbsTrackRep.h>
+#include <ConstField.h>
+#include <DetPlane.h>
+#include <Exception.h>
+#include <FieldManager.h>
+#include <KalmanFittedStateOnPlane.h>
+#include <AbsKalmanFitter.h>
+#include <KalmanFitter.h>
+#include <KalmanFitterRefTrack.h>
+#include <KalmanFitterInfo.h>
+#include <KalmanFitStatus.h>
+#include <DAF.h>
+#include <GFGbl.h>
+#include <MeasuredStateOnPlane.h>
+#include <MeasurementOnPlane.h>
+#include <FullMeasurement.h>
+#include <PlanarMeasurement.h>
+#include <ProlateSpacepointMeasurement.h>
+#include <RectangularFinitePlane.h>
+#include <ReferenceStateOnPlane.h>
+#include <SharedPlanePtr.h>
+#include <SpacepointMeasurement.h>
+#include <StateOnPlane.h>
+#include <Tools.h>
+#include <TrackCand.h>
+#include <TrackCandHit.h>
+#include <Track.h>
+#include <TrackPoint.h>
+#include <WireMeasurement.h>
+#include <WirePointMeasurement.h>
+
+#include <MaterialEffects.h>
+#include <RKTools.h>
+#include <RKTrackRep.h>
+#include <StepLimits.h>
+#include <TGeoMaterialInterface.h>
+
+#include <EventDisplay.h>
+
+#include <HelixTrackModel.h>
+#include <MeasurementCreator.h>
+
+#include <TApplication.h>
+#include <TCanvas.h>
+#include <TDatabasePDG.h>
+#include <TEveManager.h>
+#include <TGeoManager.h>
+#include <TH1D.h>
+#include <TH2D.h>
+#include <TF1.h>
+#include <TRandom.h>
+#include <TStyle.h>
+#include <TVector3.h>
+#include <vector>
+
+#include <TROOT.h>
+#include <TFile.h>
+#include <TTree.h>
+#include "TDatabasePDG.h"
+#include <TMath.h>
+#include <TString.h>
+
+#include <memory>
+
+
+void handler(int sig) {
+	void *array[10];
+	size_t size;
+
+	// get void*'s for all entries on the stack
+	size = backtrace(array, 10);
+
+	// print out all the frames to stderr
+	fprintf(stderr, "Error: signal %d:\n", sig);
+	backtrace_symbols_fd(array, size, 2);
+	exit(1);
+}
+
+int randomPdg() {
+	int pdg;
+
+	switch(int(gRandom->Uniform(8))) {
+		case 1:
+			pdg = -11; break;
+		case 2:
+			pdg = 11; break;
+		case 3:
+			pdg = 13; break;
+		case 4:
+			pdg = -13; break;
+		case 5:
+			pdg = 211; break;
+		case 6:
+			pdg = -211; break;
+		case 7:
+			pdg = 2212; break;
+		default:
+			pdg = 211;
+	}
+
+	return pdg;
+}
+
+
+int randomSign() {
+	if (gRandom->Uniform(1) > 0.5)
+		return 1;
+	return -1;
+}
+
+void smearpixel(double pixelsize, int layer_id, double input_X, double input_Y, double input_Z, double &output_X, double &output_Y, double &output_Z)
+{
+
+        TVector3 Vec_input(input_X, input_Y, input_Z);
+        double input_phi = Vec_input.Phi() + TMath::Pi(); // change to 0~2pi
+        double input_z = Vec_input.Z()  + 10000;  //shift by 10000cm to keep positive
+        double input_r = Vec_input.Perp();
+
+        double interval_phi = pixelsize/input_r;
+        double interval_z   = pixelsize;
+
+        int index_phi = int(input_phi / interval_phi);
+        int index_z   = int(input_z   / interval_z);
+
+        double output_phi = interval_phi/2.0+interval_phi*index_phi  - TMath::Pi(); //change back to -pi ~ pi
+        double output_z   = interval_z/2.0+interval_z*index_z  - 10000;  //change back to normal z
+        double output_r   = input_r;
+
+        TVector3 Vec_output(output_r*cos(output_phi),output_r*sin(output_phi),output_z);
+        // std::cout<<"output_r, output_phi are "<<output_r<<", "<<output_phi<<std::endl;
+        // Vec_output.SetPerp(output_r);
+        // Vec_output.SetPhi(output_phi);
+        // Vec_output.SetZ(output_z);
+
+        output_X =Vec_output.X();
+        output_Y =Vec_output.Y();
+        output_Z =Vec_output.Z();
+        std::cout<<"input  X, Y, Z are "<<input_X<<", "<<input_Y<<", "<<input_Z<<std::endl;
+        std::cout<<"output X, Y, Z are "<<output_X<<", "<<output_Y<<", "<<output_Z<<"   delta_X: "<<fabs(input_X-output_X)<<" x%= "<<fabs(input_X-output_X)/pixelsize<<"  y%= "<<fabs(input_Y-output_Y)/pixelsize<<"  z%= "<<fabs(input_Z-output_Z)/pixelsize<<std::endl;
+}
+
+
+//---------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------
+
+//#define VALGRIND
+
+#ifdef VALGRIND
+#include <valgrind/callgrind.h>
+#else
+#define CALLGRIND_START_INSTRUMENTATION
+#define CALLGRIND_STOP_INSTRUMENTATION
+#define CALLGRIND_DUMP_STATS
+#endif
+
+int main(int argc, char ** argv) {
+
+	TString fin_name = argv[1];
+	TString fout_name = argv[2];
+	std::cout<<"main"<<std::endl;
+	gRandom->SetSeed(14);
+
+	//const unsigned int nEvents = 200000;
+	const unsigned int nMeasurements = 6;
+	const int nMaxHit = 30;
+	//const double BField = 30.;       // kGauss
+	double BField = 30;
+	double pixel_size = 0.001;
+	if(argc >= 3) BField = (int)atoi(argv[3]);
+	if(argc >= 4) pixel_size = (int)atoi(argv[4]) *1E-4;//  input in macro meter, change to centi meter
+
+	std::cout<<"BField = "<<BField<<"  pixel_size = "<<pixel_size<<std::endl;
+
+	double maxmomentum = 5;     // GeV
+	const double theta = 110;         // degree
+	const double thetaDetPlane = 90;         // degree
+	const double phiDetPlane = 0;         // degree
+	const double pointDist = 3.;      // cm; approx. distance between measurements
+	const double resolution = 0.004;   // cm; resolution of generated measurements  What's the unit of resolution and how can I set it properly ? Guoaq -- 2021/04/19
+	const double resolutionWire = 5*resolution;   // cm; resolution of generated measurements
+        //const double pixel_size = 0.001;   // cm; size of the pixel 10 micron	
+
+	//const genfit::eFitterType fitterId = genfit::SimpleKalman;
+	const genfit::eFitterType fitterId = genfit::RefKalman;
+	//const genfit::eFitterType fitterId = genfit::DafRef;
+	//const genfit::eFitterType fitterId = genfit::DafSimple;
+	//const genfit::eMultipleMeasurementHandling mmHandling = genfit::weightedAverage;
+	//const genfit::eMultipleMeasurementHandling mmHandling = genfit::unweightedClosestToReference;
+	const genfit::eMultipleMeasurementHandling mmHandling = genfit::unweightedClosestToPrediction;
+	//const genfit::eMultipleMeasurementHandling mmHandling = genfit::weightedClosestToReference;
+	//const genfit::eMultipleMeasurementHandling mmHandling = genfit::weightedClosestToPrediction;
+	//const genfit::eMultipleMeasurementHandling mmHandling = genfit::unweightedClosestToReferenceWire;
+	//const genfit::eMultipleMeasurementHandling mmHandling = genfit::unweightedClosestToPredictionWire;//default
+	//const genfit::eMultipleMeasurementHandling mmHandling = genfit::weightedClosestToReferenceWire;
+	//const genfit::eMultipleMeasurementHandling mmHandling = genfit::weightedClosestToPredictionWire;
+	const int nIter = 20; // max number of iterations
+	const double dPVal = 1.E-3; // convergence criterion
+
+	const bool resort = false;
+	const bool prefit = false; // make a simple Kalman iteration before the actual fit
+	const bool refit  = true; // if fit did not converge, try to fit again
+
+	const bool twoReps = false; // test if everything works with more than one rep in the tracks
+
+	const bool checkPruning = true; // test pruning
+
+	const int pdg = 13;               // particle pdg code
+
+	const bool smearPosMom = true;     // init the Reps with smeared pos and mom
+	const double chargeSwitchProb = -0.1; // probability to seed with wrong charge sign
+	
+	const double posSmear = 0.02;     // cm
+	const double momSmear = 3. /180.*TMath::Pi();     // rad
+	
+	const double momMagSmear = 0.1;   // relative
+	const double zSmearFac = 1;
+
+	const double hitSwitchProb = -0.1; // probability to give hits to fit in wrong order (flip two hits)
+	const int splitTrack = -5; //nMeasurements/2; // for track merging testing.
+	const bool fullMeasurement = false; // put fit result of first tracklet as FullMeasurement into second tracklet, don't merge
+
+	const bool matFX = true;         // include material effects; can only be disabled for RKTrackRep!
+
+	const bool debug = false;
+	const bool onlyDisplayFailed = false; // only load non-converged tracks into the display
+
+
+	signal(SIGSEGV, handler);   // install our handler
+
+	// init fitter
+	genfit::AbsKalmanFitter* fitter = 0;
+	switch (fitterId) {
+		case genfit::SimpleKalman:
+			fitter = new genfit::KalmanFitter(nIter, dPVal);
+			fitter->setMultipleMeasurementHandling(mmHandling);
+			break;
+
+		case genfit::RefKalman:
+			fitter = new genfit::KalmanFitterRefTrack(nIter, dPVal);
+			fitter->setMultipleMeasurementHandling(mmHandling);
+			break;
+
+		case genfit::DafSimple:
+			fitter = new genfit::DAF(false);
+			break;
+		case genfit::DafRef:
+			fitter = new genfit::DAF();
+			break;
+	}
+	fitter->setMaxIterations(nIter);
+
+
+	// init geometry and mag. field
+	new TGeoManager("Geometry", "Geane geometry");
+	TGeoManager::Import("geofile_full.root");
+	genfit::FieldManager::getInstance()->init(new genfit::ConstField(0.,0.,BField));
+	genfit::FieldManager::getInstance()->useCache(true, 8);
+	genfit::MaterialEffects::getInstance()->init(new genfit::TGeoMaterialInterface());
+	const double charge = TDatabasePDG::Instance()->GetParticle(pdg)->Charge()/(3.);
+
+	// init event display
+#ifndef VALGRIND
+	genfit::EventDisplay* display = genfit::EventDisplay::getInstance();
+	display->reset();
+#endif
+
+
+#ifndef VALGRIND
+	// create histograms
+	gROOT->SetStyle("Plain");
+	gStyle->SetPalette(1);
+	gStyle->SetOptFit(1111);
+
+	TH1D *hmomRec = new TH1D("hmomRec","mom rec",500, 0.5, 1.5);
+
+	TH1D *hmomRes = new TH1D("hmomRes","mom res",500,-30*resolution*maxmomentum/nMeasurements,30*resolution*maxmomentum/nMeasurements);
+	TH1D *hupRes = new TH1D("hupRes","u' res",500,-15*resolution/nMeasurements, 15*resolution/nMeasurements);
+	TH1D *hvpRes = new TH1D("hvpRes","v' res",500,-15*resolution/nMeasurements, 15*resolution/nMeasurements);
+	TH1D *huRes = new TH1D("huRes","u res",500,-15*resolution, 15*resolution);
+	TH1D *hvRes = new TH1D("hvRes","v res",500,-15*resolution, 15*resolution);
+
+	TH1D *hqopPu = new TH1D("hqopPu","q/p pull",200,-6.,6.);
+	TH1D *pVal = new TH1D("pVal","p-value",100,0.,1.00000001);
+	pVal->SetMinimum(0);
+	TH1D *hupPu = new TH1D("hupPu","u' pull",200,-6.,6.);
+	TH1D *hvpPu = new TH1D("hvpPu","v' pull",200,-6.,6.);
+	TH1D *huPu = new TH1D("huPu","u pull",200,-6.,6.);
+	TH1D *hvPu = new TH1D("hvPu","v pull",200,-6.,6.);
+
+	TH1D *weights = new TH1D("weights","Daf vs true weights",500,-1.01,1.01);
+
+	TH1D *trackLenRes = new TH1D("trackLenRes","(trueLen - FittedLen) / trueLen",500,-0.01,0.01);
+#endif
+
+
+	TH2D *hpT_residual_vs_pT = new TH2D("hpT_residual_vs_pT", "#Delta pT/pT; pT[GeV/c]; #Delta pT/pT", 15, 0.5, maxmomentum, 40, -0.04, 0.04);
+	TH2D *hDCAr_vs_pT = new TH2D("hDCAr_vs_pT", "DCAr vs. p; p [GeV/c]; DCAr [cm]", 15, 0.5, maxmomentum, 40, -0.04, 0.04);
+	TH2D *hDCAr2_vs_pT = new TH2D("hDCAr2_vs_pT", "DCAr vs. p; p [GeV/c]; DCAr [cm]", 15, 0.5, maxmomentum, 40, -0.04, 0.04);
+
+
+	double maxWeight(0);
+	unsigned int nTotalIterConverged(0);
+	unsigned int nTotalIterNotConverged(0);
+	unsigned int nTotalIterSecondConverged(0);
+	unsigned int nTotalIterSecondNotConverged(0);
+	unsigned int nConvergedFits(0);
+	unsigned int nUNConvergedFits(0);
+	unsigned int nConvergedFitsSecond(0);
+	unsigned int nUNConvergedFitsSecond(0);
+
+
+	CALLGRIND_START_INSTRUMENTATION;
+
+	genfit::Track* fitTrack(nullptr);
+	genfit::Track* secondTrack(nullptr);
+
+	// read the input file
+	
+	//TFile *f_data=new TFile("test.root");
+	std::cout<<"fin_name: "<<fin_name<<"   "<<argv[1]<<std::endl;
+	TFile *f_data=new TFile(fin_name);
+	TTree *t_data=(TTree*)f_data->Get("eiccsim");
+
+	//int Event, nHit;
+	double X[nMaxHit],Y[nMaxHit],Z[nMaxHit];
+	double PX[nMaxHit],PY[nMaxHit],PZ[nMaxHit];
+
+	for(int k=0;k<nMaxHit;k++)
+	{
+		X[k]=-100;
+		Y[k]=-100;
+		Z[k]=-100;
+		PX[k]=-100;
+		PY[k]=-100;
+		PZ[k]=-100;
+	}
+
+	t_data->SetBranchAddress("EiccMvdPoint.fX",                 X);
+	t_data->SetBranchAddress("EiccMvdPoint.fY",                 Y);
+	t_data->SetBranchAddress("EiccMvdPoint.fZ",                 Z);
+	t_data->SetBranchAddress("EiccMvdPoint.fPx",                PX);
+	t_data->SetBranchAddress("EiccMvdPoint.fPy",                PY);
+	t_data->SetBranchAddress("EiccMvdPoint.fPz",                PZ);
+
+
+
+
+	TFile *f_data_out = new TFile(fout_name,"recreate");
+        TTree *t_out = new TTree("t_out","");
+        double px_truth, py_truth, pz_truth, pt_truth, p_truth, theta_truth, eta_truth;
+        double px_rec, py_rec, pz_rec, pt_rec, p_rec, theta_rec, eta_rec;
+        double mom_res, dca_rphi, dca_z;
+        t_out->Branch("px_truth", &px_truth, "px_truth/D");
+        t_out->Branch("py_truth", &py_truth, "py_truth/D");
+        t_out->Branch("pz_truth", &pz_truth, "pz_truth/D");
+        t_out->Branch("pt_truth", &pt_truth, "pt_truth/D");
+        t_out->Branch("p_truth", &p_truth, "p_truth/D");
+        t_out->Branch("theta_truth", &theta_truth, "theta_truth/D");
+	t_out->Branch("eta_truth", &eta_truth, "eta_truth/D");
+        t_out->Branch("px_rec", &px_rec, "px_rec/D");
+        t_out->Branch("py_rec", &py_rec, "py_rec/D");
+        t_out->Branch("pz_rec", &pz_rec, "pz_rec/D");
+        t_out->Branch("pt_rec", &pt_rec, "pt_rec/D");
+        t_out->Branch("p_rec", &p_rec, "p_rec/D");
+        t_out->Branch("theta_rec", &theta_rec, "theta_rec/D");
+	t_out->Branch("eta_rec", &eta_rec, "eta_rec/D");
+        t_out->Branch("mom_res", &mom_res, "mom_res/D");
+	t_out->Branch("dca_rphi", &dca_rphi, "dca_rphi/D");
+	t_out->Branch("dca_z", &dca_z, "dca_z/D");
+
+
+        const unsigned int nEvents = t_data->GetEntries();
+
+
+
+
+
+	int nHit = 0;	
+	// main loop
+	for (unsigned int iEvent=0; iEvent<nEvents; ++iEvent)
+	{
+
+		// create  measurement frome input file
+		t_data->GetEntry(iEvent);
+		
+		nHit = 0;	
+		
+		for(int ib=0; ib<nMaxHit;ib++)
+		{
+			if(X[ib]!=-100) nHit++;
+			//std::cout<<"X["<<ib<<"] is "<<X[ib]<<std::endl;
+		}
+		
+		std::cout<<"nHit is "<<nHit<<std::endl;	
+
+		if ((iEvent)%10==0)
+			std::cout << "Event Nr. " << iEvent << " ";
+		else std::cout << ". ";
+		if ((iEvent+1)%10==0)
+			std::cout << "\n";
+
+
+		// clean up
+		delete fitTrack;
+		fitTrack = nullptr;
+		delete secondTrack;
+		secondTrack = nullptr;
+
+		// true start values
+                double momentum  = sqrt(PX[0]*PX[0]+PY[0]*PY[0]+PZ[0]*PZ[0]);
+		TVector3 pos(0, 0, 0);
+		
+		TVector3 mom(PX[0],PY[0],PZ[0]);
+		//std::cout<<"Momentum is "<<momentum<<std::endl;
+		
+		TMatrixDSym covM(6); // what's the role of the covM ?  -- Guoaq/2021/04/19
+		for (int i = 0; i < 3; ++i)
+			covM(i,i) = resolution*resolution;
+		for (int i = 3; i < 6; ++i)
+			covM(i,i) = pow(resolution / nMeasurements / sqrt(3), 2);
+
+		if (debug) {
+			std::cout << "start values \n";
+			pos.Print();
+			mom.Print();
+		}
+
+
+		// smeared start values
+		TVector3 posM(pos);
+		TVector3 momM(mom);
+		if (smearPosMom) {
+			posM.SetX(gRandom->Gaus(posM.X(),posSmear));
+			posM.SetY(gRandom->Gaus(posM.Y(),posSmear));
+			posM.SetZ(gRandom->Gaus(posM.Z(),posSmear));
+
+			momM.SetPhi(gRandom->Gaus(mom.Phi(),momSmear));
+			momM.SetTheta(gRandom->Gaus(mom.Theta(),momSmear));
+			momM.SetMag(gRandom->Gaus(mom.Mag(), momMagSmear*mom.Mag()));
+		}
+		
+		genfit::AbsTrackRep* rep = new genfit::RKTrackRep(pdg);
+		genfit::AbsTrackRep* secondRep = new genfit::RKTrackRep(pdg);
+		genfit::MeasuredStateOnPlane stateRef(rep);
+		
+		rep->setPosMomCov(stateRef, pos, mom, covM);
+
+		// smeared start state
+		genfit::MeasuredStateOnPlane stateSmeared(rep);
+		rep->setPosMomCov(stateSmeared, posM, momM, covM);
+
+		if (!matFX) genfit::MaterialEffects::getInstance()->setNoEffects();
+
+		// remember original initial state
+		const genfit::StateOnPlane stateRefOrig(stateRef);
+
+		// create smeared measurements
+		std::vector<genfit::PlanarMeasurement*>  measurements;
+
+		// probably useless
+		std::vector<bool> outlierTrue;
+		bool outlier;
+		// true values for left right. 0 for non wire measurements
+		std::vector<int> leftRightTrue;
+		double trueLen(-1);
+
+		
+		// create the measurement from input file
+		for (int i = 1; i < nHit; ++i)
+		{ 
+
+			const int detId(0); // detector ID
+			int planeId(0); // detector plane ID
+			int hitId(0); // hit ID
+
+			double detectorResolution(0.004); // resolution of planar detectors
+			TMatrixDSym hitCov(2);
+			hitCov.UnitMatrix();
+			hitCov *= detectorResolution*detectorResolution; // what's the role of hitCov ? -- Guoaq/2021/04/19
+
+			// add some planar hits to track with coordinates I just made up
+			TVectorD hitCoords(2);
+			hitCoords[0] = 0;
+			hitCoords[1] = 0;
+			genfit::PlanarMeasurement* measurement = new genfit::PlanarMeasurement(hitCoords, hitCov, detId, ++hitId, nullptr);
+
+
+			double sm_X(0), sm_Y(0), sm_Z(0);
+                        smearpixel(pixel_size, 0, X[i],Y[i],Z[i],sm_X, sm_Y, sm_Z);
+			//TVector3 O(X[i],Y[i],Z[i]);
+                        TVector3 O(sm_X, sm_Y, sm_Z);
+
+			TVector3 U(0,0,0);
+			TVector3 V(0,0,1);
+			U = O.Unit().Cross(V);
+			//std::cout<<"O "<<O.X()<<", "<<O.Y()<<", "<<O.Z()<<"  U "<<U.X()<<", "<<U.Y()<<", "<<U.Z()<<" V "<<V.X()<<", "<<V.Y()<<", "<<V.Z()<<std::endl;
+			measurement->setPlane(genfit::SharedPlanePtr(new genfit::DetPlane(O, U, V)), ++planeId);
+			measurements.push_back(measurement);
+
+		}
+
+
+		if (debug) std::cout << "... done creating measurements \n";
+                std::cout<<"initial array"<<std::endl;
+		for(int ik=0;ik<nMaxHit;ik++)
+		{
+			X[ik]=-100;
+			Y[ik]=-100;
+			Z[ik]=-100;
+			PX[ik]=-100;
+			PY[ik]=-100;
+			PZ[ik]=-100;
+		}
+
+
+		// create track
+		TVectorD seedState(6);
+		TMatrixDSym seedCov(6);
+		rep->get6DStateCov(stateSmeared, seedState, seedCov);
+		fitTrack = new genfit::Track(rep, seedState, seedCov); //initialized with smeared rep
+
+		secondTrack = new genfit::Track(rep->clone(), seedState, seedCov); //initialized with smeared rep
+		if (twoReps) {
+			fitTrack->addTrackRep(secondRep);
+			secondTrack->addTrackRep(secondRep->clone());
+		}
+		else
+			delete secondRep;
+		//if (debug) fitTrack->Print("C");
+
+		fitTrack->checkConsistency();
+		//fitTrack->addTrackRep(rep->clone()); // check if everything works fine with more than one rep
+                std::cout<<"size of measurement is "<<measurements.size()<<std::endl;
+		if(measurements.size()>6 || measurements.size()<1) continue;
+		// add measurements
+		for(unsigned int i=0; i<measurements.size(); ++i){
+			if (splitTrack > 0 && (int)i >= splitTrack)
+				break;
+			if (i>0 && hitSwitchProb > gRandom->Uniform(1.))
+				fitTrack->insertPoint(new genfit::TrackPoint(measurements[i], fitTrack), -2);
+			else
+			{
+				fitTrack->insertPoint(new genfit::TrackPoint(measurements[i], fitTrack));
+				//std::cout<<"add one hit"<<std::endl;
+			}
+			fitTrack->checkConsistency();
+			//if (debug) fitTrack->Print("C");
+		}
+
+		if (splitTrack > 0) {
+			for(unsigned int i=splitTrack; i<measurements.size(); ++i){
+				if (i>0 && hitSwitchProb > gRandom->Uniform(1.))
+					secondTrack->insertPoint(new genfit::TrackPoint(measurements[i], secondTrack), -2);
+				else
+					secondTrack->insertPoint(new genfit::TrackPoint(measurements[i], secondTrack));
+
+				//if (debug) fitTrack->Print("C");
+			}
+		}
+
+		fitTrack->checkConsistency();
+		secondTrack->checkConsistency();
+
+		if (debug) fitTrack->Print("C");
+
+		// do the fit
+		try{
+			if (debug) std::cout<<"Starting the fitter"<<std::endl;
+
+			if (prefit) {
+				genfit::KalmanFitter prefitter(1, dPVal);
+				prefitter.setMultipleMeasurementHandling(genfit::weightedClosestToPrediction);
+				prefitter.processTrackWithRep(fitTrack, fitTrack->getCardinalRep());
+			}
+
+			fitter->processTrack(fitTrack, resort);  // what's the role of resort ? -- Guoaq/2021/04/19 
+			//fitter->processTrack(fitTrack);
+			if (splitTrack > 0)
+				fitter->processTrack(secondTrack, resort);
+
+			if (debug) std::cout<<"fitter is finished!"<<std::endl;
+		}
+		catch(genfit::Exception& e){
+			std::cerr << e.what();
+			std::cerr << "Exception, next track" << std::endl;
+			continue;
+		}
+
+		if (splitTrack > 0) {
+			//if (debug) fitTrack->Print("C");
+			//if (debug) secondTrack->Print("C");
+
+			if (fullMeasurement) {
+				genfit::FullMeasurement* fullM = new genfit::FullMeasurement(secondTrack->getFittedState());
+				fitTrack->insertPoint(new genfit::TrackPoint(fullM, fitTrack));
+			}
+			else
+				fitTrack->mergeTrack(secondTrack);
+
+			//if (debug) fitTrack->Print("C");
+
+			try{
+				if (debug) std::cout<<"Starting the fitter"<<std::endl;
+				fitter->processTrack(fitTrack, resort);
+				if (debug) std::cout<<"fitter is finished!"<<std::endl;
+			}
+			catch(genfit::Exception& e){
+				std::cerr << e.what();
+				std::cerr << "Exception, next track" << std::endl;
+				continue;
+			}
+		}
+
+
+		if (refit && !fitTrack->getFitStatus(rep)->isFitConverged()) {
+			std::cout<<"Trying to fit again "<<std::endl;
+			fitter->processTrack(fitTrack, resort);
+		}
+
+
+
+		if (debug) {
+			//fitTrack->Print("C");
+			fitTrack->getFitStatus(rep)->Print();
+		}
+
+		fitTrack->checkConsistency();
+		secondTrack->checkConsistency();
+
+#ifndef VALGRIND
+		if (!onlyDisplayFailed && iEvent < 1000) {
+			std::vector<genfit::Track*> event;
+			event.push_back(fitTrack);
+			if (splitTrack > 0)
+				event.push_back(secondTrack);
+			display->addEvent(event);
+		}
+		else if (onlyDisplayFailed &&
+				(!fitTrack->getFitStatus(rep)->isFitConverged() ||
+				 fitTrack->getFitStatus(rep)->getPVal() < 0.01)) {
+			// add track to event display
+			display->addEvent(fitTrack);
+		}
+#endif
+
+
+		if (fitTrack->getFitStatus(rep)->isFitConverged()) {
+			nTotalIterConverged += static_cast<genfit::KalmanFitStatus*>(fitTrack->getFitStatus(rep))->getNumIterations();
+			nConvergedFits += 1;
+		}
+		else {
+			nTotalIterNotConverged += static_cast<genfit::KalmanFitStatus*>(fitTrack->getFitStatus(rep))->getNumIterations();
+			nUNConvergedFits += 1;
+		}
+
+		if (twoReps) {
+			if (fitTrack->getFitStatus(secondRep)->isFitConverged()) {
+				nTotalIterSecondConverged += static_cast<genfit::KalmanFitStatus*>(fitTrack->getFitStatus(secondRep))->getNumIterations();
+				nConvergedFitsSecond += 1;
+			}
+			else {
+				nTotalIterSecondNotConverged += static_cast<genfit::KalmanFitStatus*>(fitTrack->getFitStatus(secondRep))->getNumIterations();
+				nUNConvergedFitsSecond += 1;
+			}
+		}
+
+
+		// check if fit was successful
+		if (! fitTrack->getFitStatus(rep)->isFitConverged()) {
+			std::cout << "Track could not be fitted successfully! Fit is not converged! \n";
+			continue;
+		}
+
+
+		genfit::TrackPoint* tp = fitTrack->getPointWithMeasurementAndFitterInfo(0, rep);
+		if (tp == nullptr) {
+			std::cout << "Track has no TrackPoint with fitterInfo! \n";
+			continue;
+		}
+		genfit::KalmanFittedStateOnPlane kfsop(*(static_cast<genfit::KalmanFitterInfo*>(tp->getFitterInfo(rep))->getBackwardUpdate()));
+		if (debug) {
+			std::cout << "state before extrapolating back to reference plane \n";
+			kfsop.Print();
+		}
+
+		// extrapolate back to reference plane.
+		//genfit::MeasuredStateOnPlane* state_at_beam_line = new genfit::MeasuredStateOnPlane();
+		//genfit::StateOnPlane state_at_beam_line(rep);
+		try{
+			//rep->extrapolateToPlane(kfsop, stateRefOrig.getPlane());
+			//rep->extrapolateToLine(kfsop, TVector3(0, 0, 0), TVector3(0, 0, 1));
+			//rep->extrapolateToLine(*state_at_beam_line, TVector3(0, 0, 0), TVector3(0, 0, 1)); // why it is failed !!!!!
+			rep->extrapolateToPoint(kfsop, TVector3(0, 0, 0),false); // why it is failed !!!!!
+			//state_at_beam_line.Print();
+			if(debug) std::cout << "state after extrapolating back to reference plane \n";
+			if(debug) kfsop.Print();
+		}
+		catch(genfit::Exception& e){
+			std::cerr<<"Exception, next track"<<std::endl;
+			std::cerr << e.what();
+			continue;
+		}
+
+
+
+
+                // // how can I extroplate the state to a line or a point ?  
+		// genfit::MeasuredStateOnPlane* state_at_beam_line = new genfit::MeasuredStateOnPlane(rep->clone());
+
+		// try{
+		// 	rep->extrapolateToLine(*state_at_beam_line, TVector3(0, 0, 0), TVector3(0, 0, 1)); // why it is failed !!!!!
+		// 	if(debug) std::cout << "state after extrapolating back to reference plane \n";
+		// 	state_at_beam_line->Print();
+		// }
+		// catch(genfit::Exception& e){
+		// 	std::cerr<<"Exception, next track"<<std::endl;
+		// 	std::cerr << e.what();
+		// 	continue;
+		// }
+
+
+
+
+#ifndef VALGRIND
+		// calculate pulls
+		const TVectorD& referenceState = stateRefOrig.getState();
+
+		const TVectorD& state = kfsop.getState();
+		const TMatrixDSym& cov = kfsop.getCov();
+
+		double pval = fitter->getPVal(fitTrack, rep);
+		//assert( fabs(pval - static_cast<genfit::KalmanFitStatus*>(fitTrack->getFitStatus(rep))->getBackwardPVal()) < 1E-10 );
+                //std::cout<<"============================================"<<std::endl;
+		////std::cout<<"ini plane O, U, and V are : ["<<stateRefOrig.getPlane()->getO().X()<<", "<<stateRefOrig.getPlane()->getO().Y()<<", "<<stateRefOrig.getPlane()->getO().Z()<<"], ["<<stateRefOrig.getPlane()->getU().X()<<", "<<stateRefOrig.getPlane()->getU().Y()<<", "<<stateRefOrig.getPlane()->getU().Z()<<"], ["<<stateRefOrig.getPlane()->getV().X()<<", "<<stateRefOrig.getPlane()->getV().Y()<<", "<<stateRefOrig.getPlane()->getV().Z()<<"], "<<std::endl;
+		//std::cout<<"ini plane n : ["<<stateRefOrig.getPlane()->getNormal().X()<<", "<<stateRefOrig.getPlane()->getNormal().Y()<<", "<<stateRefOrig.getPlane()->getNormal().Z()<<"] "<<std::endl;
+		//std::cout<<"\n"<<std::endl;
+	       	//std::cout<<"fit P is "<<charge/state[0]<<", reference P is "<<momentum<<std::endl;
+	       	//std::cout<<"fit up is "<<state[1]<<", reference P is "<<referenceState[1]<<std::endl;
+	       	//std::cout<<"fit vp is "<<state[2]<<", reference P is "<<referenceState[2]<<std::endl;
+		//std::cout<<"\n"<<std::endl;
+                //std::cout<<"============================================"<<std::endl;
+	
+
+
+
+
+		hmomRes->Fill( (charge/state[0]-momentum));
+		hmomRec->Fill( charge/state[0]); //yutie, to draw the reco. mom
+		hupRes->Fill(  (state[1]-referenceState[1]));
+		hvpRes->Fill(  (state[2]-referenceState[2]));
+		huRes->Fill(   (state[3]-referenceState[3]));
+		hvRes->Fill(   (state[4]-referenceState[4]));
+
+		hqopPu->Fill( (state[0]-referenceState[0]) / sqrt(cov[0][0]) );
+		pVal->Fill(   pval);
+		hupPu->Fill(  (state[1]-referenceState[1]) / sqrt(cov[1][1]) );
+		hvpPu->Fill(  (state[2]-referenceState[2]) / sqrt(cov[2][2]) );
+		huPu->Fill(   (state[3]-referenceState[3]) / sqrt(cov[3][3]) );
+		hvPu->Fill(   (state[4]-referenceState[4]) / sqrt(cov[4][4]) );
+                  
+		std::cout<<"cov3 is "<<sqrt(cov[3][3])<<", cov4 is "<<sqrt(cov[4][4])<<std::endl;
+                std::cout<<"start to record the resolution "<<std::endl;
+		// record the resolution
+		// genfit::MeasuredStateOnPlane state_at_beam_line(rep);
+		// rep->extrapolateToLine(state_at_beam_line,TVector3(0, 0, 0), TVector3(0, 0, 1));
+
+		TVector3 GenFit_mom = kfsop.getMom();
+		std::cout<<"fitted Px, Py, Pz, Pt "<<GenFit_mom.Px()<<", "<<GenFit_mom.Py()<<", "<<GenFit_mom.Pz()<<", "<<GenFit_mom.Pt()<<std::endl;
+		std::cout<<"true Px, Py, Pz, Pt "<<mom.Px()<<", "<<mom.Py()<<", "<<mom.Pz()<<", "<<mom.Pt()<<std::endl;
+		std::cout<<"delta Pt / Pt "<<fabs(GenFit_mom.Pt() - mom.Pt())/mom.Pt()<<std::endl;
+
+
+		// calculate the DCAr
+                //
+                TVector3 DCA_local(kfsop.getState()[3],kfsop.getState()[4],0);
+                DCA_local.RotateUz(GenFit_mom.Unit());
+
+             //   hDCAr3_vs_pT->Fill(mom.Mag(),DCA_local.X());
+             //   hDCAr4_vs_pT->Fill(mom.Mag(),DCA_local.Y());
+
+
+
+		//fill tree
+		px_truth = mom.Px(); py_truth = mom.Py(); pz_truth = mom.Pz(); p_truth = mom.Mag(); pt_truth = mom.Pt(); theta_truth = mom.Theta(); eta_truth = mom.PseudoRapidity();
+		px_rec = GenFit_mom.Px(); py_rec = GenFit_mom.Py();  pz_rec = GenFit_mom.Pz(); p_rec = GenFit_mom.Mag(); pt_rec = GenFit_mom.Pt(); theta_rec = GenFit_mom.Theta(); eta_rec = GenFit_mom.PseudoRapidity();
+		mom_res = ((GenFit_mom.Mag() - mom.Mag())/mom.Mag());
+		dca_rphi = DCA_local.X();
+		dca_z = DCA_local.Z();
+		//dca_rphi = kfsop.getState()[3]; //cm
+		//dca_z = kfsop.getState()[4]; //cm
+		t_out->Fill();
+
+
+		hpT_residual_vs_pT->Fill(mom.Pt(),(GenFit_mom.Pt() - mom.Pt())/mom.Pt());
+		hDCAr_vs_pT->Fill(mom.Mag(),kfsop.getState()[3]);
+		hDCAr2_vs_pT->Fill(mom.Mag(),kfsop.getState()[4]);
+		std::cout<<"u is "<<kfsop.getState()[3]<<" v is "<<kfsop.getState()[4]<<std::endl;
+		//delete state_at_beam_line;
+
+		try {
+			trackLenRes->Fill( (trueLen - fitTrack->getTrackLen(rep)) / trueLen );
+
+			if (debug) {
+				std::cout << "true track length = " << trueLen << "; fitted length = " << fitTrack->getTrackLen(rep) << "\n";
+				//std::cout << "fitted tof = " << fitTrack->getTOF(rep) << " ns\n";
+			}
+		}
+		catch (genfit::Exception& e) {
+			std::cerr << e.what();
+			std::cout << "could not get TrackLen or TOF! \n";
+		}
+
+
+                std::cout<<"check lr resolution"<<std::endl;
+		// check l/r resolution and outlier rejection
+		if (dynamic_cast<genfit::DAF*>(fitter) != nullptr) {
+			for (unsigned int i=0; i<fitTrack->getNumPointsWithMeasurement(); ++i){
+
+				if (! fitTrack->getPointWithMeasurement(i)->hasFitterInfo(rep))
+					continue;
+
+				if (debug) {
+					std::vector<double> dafWeights = dynamic_cast<genfit::KalmanFitterInfo*>(fitTrack->getPointWithMeasurement(i)->getFitterInfo(rep))->getWeights();
+					std::cout << "hit " << i;
+					if (outlierTrue[i]) std::cout << " is an OUTLIER";
+					std::cout << " weights: ";
+					for (unsigned int j=0; j<dafWeights.size(); ++j){
+						std::cout << dafWeights[j] << "  ";
+					}
+					std::cout << "   l/r: " << leftRightTrue[i];
+					std::cout << "\n";
+				}
+				int trueSide = leftRightTrue[i];
+				if (trueSide == 0) continue; // not a wire measurement
+				if (outlierTrue[i]) continue; // an outlier
+				std::vector<double> dafWeightLR = dynamic_cast<genfit::KalmanFitterInfo*>(fitTrack->getPointWithMeasurement(i)->getFitterInfo(rep))->getWeights();
+				if(dafWeightLR.size() != 2)
+					continue;
+
+				double weightCorrectSide, weightWrongSide;
+
+				if (trueSide < 0) {
+					weightCorrectSide = dafWeightLR[0];
+					weightWrongSide =  dafWeightLR[1];
+				}
+				else {
+					weightCorrectSide = dafWeightLR[1];
+					weightWrongSide =  dafWeightLR[0];
+				}
+				weightWrongSide -= 1.;
+
+				weights->Fill(weightCorrectSide);
+				weights->Fill(weightWrongSide);
+
+				if (weightCorrectSide>maxWeight) maxWeight = weightCorrectSide;
+			}
+
+			for (unsigned int i=0; i<fitTrack->getNumPointsWithMeasurement(); ++i){
+				if (! fitTrack->getPointWithMeasurement(i)->hasFitterInfo(rep))
+					continue;
+
+				std::vector<double> dafWeights = dynamic_cast<genfit::KalmanFitterInfo*>(fitTrack->getPointWithMeasurement(i)->getFitterInfo(rep))->getWeights();
+
+				if (outlierTrue[i]) { // an outlier
+					for (unsigned int j=0; j<dafWeights.size(); ++j){
+						weights->Fill(dafWeights[j]-1);
+					}
+				}
+				else if (leftRightTrue[i] == 0) { // only for non wire hits
+					for (unsigned int j=0; j<dafWeights.size(); ++j){
+						weights->Fill(dafWeights[j]);
+					}
+				}
+			}
+
+		}
+
+                std::cout<<"check pruning"<<std::endl;
+		if (checkPruning) { //check pruning
+			//std::cout<<"\n";
+			//std::cout<<"get stFirst ";
+			genfit::MeasuredStateOnPlane stFirst = fitTrack->getFittedState();
+			//std::cout<<"get stLast ";
+			genfit::MeasuredStateOnPlane stLast = fitTrack->getFittedState(-1);
+
+			for (unsigned int i=0; i<1; ++i) {
+				genfit::Track trClone(*fitTrack);
+				trClone.checkConsistency();
+
+				bool first(false), last(false);
+
+				TString opt("");
+				try {
+					if (gRandom->Uniform() < 0.5) trClone.prune("C");
+					if (gRandom->Uniform() < 0.5) {
+						opt.Append("F");
+						first = true;
+					}
+					if (gRandom->Uniform() < 0.5) {
+						opt.Append("L");
+						last = true;
+					}
+					if (gRandom->Uniform() < 0.5) opt.Append("W");
+					if (gRandom->Uniform() < 0.5) opt.Append("R");
+					if (gRandom->Uniform() < 0.5) opt.Append("M");
+					if (gRandom->Uniform() < 0.5) opt.Append("I");
+					if (gRandom->Uniform() < 0.5) opt.Append("U");
+
+					trClone.prune(opt);
+
+					try {
+						trClone.checkConsistency();
+					} catch (genfit::Exception& e) {
+						trClone.getFitStatus()->getPruneFlags().Print();
+					}
+
+					//std::cout<<"get stCloneFirst ";
+					genfit::MeasuredStateOnPlane stCloneFirst = trClone.getFittedState();
+					//std::cout<<"get stCloneLast ";
+					genfit::MeasuredStateOnPlane stCloneLast = trClone.getFittedState(-1);
+
+					if (first and ! (stFirst.getState() == stCloneFirst.getState() and stFirst.getCov() == stCloneFirst.getCov() )) {
+						//std::cout<<" failed first state ";
+						//stFirst.Print();
+						//stCloneFirst.Print();
+
+						if (debug)
+							trClone.getFitStatus()->getPruneFlags().Print();
+					}
+
+					if (last  and ! (stLast.getState()  == stCloneLast.getState()  and stLast.getCov()  == stCloneLast.getCov() )) {
+						//std::cout<<" failed last state ";
+						//stLast.Print();
+						//stCloneLast.Print();
+
+						if (debug)
+							trClone.getFitStatus()->getPruneFlags().Print();
+					}
+
+					if (debug) {
+						std::cout<<" pruned track: ";
+						trClone.Print();
+					}
+				}
+				catch (genfit::Exception &e) {
+					std::cerr << e.what();
+				}
+			}
+
+		} // end check pruning
+
+#endif
+
+		measurements.clear();
+	}// end loop over events
+
+	t_out->Write();
+	f_data_out->Close();
+
+
+	delete fitTrack;
+	delete secondTrack;
+	delete fitter;
+
+	CALLGRIND_STOP_INSTRUMENTATION;
+	CALLGRIND_DUMP_STATS;
+
+	std::cout<<"maxWeight = " << maxWeight << std::endl;
+	std::cout<<"avg nr iterations =                     " << (double)(nTotalIterConverged + nTotalIterNotConverged)/(double)(nConvergedFits + nUNConvergedFits) << std::endl;
+	std::cout<<"avg nr iterations of converged fits =   " << (double)(nTotalIterConverged)/(double)(nConvergedFits) << std::endl;
+	std::cout<<"avg nr iterations of UNconverged fits = " << (double)(nTotalIterNotConverged)/(double)(nUNConvergedFits) << std::endl;
+	std::cout<<"fit efficiency =                        " << (double)nConvergedFits/nEvents << std::endl;
+
+	if (twoReps) {
+		std::cout<<"second rep: \navg nr iterations =                     " << (double)(nTotalIterSecondConverged + nTotalIterSecondNotConverged)/(double)(nConvergedFitsSecond + nUNConvergedFitsSecond) << std::endl;
+		std::cout<<"avg nr iterations of converged fits =   " << (double)(nTotalIterSecondConverged)/(double)(nConvergedFitsSecond) << std::endl;
+		std::cout<<"avg nr iterations of UNconverged fits = " << (double)(nTotalIterSecondNotConverged)/(double)(nUNConvergedFitsSecond) << std::endl;
+		std::cout<<"fit efficiency =                        " << (double)nConvergedFitsSecond/nEvents << std::endl;
+	}
+
+
+	//std::cout<<"avg nr iterations (2nd rep) = " << (double)nTotalIterSecond/nSuccessfullFitsSecond << std::endl;
+	//std::cout<<"fit efficiency (2nd rep) = " << (double)nConvergedFitsSecond/nEvents << std::endl;
+
+
+#ifndef VALGRIND
+
+	if (debug) std::cout<<"Draw histograms ...";
+	// fit and draw histograms
+	//hmomRes->SetMarkerStyle(20);
+	//hmomRes->SetMarkerSize(0.8);
+
+	TCanvas* c1 = new TCanvas();
+	c1->Divide(2,3);
+
+	c1->cd(1);
+	hmomRes->Fit("gaus");
+	hmomRes->Draw();
+
+	//hmomRec->Fit("gaus");
+        //hmomRec->Draw();
+
+	c1->cd(2);
+	weights->Draw();
+
+	c1->cd(3);
+	hupRes->Fit("gaus");
+	hupRes->Draw();
+
+	c1->cd(4);
+	hvpRes->Fit("gaus");
+	hvpRes->Draw();
+
+	c1->cd(5);
+	huRes->Fit("gaus");
+	huRes->Draw();
+
+	c1->cd(6);
+	hvRes->Fit("gaus");
+	hvRes->Draw();
+
+	c1->Write();
+
+	TCanvas* c2 = new TCanvas();
+	c2->Divide(2,3);
+
+	c2->cd(1);
+	hqopPu->Fit("gaus");
+	hqopPu->Draw();
+
+	c2->cd(2);
+	pVal->Fit("pol1");
+	pVal->Draw();
+	c2->cd(3);
+	hupPu->Fit("gaus");
+	hupPu->Draw();
+
+	c2->cd(4);
+	hvpPu->Fit("gaus");
+	hvpPu->Draw();
+
+	c2->cd(5);
+	huPu->Fit("gaus");
+	huPu->Draw();
+
+	c2->cd(6);
+	hvPu->Fit("gaus");
+	hvPu->Draw();
+
+	c2->Write();
+
+
+
+	TCanvas* c3 = new TCanvas();
+	//c3->Divide(2,3);
+
+	c3->cd(1);
+	trackLenRes->Fit("gaus");
+	trackLenRes->Draw();
+
+	c3->Write();
+
+
+
+	gStyle->SetOptFit();
+	gStyle->SetOptStat(000000000);
+
+	TF1 *tf_pT_resolution = new TF1("tf_pT_resolution","sqrt([0]*[0] + x*x*[1]*[1])", 0.5, maxmomentum);
+	tf_pT_resolution->SetParameters(0,0);
+	
+	TCanvas *c5 = new TCanvas("c5","c5", 800,900);
+	c5->Divide(2,3);
+	
+
+	c5->cd(1);
+	hpT_residual_vs_pT->ProjectionY()->Draw();
+
+
+	c5->cd(2);
+	hDCAr_vs_pT->ProjectionY()->Draw();
+	// hDCAr2_vs_pT->ProjectionY()->SetLineColor(kRed);
+	hDCAr2_vs_pT->ProjectionY()->Draw("same");
+
+
+
+	c5->cd(3);
+	hpT_residual_vs_pT->Draw();
+	
+	c5->cd(4);
+	hDCAr_vs_pT->Draw();
+	
+	
+	c5->cd(5);
+	hpT_residual_vs_pT->FitSlicesY();
+	TH1D *hpT_resolution_vs_pT = (TH1D*)gDirectory->Get("hpT_residual_vs_pT_2");
+	hpT_resolution_vs_pT->SetTitle("GenFit: #sigma_{p_{T}}/p_{T}; p_{T}[GeV/c]; #sigma_{p_{T}}/p_{T}");
+	hpT_resolution_vs_pT->SetMarkerStyle(20);
+	hpT_resolution_vs_pT->Draw("e");
+	//hpT_resolution_vs_pT->Fit(tf_pT_resolution);
+	c5->cd(6);
+	hDCAr_vs_pT->FitSlicesY();
+	TH1D *hDCAr_resolution_vs_pT = (TH1D*) gDirectory->Get("hDCAr_vs_pT_2");
+	hDCAr_resolution_vs_pT->SetTitle("GenFit: #sigma_{DCAr} [cm]; p [GeV/c]; #sigma_{DCAr}");
+	hDCAr_resolution_vs_pT->SetMarkerStyle(20);
+	hDCAr_resolution_vs_pT->Draw("e");
+	//hDCAr_resolution_vs_pT->Fit(tf_pT_resolution);
+	c5->Print("pT_DCA_resolution.root");
+
+
+
+
+
+
+	if (debug) std::cout<<"... done"<<std::endl;
+
+	// open event display
+	display->setOptions("ABDEFHMPT"); // G show geometry
+	if (matFX) display->setOptions("ABDEFGHMPT"); // G show geometry
+	display->open();
+
+
+#endif
+
+
+}

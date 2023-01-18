@@ -40,7 +40,7 @@ void PlutoEta2evt::Begin(TTree * /*tree*/)
    // The tree argument is deprecated (on PROOF 0 is passed).
 
    TString option = GetOption();
-   evtout.open("PlutoOutput.evt");
+   evtout.open("../../HIAF-etaFactory-Simulations-localData/pp_to_ppeta_PipPimPi0_1.8GeV_v2.root.evt");
 }
 
 void PlutoEta2evt::SlaveBegin(TTree * /*tree*/)

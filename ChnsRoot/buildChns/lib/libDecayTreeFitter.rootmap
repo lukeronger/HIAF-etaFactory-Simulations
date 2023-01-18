@@ -1,0 +1,53 @@
+{ decls }
+namespace DecayTreeFitter {  }
+
+[ DecayTreeFitter.so ]
+# List of selected classes
+class DecayTreeFitter::ChiSquare
+class DecayTreeFitter::Configuration
+class DecayTreeFitter::Constraint
+class DecayTreeFitter::DecayChain
+class DecayTreeFitter::ErrCode
+class DecayTreeFitter::FitParams
+class DecayTreeFitter::Fitter
+class DecayTreeFitter::InteractionPoint
+class DecayTreeFitter::InternalParticle
+class DecayTreeFitter::KalmanCalculator
+class DecayTreeFitter::Line
+class DecayTreeFitter::MergedConstraint
+class DecayTreeFitter::MissingParticle
+class DecayTreeFitter::ParticleBase
+class DecayTreeFitter::Projection
+class DecayTreeFitter::RecoComposite
+class DecayTreeFitter::RecoParticle
+class DecayTreeFitter::RecoPhoton
+class DecayTreeFitter::RecoResonance
+class DecayTreeFitter::RecoTrack
+class DecayTreeFitter::RecoTrackStateProvider
+class DecayTreeFitter::Resonance
+class DecayTreeFitter::State
+header ChiSquare.h
+header Configuration.h
+header Constraint.h
+header DecayChain.h
+header ErrCode.h
+header FitParams.h
+header Fitter.h
+header InteractionPoint.h
+header InternalParticle.h
+header KalmanCalculator.h
+header LineTool.h
+header MergedConstraint.h
+header MissingParticle.h
+header ParticleBase.h
+header Projection.h
+header RecoComposite.h
+header RecoParticle.h
+header RecoPhoton.h
+header RecoResonance.h
+header RecoTrack.h
+header RecoTrackStateProvider.h
+header Resonance.h
+header State.h
+# List of selected namespaces
+namespace DecayTreeFitter
