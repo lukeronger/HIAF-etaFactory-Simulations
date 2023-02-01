@@ -1,0 +1,12 @@
+[ ChnsTof.so ]
+# List of selected classes
+class ChnsTof
+class ChnsTofContFact
+class ChnsTofGeo
+class ChnsTofGeoPar
+class ChnsTofPoint
+header ChnsTof.h
+header ChnsTofContFact.h
+header ChnsTofGeo.h
+header ChnsTofGeoPar.h
+header ChnsTofPoint.h

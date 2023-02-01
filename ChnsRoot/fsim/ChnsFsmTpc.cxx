@@ -259,10 +259,10 @@ ChnsFsmTpc::dp(ChnsFsmTrack *t) const
 	double effradlen = length/300 + radiationLengthPerSiLayer*_n; // Air raidation length 300 m + 0.4% per Si layer
 
 
-	double theta0 = 13.6*charge/beta/p4.Vect().Mag()*sqrt(effradlen)*(1+0.038*TMath::Log(effradlen));
+	double theta0 = 13.6*charge/beta/mom/1000*sqrt(effradlen/2.)*(1+0.038*TMath::Log(effradlen));
   
   double cont1 = pt*_sigXY/(0.3*_Bfield*lengthT*lengthT)*sqrt((4*180*_n*_n*_n)/((_n-1)*(_n+1)*(_n+2)*(_n+3)));  //hit error, modified by Xionghong at 12.21 2022 (according to Hao Qiu's study)
-  double cont2 = pt*theta0/sin(theta)/(0.3*_Bfield*beta*lengthT/2);  //
+  double cont2 = pt*theta0/sin(theta)/(0.3*_Bfield*lengthT/2);  //
   double cont3 = _sigTht/tan(theta);
   return ( sqrt(cont1*cont1 + cont2*cont2) * mom );
 }
@@ -303,7 +303,7 @@ ChnsFsmTpc::initParameters()
 {
   _detName         = FsmDetName::name(FsmDetEnum::Tpc);
   _n = 6.0; // hit points
-  _sigXY = 150.0e-6;
+  _sigXY = 50.0e-6;
   _Bfield = 0.8;  
   _Lpath = 0.27;
   _X0 = 0.003;
