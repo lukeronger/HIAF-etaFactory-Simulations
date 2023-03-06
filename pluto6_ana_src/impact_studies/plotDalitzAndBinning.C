@@ -20,7 +20,7 @@
 	li->Draw();
 
 
-	gPad->SetLogz();
+	//gPad->SetLogz();
 	h2->SetTitle("");
 	h2->GetXaxis()->SetTitle("X");
 	h2->GetXaxis()->SetTitleSize(0.06);
@@ -37,7 +37,7 @@
 	gPad->SetLeftMargin(0.135);
 	gPad->SetBottomMargin(0.14);
 	gPad->SetTopMargin(0.03);
-	gPad->SetRightMargin(0.137);
+	gPad->SetRightMargin(0.145);
 
 
 	int ia, ib;
@@ -52,8 +52,8 @@
 		}
 		cout<<endl<<ia<<endl;
 		for(int j=ia; j<=21-ia; j++){
-			h2_2->SetBinContent(j,i,  h2->GetBinContent(j,i));
-			fout<<(j*0.1-1.05)<<"  "<<(i*0.1-1.05)<<"  "<<h2->GetBinContent(j,i)<<endl;
+			h2_2->SetBinContent(j,i,  1e6*h2->GetBinContent(j,i));
+			fout<<(j*0.1-1.05)<<"  "<<(i*0.1-1.05)<<"  "<<  1e6*h2->GetBinContent(j,i)  <<endl;
 			fout2<<(j*0.1-1.05)<<"  "<<(i*0.1-1.05)<<endl;  //// "  "<<h2->GetBinContent(j,i)<<endl;
 		}
 	}
@@ -75,10 +75,25 @@
 	h2_2->GetYaxis()->SetLabelSize(0.06);
 	h2_2->GetZaxis()->SetLabelSize(0.05);
 
+	h2_2->SetMinimum(1e7);
+
 	gPad->SetLeftMargin(0.135);
 	gPad->SetBottomMargin(0.14);
 	gPad->SetTopMargin(0.03);
-	gPad->SetRightMargin(0.137);
+	gPad->SetRightMargin(0.136);
+
+
+
+	TCanvas *c3 = new TCanvas("c3","c3");
+	TH2F *h2_3 = (TH2F *)h2_2->Clone();
+	h2_3->Draw("lego2");
+	TF2 model2("model2","[0]*(1+[1]*y+[2]*y*y+[3]*x+[4]*x*x+[5]*x*y)");
+	model2.SetParNames("N","a","b","c","d","e");
+	//h2_3->Fit("model2");
+	
+
+	gPad->SetPhi(220);
+
 
 
 }
