@@ -81,7 +81,7 @@ int fit(){
 	TF2 model2("model2","[0]*(1+[1]*y+[2]*y*y+[3]*x+[4]*x*x+[5]*x*y)");
 	model2.SetParNames("N","a","b","c","d","e");
 	model2.SetParameters(1e9, -1, 0, 0, 0, 0);
-	model.SetParNames("N","a","b","c","d","e",  "f","g","h","i");
+	model.SetParNames("N","a","b","c","d","e",  "f","g","h","l");
 	model.SetParameters(1e9, -1, 0, 0, 0, 0,  0,0,0,0);
 
 
@@ -89,6 +89,7 @@ int fit(){
 	g->Fit("model2");
 	double pars[20];
 	model2.GetParameters(pars);
+	g->Fit("model");
 
 
 	TCanvas *c2 = new TCanvas("c2","c2",900,680);
