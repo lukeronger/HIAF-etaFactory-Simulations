@@ -17,7 +17,7 @@
       numEnsembles = 10000       ! number of ensembles; NEVER GO BELOW !
       numTimeSteps = 200        ! number of time steps
       delta_T      = 0.2        ! time step size
-      num_runs_SameEnergy = 30   ! number of runs
+      num_runs_SameEnergy = 100   ! number of runs
 
 !      DoPrLevel(1) = .FALSE. ! set this for production runs
 !      DoPrLevel(2) = .FALSE. ! set this for production runs

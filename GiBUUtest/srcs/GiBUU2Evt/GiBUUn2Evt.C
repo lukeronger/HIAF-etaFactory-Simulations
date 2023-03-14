@@ -37,8 +37,8 @@ void GiBUUn2Evt::Begin(TTree * /*tree*/)
 
    TString option = GetOption();
 
-   fout = new ofstream("n.evt");
-   fout_pi0 = new ofstream("pi0_gamma.evt");
+   fout = new ofstream("n_v2.evt");
+   fout_pi0 = new ofstream("pi0_gamma_v2.evt");
    Nn = Npi0 = 0;
 
    event = new TGenPhaseSpace();
