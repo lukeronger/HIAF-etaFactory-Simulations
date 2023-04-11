@@ -3,14 +3,15 @@
 {
 
     double BeamEnergy = 1.8;    /// 3; ///1.8;   // 20; /// 3.5;
-    long Nevents = 10000000;
+    long Nevents = 1000;
+
+    int RandomNO = 2023;
 
 
-
-    PUtils::SetSeed(2002); //this is to have a fixed SEED. By default, the systime is used....
+    PUtils::SetSeed(RandomNO); //this is to have a fixed SEED. By default, the systime is used....
 
     TString inputstr = Form("_T1 = %lg", BeamEnergy);
-    TString filename = Form("../../HIAF-etaFactory-Simulations-localData/pp_to_ppeta_PipPimPi0_%lgGeV_v2", BeamEnergy);
+    TString filename = Form("../../HIAF-etaFactory-Simulations-localData/pluto6-data/pp_to_ppeta_PipPimPi0_%lgGeV_Random%ld", BeamEnergy, RandomNO);
 
     //makeDistributionManager()->Disable("pp_eta_pp_align");
     //makeDistributionManager()->Disable("pp_eta_prod_angle");

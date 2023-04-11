@@ -3,8 +3,10 @@
 */
 
 
-int run2(int nevts=1000, int seed_num = 2001)
+int run_etaDecay_3pi(int nevts=10000000, int seed_num = 2023)
 {
+  TString input_file = "../../../HIAF-etaFactory-Simulations-localData/pluto6-data/pp_to_ppeta_PipPimPi0_1.8GeV_Random2023.root.evt";
+
   TStopwatch timer;
   timer.Start();
   gDebug=0;
@@ -14,7 +16,9 @@ int run2(int nevts=1000, int seed_num = 2001)
   // Load this example libraries
   TString outfile;
   if (outfile=="") {
-	outfile="../../../HIAF-etaFactory-Simulations-localData/run_fsim_EvtGen_HIAFeta_"; //1.root";
+	outfile="../../../HIAF-etaFactory-Simulations-localData/ChnsRoot-data/run_fsim_EvtGen_HIAFeta_"; //1.root";
+	outfile+=1.8;
+	outfile+="GeV_";
   	outfile+= seed_num;
 	outfile+=".root";
   }
@@ -99,7 +103,7 @@ int run2(int nevts=1000, int seed_num = 2001)
   primGen->AddGenerator(boxGen4);
 */
   if(UseEvtGen){
-    FairEvtGenGenerator* evtGen = new FairEvtGenGenerator("../../../HIAF-etaFactory-Simulations-localData/pp_to_ppeta_PipPimPi0_1.8GeV_v2.root.evt");
+    FairEvtGenGenerator* evtGen = new FairEvtGenGenerator(input_file);
     primGen->AddGenerator(evtGen);
   }
   
