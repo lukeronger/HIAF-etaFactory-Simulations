@@ -24,6 +24,8 @@
 // root> T->Process("anaDataBG.C+")
 //
 
+#include <vector>
+
 
 #include "anaDataBG.h"
 #include <TH2.h>
@@ -44,6 +46,7 @@ void anaDataBG::Begin(TTree * /*tree*/)
 
    out_file = new TFile("hiaf-bg-results.root","recreate");
    hm3pi = new TH1F("hm3pi","hm3pi",500,  0, 3);
+   hm2gammas = new TH1F("hm2gammas","hm2gammas",500,  0, 3);
 
 }
 
@@ -85,10 +88,13 @@ Bool_t anaDataBG::Process(Long64_t entry)
    TLorentzVector pip;
    TLorentzVector pim;
    TLorentzVector pi0;
+   TLorentzVector gamma;
+   vector<TLorentzVector> gammas;
+
 
    int instance = barcode.GetSize();
 
-
+   gammas.clear();
    for(int i=0; i<instance; i++){
 	   if(barcode[i]==211){
 		   npip++;
@@ -102,6 +108,11 @@ Bool_t anaDataBG::Process(Long64_t entry)
 		   npi0++;
 		   pi0.SetXYZT(Px[i], Py[i], Pz[i], E[i]);
 	   }
+	   if(barcode[i]==22){
+		   ngamma++;
+		   gamma.SetXYZT(Px[i], Py[i], Pz[i], E[i]);
+		   gammas.push_back(gamma);
+	   }
    }
    if(npip>0) Npip++;
    if(npim>0) Npim++;
@@ -109,6 +120,10 @@ Bool_t anaDataBG::Process(Long64_t entry)
    if(npip>0 && npim>0 && npi0>0){
 	   Npippimpi0++;
 	   hm3pi->Fill((pip+pim+pi0).M());
+   }
+   if(ngamma>=2){
+	   hm2gammas->Fill((gammas.at(0)+gammas.at(1)).M());
+
    }
    Nevents++;
 
@@ -134,6 +149,7 @@ void anaDataBG::Terminate()
    // the results graphically or save the results to file.
    out_file->cd();
    hm3pi->Write();
+   hm2gammas->Write();
    out_file->Close();
    cout<<"Nevnets: "<<Nevents<<endl;
    cout<<"Npip: "<<Npip<<endl;

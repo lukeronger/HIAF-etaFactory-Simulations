@@ -65,6 +65,7 @@ public :
    int Npippimpi0;
 
    TH1F *hm3pi;
+   TH1F *hm2gammas;
 
    TFile *out_file;
    TTree *tree;

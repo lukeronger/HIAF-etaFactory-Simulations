@@ -10,13 +10,16 @@ int runAnaDataBG(){
 		cout<<"Adding \n   "<<filename<<endl<<"Done!"<<endl;
 	}
 
-
 	//chain->GetEntries();
 	//chain->Print(); 
 
-	chain->Process("anaDataBG.C");
 
-	cout<<"Done!!"<<endl;
+
+	chain->Process("anaDataBG.C");
+	cout<<"\nAnalysis of the TChain is Done!!"<<endl;
+
+
+
 
 	return 0;
 }
