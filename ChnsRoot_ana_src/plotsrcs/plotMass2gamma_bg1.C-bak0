@@ -1,0 +1,29 @@
+{
+	gStyle->SetOptStat(0);
+	gStyle->SetNdivisions(505,"XY");
+	TCanvas c1("c1","c1",630,500);
+
+	TFile file("../../../HIAF-etaFactory-Simulations-localData/ChnsRoot-data/hiaf-etaDecay-3pi-background-results.root");
+	hmpi0_2->Draw();
+	hmpi0_2->SetTitle("");
+	hmpi0_2->GetXaxis()->SetTitle("M(#gamma#gamma) / GeV");
+	hmpi0_2->GetXaxis()->SetTitleSize(0.06);
+	hmpi0_2->GetXaxis()->CenterTitle();
+	hmpi0_2->GetXaxis()->SetTitleOffset(1.05);
+	hmpi0_2->GetXaxis()->SetLabelSize(0.06);
+	hmpi0_2->GetYaxis()->SetTitle("Counts");
+	hmpi0_2->GetYaxis()->SetTitleSize(0.06);
+	hmpi0_2->GetYaxis()->CenterTitle();
+	hmpi0_2->GetYaxis()->SetTitleOffset(1.05);
+	hmpi0_2->GetYaxis()->SetLabelSize(0.06);
+	hmpi0_2->GetZaxis()->SetLabelSize(0.05);
+
+	//gPad->SetLogy();
+
+	gPad->SetLeftMargin(0.145);
+	gPad->SetBottomMargin(0.14);
+	gPad->SetTopMargin(0.03);
+	gPad->SetRightMargin(0.03);
+
+
+}

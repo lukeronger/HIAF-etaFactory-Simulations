@@ -5,16 +5,22 @@
 #include "TProfile.h"
 #include <vector>
 
-void ana_etaDecay_3pi()
+void ana_etaDecay_EEG()
 {
-	TString output_file = "../../HIAF-etaFactory-Simulations-localData/ChnsRoot-data/hiaf-etaDecay-3pi-results.root";
+
+	/// Input the simulation data from ChnsRoot
+	gSystem->Load("libfsim");
+	TChain* t = new TChain("chnssim");
+	t->Add("/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/ChnsRoot-data/run_fsim_EvtGen_HIAFeta_EEG_1.8GeV_2023.root");
+
+	/// The output file:
+	TString output_file = "../../HIAF-etaFactory-Simulations-localData/ChnsRoot-data/hiaf-etaDecay-EEG-results.root";
 
 	gStyle->SetOptStat(1);
 
-	gSystem->Load("libfsim");
-	TChain* t = new TChain("chnssim");
-	t->Add("../../HIAF-etaFactory-Simulations-localData/ChnsRoot-data/run_fsim_EvtGen_HIAFeta_1.8GeV_2023.root");
 
+
+	
 	TClonesArray *fMC=new TClonesArray("ChnsMCTrack");
 	TClonesArray *fCands=new TClonesArray("ChnsPidCandidate");
 	TClonesArray *fNeuts=new TClonesArray("ChnsPidCandidate");
@@ -36,47 +42,58 @@ void ana_etaDecay_3pi()
 	ChnsPidProbability* iCand2_prob;
 
 
-	vector<TLorentzVector>  eta_pip;
-	vector<TLorentzVector>  eta_pim;
-	vector<TLorentzVector>  eta_gamma;
 
+	/// define some vectors
+	vector<TLorentzVector>  eta_Ep;
+	vector<TLorentzVector>  eta_Em;
+	vector<TLorentzVector>  eta_gamma;
+	vector<TLorentzVector>  eta_Ep_MC;
+	vector<TLorentzVector>  eta_Em_MC;
+	vector<TLorentzVector>  eta_gamma_MC;
 
 	/// define some histograms
-	TH1D * hmpi0 = new TH1D("hmpi0","m_{#pi0}",300,0.05,0.3);
-	TH1D * hmpi0_2 = new TH1D("hmpi0_2","",300,0.05,0.3);
+	TH1D * hmEE = new TH1D("hmEE","m_{ee}",300,0.01,0.58);
+	TH1D * hmEE_2 = new TH1D("hmEE_2","",300,0.01,0.58);
 	TH1D * hmeta = new TH1D("hmeta","m_{#eta}",300,0.4,0.8);
+	TH1D * hmeta_MC = new TH1D("hmeta_MC","m_{#eta}",300,0.4,0.8);
 	TH1D * hmeta_2 = new TH1D("hmeta_2","",300,0.4,0.8);
-	TH1D * hpim_prob = new TH1D("hpim_prob","",400,-1,5);
-	TH1D * hpim_charge = new TH1D("hpim_charge","",200,-10,10);
-	TH1D * hpip_prob = new TH1D("hpip_prob","",400,-1,5);
-	TH1D * hpip_charge = new TH1D("hpip_charge","",200,-10,10);
+	TH1D * helec_prob = new TH1D("helec_prob","",400,-1,5);
+	TH1D * helec_charge = new TH1D("helec_charge","",200,-10,10);
+	TH1D * hposi_prob = new TH1D("hposi_prob","",400,-1,5);
+	TH1D * hposi_charge = new TH1D("hposi_charge","",200,-10,10);
 
 	TH1D * hgamma_energy = new TH1D("hgamma_energy","",200,0,2);
 
+
 	/// define some variables for particle counting
-	int Npip_tot = 0;
-	int Npip_selected = 0;
-	int Npim_tot = 0;
-	int Npim_selected = 0;
+	int Nep_tot = 0;
+	int Nep_selected = 0;
+	int Nem_tot = 0;
+	int Nem_selected = 0;
 	int Ngamma_tot = 0;
 	int Ngamma_selected = 0;
 	int Ngamma_tot2 = 0;
 	int Ngamma_selected2 = 0;
 	int Neta_final = 0; 
+	
 
 
-	/// start of event loop
+	/// event loop starts
+	/// doing the analysis and dumping the results into the histograms
 	Int_t num = t->GetEntries();
 	cout<<"  "<<num<<" total input events"<<endl;
 	Int_t nn(0);
-	//num = 100000;
+	//num = 10000;
 	for(Int_t j=0; j<num;j++)
 	{
 		t->GetEntry(j);
 
-		eta_pip.clear();
-		eta_pim.clear();
+		eta_Ep.clear();
+		eta_Em.clear();
 		eta_gamma.clear();
+		eta_Ep_MC.clear();
+		eta_Em_MC.clear();
+		eta_gamma_MC.clear();
 
 		
 
@@ -92,36 +109,39 @@ void ana_etaDecay_3pi()
 
 
 
-			if(pdg==211 && iCand1_prob->GetPionPidProb()>0.1 && iCand1->GetCharge()>0) {
-//				cout<<"pi+ find,    ";
-				TLorentzVector pip = iCand1->GetLorentzVector();
-				eta_pip.push_back(pip);
-
-				Npip_selected++;
+			if(pdg==-11 && iCand1_prob->GetElectronPidProb()>0.1 && iCand1->GetCharge()>0) {
+//				cout<<"e^+ find,    ";
+				TLorentzVector ep = iCand1->GetLorentzVector();
+				ep.SetE( sqrt(ep.E()*ep.E() - ep.M()*ep.M() + 0.000511*0.000511)  );
+				//cout<<ep.M()<<endl;
+				eta_Ep.push_back(ep);
+				eta_Ep_MC.push_back(iMC->Get4Momentum());
+				Nep_selected++;
 			}
-			else if(pdg==-211 && iCand1_prob->GetPionPidProb()>0.1 && iCand1->GetCharge()<0) {
-//				cout<<"pi- find,    ";
-				TLorentzVector pim = iCand1->GetLorentzVector();
-				eta_pim.push_back(pim);
-
-				Npim_selected++;
+			else if(pdg==11 && iCand1_prob->GetElectronPidProb()>0.1 && iCand1->GetCharge()<0) {
+//				cout<<"e^- find,    ";
+				TLorentzVector em = iCand1->GetLorentzVector();
+				em.SetE( sqrt(em.E()*em.E() - em.M()*em.M() + 0.000511*0.000511)  );
+				eta_Em.push_back(em);
+				eta_Em_MC.push_back(iMC->Get4Momentum());
+				Nem_selected++;
 			}
 
-			if(pdg==211 ) {
-				hpip_prob -> Fill (iCand1_prob->GetPionPidProb());
-				hpip_charge -> Fill (iCand1->GetCharge());
-				Npip_tot++;
+			if(pdg==-11 ) {
+				hposi_prob -> Fill(iCand1_prob->GetElectronPidProb());
+				hposi_charge -> Fill(iCand1->GetCharge() );
+				Nep_tot++;
 			}
-			else if(pdg==-211 ) {
-				hpim_prob -> Fill (iCand1_prob->GetPionPidProb());
-				hpim_charge -> Fill (iCand1->GetCharge());
-				Npim_tot++;
+			else if(pdg==11 ) {
+				helec_prob -> Fill(iCand1_prob->GetElectronPidProb());
+				helec_charge -> Fill(iCand1->GetCharge() );
+				Nem_tot++;
 			}
 		} // end of charged track loop
 //		cout<<"Ncharged_tracks="<<fCands->GetEntriesFast()<<",   ";
 
 
-		if(fNeuts->GetEntriesFast()>=2)
+		if(fNeuts->GetEntriesFast()>=1)
 		for (Int_t i1=0; i1<fNeuts->GetEntriesFast(); i1++)
 		{
 			iCand1 = (ChnsPidCandidate*)fNeuts->At(i1);
@@ -136,37 +156,39 @@ void ana_etaDecay_3pi()
 				TVector3 v3_gamma = iCand1->GetMomentum();
 				TLorentzVector gamma(v3_gamma, v3_gamma.Mag());
 				eta_gamma.push_back(gamma);	
+				eta_gamma_MC.push_back(iMC->Get4Momentum());	
 
 				Ngamma_tot++;
 			}
 			if(pdg==22 &&  iCand1->GetMomentum().Mag()>0.05  )  Ngamma_selected++;
-
 		} // end of neutral track loop
 //		cout<<"Nneutral_tracks="<<fNeuts->GetEntriesFast()<<endl;
 
 
-
-		/// calculate the invariant mass and fill the histograms
-		if(eta_pip.size()>=1 && eta_pim.size()>=1 && eta_gamma.size()>=2){
-			double mpi0 = (eta_gamma.at(0) + eta_gamma.at(1)).M();
-			double meta = (eta_gamma.at(0) + eta_gamma.at(1) + eta_pip.at(0) + eta_pim.at(0)).M();
-			hmpi0->Fill(mpi0);
+		if(eta_Ep.size()>=1 && eta_Em.size()>=1 && eta_gamma.size()>=1){
+			double mEE = (eta_Ep.at(0) + eta_Em.at(0)).M();
+			double meta = (eta_gamma.at(0) + eta_Ep.at(0) + eta_Em.at(0)).M();
+			double meta_MC = (eta_gamma_MC.at(0) + eta_Ep_MC.at(0) + eta_Em_MC.at(0)).M();
+			hmEE->Fill(mEE);
 			hmeta->Fill(meta);
+			hmeta_MC->Fill(meta_MC);
 
 			hgamma_energy->Fill(eta_gamma.at(0).E());
-			hgamma_energy->Fill(eta_gamma.at(1).E());
 
-			Ngamma_tot2 += 2;
+			Ngamma_tot2 ++;
 			if(eta_gamma.at(0).E()>0.05)Ngamma_selected2++;
-			if(eta_gamma.at(1).E()>0.05)Ngamma_selected2++;
 
-
-			if(eta_gamma.at(0).E()>0.05 && eta_gamma.at(1).E()>0.05){
-				hmpi0_2->Fill(mpi0);
+			//if(eta_gamma.at(0).E()>0.05 && eta_Ep.at(0).E()>0.05 && eta_Em.at(0).E()>0.05){
+			if(eta_gamma.at(0).E()>0.05 ){
+				hmEE_2->Fill(mEE);
 				hmeta_2->Fill(meta);
 				Neta_final++;
 			}
 		}
+
+
+
+
 
 
 	} // end of event loop
@@ -175,9 +197,9 @@ void ana_etaDecay_3pi()
 
 /*
 	TCanvas *c1 = new TCanvas("c1","c1");
-	hmpi0->Draw();
-	hmpi0_2->SetLineColor(2);
-	hmpi0_2->Draw("same");
+	hmEE->Draw();
+	hmEE_2->SetLineColor(2);
+	hmEE_2->Draw("same");
 	TCanvas *c2 = new TCanvas("c2","c2");
 	hmeta->Draw();  */
 
@@ -185,22 +207,25 @@ void ana_etaDecay_3pi()
 	cout<<num<<" "<<hmeta->GetEntries()<<" "<<(1.0*hmeta->GetEntries()/num)<<endl;
 	cout<<num<<" "<<hmeta_2->GetEntries()<<" "<<(1.0*hmeta_2->GetEntries()/num)<<endl;
 
-	cout<<endl<<endl<<" pip pid effi.: "<<1.0*Npip_selected/Npip_tot<<"   ="<<Npip_selected<<"/"<<Npip_tot<<endl;
-	cout<<" pim pid effi.: "<<1.0*Npim_selected/Npim_tot<<"   ="<<Npim_selected<<"/"<<Npim_tot<<endl;
+	cout<<endl<<endl<<" positron pid effi.: "<<1.0*Nep_selected/Nep_tot<<"   ="<<Nep_selected<<"/"<<Nep_tot<<endl;
+	cout<<" electron pid effi.: "<<1.0*Nem_selected/Nem_tot<<"   ="<<Nem_selected<<"/"<<Nem_tot<<endl;
 	cout<<" gamma Ecut effi.: "<<1.0*Ngamma_selected/Ngamma_tot<<"   ="<<Ngamma_selected<<"/"<<Ngamma_tot<<endl;
 	cout<<" gamma Ecut effi. (v2): "<<1.0*Ngamma_selected2/Ngamma_tot2<<"   ="<<Ngamma_selected2<<"/"<<Ngamma_tot2<<endl;
 	cout<<" total effi.: "<<1.0*Neta_final/num <<"   ="<<Neta_final<<"/"<<num<<endl;
 
+
+
 	TFile outfile(output_file,"recreate");
-	hmpi0->Write();
-	hmpi0_2->Write();
+	hmEE->Write();
+	hmEE_2->Write();
 	hmeta->Write();
+	hmeta_MC->Write();
 	hmeta_2->Write();
-	hpip_prob -> Write();
-	hpip_charge -> Write();
-	hpim_prob -> Write();
-	hpim_charge -> Write();
-	hgamma_energy -> Write();
+	helec_prob -> Write(); 
+	helec_charge -> Write(); 
+	hposi_prob -> Write(); 
+	hposi_charge -> Write(); 
+	hgamma_energy -> Write(); 
 	outfile.Close();
 
 /*

@@ -1,0 +1,49 @@
+
+Shared library Pluto.so loaded
+
+Processing generate_pp_to_ppeta_DileptonGamma.C...
+<Beam>
+  p (0.000000,0.000000,2.572505;2.738272) wt = 1.000000, m = 0.938272 pid = 14
+  Vertex = 0.000000 0.000000 0.000000
+<Target>
+  p (0.000000,0.000000,0.000000;0.938272) wt = 1.000000, m = 0.938272 pid = 14
+  Vertex = 0.000000 0.000000 0.000000
+
+ Reaction of 8 Particles interacting via 3 Channels
+   Reaction Particles:
+     0. quasi-particle (p beam and p target)
+     1. p
+     2. p
+     3. eta
+     4. dilepton
+     5. g
+     6. e+
+     7. e-
+   Reaction Channels:
+     1. p + p --> p + p + eta
+        Interaction model(s):
+        [pp_eta_prod_angle] Eta polar angles in pp reactions for direct production
+        [pp_eta_pp_align] pp alignment in pp reactions for direct eta production
+        [p + p_fixed_p_p_eta] Fixed product masses {/}
+        [p + p_genbod_p_p_eta] Pluto build-in genbod {/genbod}
+     2. eta --> dilepton + photon (Dalitz)
+        Interaction model(s):
+        [eta_dalitz] Dalitz decay {/}
+        [eta_genbod_g_dilepton] Pluto build-in genbod {/genbod}
+     3. dilepton --> e+ + e-
+        Interaction model(s):
+        [dilepton_fixed_e-_e+] Fixed product masses {/}
+        [dilepton_genbod_e-_e+] Pluto build-in genbod {/genbod}
+        [eta_dilepton_helicity] Helicity angle of the dilepton decay of eta
+   Output File(s):
+     Root : '../../HIAF-etaFactory-Simulations-localData/pluto6-data/pp_to_ppeta_DileptonGamma_1.8GeV_Random2023.root', all particles on file.
+PReaction: calculating widths in PData...
+ 20% done in 634.050335 sec
+ 40% done in 1450.683307 sec
+ 60% done in 2292.675405 sec
+ 80% done in 2926.873542 sec
+ 100% done in 3768.649090 sec
+ Event loop finished after 3768.649173 sec
+ CPU time 3682.700000 sec
+ 596154 aborted events were repeated, error codes:
+ 10=596154 

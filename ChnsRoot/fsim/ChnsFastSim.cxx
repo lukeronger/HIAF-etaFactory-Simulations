@@ -852,6 +852,7 @@ void ChnsFastSim::Exec(Option_t*)
         if (fabs(ft->charge())>1e-6)
         {
           pidCand = new (chrgCandidates[chcandsize]) ChnsPidCandidate((Int_t)ft->charge(),pos,miclv);
+	  //cout << "<<<<<<<<" << pidCand->GetLorentzVector().M() << endl;
           pidProb = new (chrgProbs[chcandsize]) ChnsPidProbability();
         }
         else
