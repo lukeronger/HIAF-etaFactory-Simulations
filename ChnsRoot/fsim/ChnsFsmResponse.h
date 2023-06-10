@@ -103,6 +103,10 @@ public:
   double LHPion() {return _LHPion;} 
   double LHKaon() {return _LHKaon;} 
   double LHProton() {return _LHProton;} 
+  double LHDeuteron() {return _LHDeuteron;} 
+  double LHTriton() {return _LHTriton;} 
+  double LHHe3() {return _LHHe3;} 
+  double LHHe4() {return _LHHe4;} 
   
   //
   //  Modifiers
@@ -138,6 +142,10 @@ public:
   void setLHPion(double val);
   void setLHKaon(double val);
   void setLHProton(double val);
+  void setLHDeuteron(double val);
+  void setLHTriton(double val);
+  void setLHHe3(double val);
+  void setLHHe4(double val);
   
   void print(std::ostream &o);
   
@@ -186,6 +194,10 @@ private:
   double _LHPion;
   double _LHKaon;
   double _LHProton;
+  double _LHDeuteron;
+  double _LHTriton;
+  double _LHHe3;
+  double _LHHe4;
 };
 
 #endif

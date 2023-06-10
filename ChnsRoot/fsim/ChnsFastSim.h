@@ -25,6 +25,7 @@ class ChnsFsmDetFactory;
 class TF1;
 class TDatabasePDG;
 class RhoCandList;
+class FairMCEventHeader;
 
 typedef std::list<ChnsFsmAbsDet*> FsmAbsDetList;
 typedef std::list<ChnsFsmResponse*> FsmResponseList;
@@ -94,7 +95,8 @@ class ChnsFastSim : public FairTask
 
   void SetFlatCovMatrix(ChnsFsmTrack *t, double dp=0., double dtheta=0., double dphi=0., double dE=0., double dx=0., double dy=0., double dz=0.);
   void UpdateGammaHit(ChnsFsmTrack *t);
-
+ 
+	FairMCEventHeader* fMcEvent;
   /** Output array of Candidates **/
   TClonesArray* fMcCandidates;
   TClonesArray* fPidChargedCand;

@@ -367,9 +367,9 @@ void ChnsStack::Register()
 // -----   Public method Print  --------------------------------------------
 void ChnsStack::Print(Int_t iVerbose) const
 {
-    cout << "-I- ChnsStack: Number of primaries        = " << fNPrimaries << endl;
-    cout << "              Total number of particles  = " << fNParticles << endl;
-    cout << "              Number of tracks in output = " << fNTracks << endl;
+    //cout << "-I- ChnsStack: Number of primaries        = " << fNPrimaries << endl;
+    //cout << "              Total number of particles  = " << fNParticles << endl;
+    //cout << "              Number of tracks in output = " << fNTracks << endl;
     if (iVerbose) {
         for (Int_t iTrack = 0; iTrack < fNTracks; iTrack++) {
             ((ChnsMCTrack*)fTracks->At(iTrack))->Print(iTrack);

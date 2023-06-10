@@ -89,7 +89,7 @@ namespace ROOT {
       ::ChnsFastSim *ptr = 0;
       static ::TVirtualIsAProxy* isa_proxy = new ::TInstrumentedIsAProxy< ::ChnsFastSim >(0);
       static ::ROOT::TGenericClassInfo 
-         instance("ChnsFastSim", ::ChnsFastSim::Class_Version(), "ChnsFastSim.h", 32,
+         instance("ChnsFastSim", ::ChnsFastSim::Class_Version(), "ChnsFastSim.h", 33,
                   typeid(::ChnsFastSim), ::ROOT::Internal::DefineBehavior(ptr, ptr),
                   &::ChnsFastSim::Dictionary, isa_proxy, 4,
                   sizeof(::ChnsFastSim) );
@@ -299,7 +299,7 @@ namespace ROOT {
       ::ChnsFsmEmcBarrel *ptr = 0;
       static ::TVirtualIsAProxy* isa_proxy = new ::TIsAProxy(typeid(::ChnsFsmEmcBarrel));
       static ::ROOT::TGenericClassInfo 
-         instance("ChnsFsmEmcBarrel", "ChnsFsmEmcBarrel.h", 41,
+         instance("ChnsFsmEmcBarrel", "ChnsFsmEmcBarrel.h", 45,
                   typeid(::ChnsFsmEmcBarrel), ::ROOT::Internal::DefineBehavior(ptr, ptr),
                   &ChnsFsmEmcBarrel_Dictionary, isa_proxy, 4,
                   sizeof(::ChnsFsmEmcBarrel) );

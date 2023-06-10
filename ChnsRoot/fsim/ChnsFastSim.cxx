@@ -17,6 +17,7 @@
 #include "ChnsMCTrack.h"
 #include "ChnsStack.h"
 #include "FairRun.h"
+#include "FairMCEventHeader.h"
 
 #include "ChnsFastSim.h"
 
@@ -101,6 +102,7 @@ ChnsFastSim::~ChnsFastSim() {
 
   //if (fChargedCandidates) {fChargedCandidates->Delete(); delete fChargedCandidates;}
   //if (fNeutralCandidates) {fNeutralCandidates->Delete(); delete fNeutralCandidates;}
+  if (fMcEvent) {fMcEvent->Delete(); delete fMcEvent;}
   if (fMcCandidates) {fMcCandidates->Delete(); delete fMcCandidates;}
   //if (fMicroCandidates) {fMicroCandidates->Delete(); delete fMicroCandidates;}
   if (fPidChargedCand) {fPidChargedCand->Delete(); delete fPidChargedCand;}
@@ -159,7 +161,14 @@ void ChnsFastSim::Register() {
 InitStatus ChnsFastSim::Init() {
 
   if (fVb>3) cout << " Inside the Init function****" << endl;
+	
+	FairRootManager* ioman = FairRootManager::Instance();
+	fMcEvent = (FairMCEventHeader*) ioman->GetObject("MCEventHeader.");
+	if (!fMcEvent) {
+		Warning("Init", "MCEventHeader not fould!");
+	}
 
+	
   Register();
   if (fVb)
   {
@@ -715,7 +724,7 @@ void ChnsFastSim::Exec(Option_t*)
     TVector3 stvtx(t->Vx(),t->Vy(),t->Vz());
 
     int pdg = t->GetPdgCode();
-  
+
     // simulate bremsstrahlung for electrons and add photon on stack
     if (abs(pdg)==11 && fElectronBrems)
     {
@@ -807,10 +816,15 @@ void ChnsFastSim::Exec(Option_t*)
       case 22:                          pdgcheck = true; break;
       case 2112:                        pdgcheck = true; break;
       case 11:   pmc->SetPidInfo(0, 1); pdgcheck = true; break;
-      case 13:   pmc->SetPidInfo(1, 1); pdgcheck = true; break;
+      //case 13:   pmc->SetPidInfo(1, 1); pdgcheck = true; break;
       case 211:  pmc->SetPidInfo(2, 1); pdgcheck = true; break;
       case 321:  pmc->SetPidInfo(3, 1); pdgcheck = true; break;
       case 2212: pmc->SetPidInfo(4, 1); pdgcheck = true; break;
+      case 1000010020: pmc->SetPidInfo(12, 1); pdgcheck = true; break;
+      case 1000010030: pmc->SetPidInfo(13, 1); pdgcheck = true; break;
+      case 1000020030: pmc->SetPidInfo(23, 1); pdgcheck = true; break;
+      case 1000020040: pmc->SetPidInfo(24, 1); pdgcheck = true; break;
+							
     }
 
     McSumP4+=ft->p4();
@@ -821,16 +835,12 @@ void ChnsFastSim::Exec(Option_t*)
       // smear and cut the track according to the detector setup
       bool smeared = smearTrack(ft, chcandsize);
 
-      //cout<<"ChnsFastSim                                        -=-=-=-  Track number: "<<iTrack<<"      smeared: "<<smeared<<endl;
-
       if (smeared)
       {
         RhoVector3Err *svtx=new RhoVector3Err(ft->startVtx());
         TLorentzVector miclv=ft->p4();
         TVector3 pos=ft->startVtx();
         TVector3 lastpos=ft->stopVtx();
-
-	//cout<<"-----ChnsFastSim  mom "<<miclv.Mag()<<"   "<<miclv.X()<<"  "<<miclv.Y()<<"  "<<miclv.Z()<<endl;
 
         // assign pion mass to all charged and 0 to all neutral cands
         if (fabs(ft->charge())>0.001)
@@ -852,7 +862,6 @@ void ChnsFastSim::Exec(Option_t*)
         if (fabs(ft->charge())>1e-6)
         {
           pidCand = new (chrgCandidates[chcandsize]) ChnsPidCandidate((Int_t)ft->charge(),pos,miclv);
-	  //cout << "<<<<<<<<" << pidCand->GetLorentzVector().M() << endl;
           pidProb = new (chrgProbs[chcandsize]) ChnsPidProbability();
         }
         else
@@ -903,6 +912,10 @@ void ChnsFastSim::Exec(Option_t*)
           pidProb->SetPionPdf(ft->detResponse()->LHPion());
           pidProb->SetKaonPdf(ft->detResponse()->LHKaon());
           pidProb->SetProtonPdf(ft->detResponse()->LHProton());
+          pidProb->SetDeuteronPdf(ft->detResponse()->LHDeuteron());
+          pidProb->SetTritonPdf(ft->detResponse()->LHTriton());
+          pidProb->SetHe3Pdf(ft->detResponse()->LHHe3());
+          pidProb->SetHe4Pdf(ft->detResponse()->LHHe4());
 
 		//cout<<"ChnsFastSim.cxx   LHpi: "<<ft->detResponse()->LHPion()<<" k: ******** "<<ft->detResponse()->LHKaon()<<"  e: "<<ft->detResponse()->LHElectron()<<"  "<<ft->detResponse()->LHMuon()<<endl;
           pidProb->SetIndex(chcandsize);
@@ -1022,8 +1035,12 @@ bool ChnsFastSim::smearTrack(ChnsFsmTrack *t, int chcandsize )
         double rawLHpi = resp->LHPion();
         double rawLHK  = resp->LHKaon();
         double rawLHp  = resp->LHProton();
+        double rawLHd  = resp->LHDeuteron();
+        double rawLHt  = resp->LHTriton();
+        double rawLHhe3  = resp->LHHe3();
+        double rawLHhe4  = resp->LHHe4();
 
-        double sumRaw = rawLHe+rawLHmu+rawLHpi+rawLHK+rawLHp;
+        double sumRaw = rawLHe+rawLHmu+rawLHpi+rawLHK+rawLHp+rawLHd+rawLHt+rawLHhe3+rawLHhe4;
         if (sumRaw!=0.)
         {
           pidProb->SetElectronPdf(rawLHe/sumRaw);
@@ -1031,12 +1048,20 @@ bool ChnsFastSim::smearTrack(ChnsFsmTrack *t, int chcandsize )
           pidProb->SetPionPdf(rawLHpi/sumRaw);
           pidProb->SetKaonPdf(rawLHK/sumRaw);
           pidProb->SetProtonPdf(rawLHp/sumRaw);
+          pidProb->SetDeuteronPdf(rawLHd/sumRaw);
+          pidProb->SetTritonPdf(rawLHt/sumRaw);
+          pidProb->SetHe3Pdf(rawLHhe3/sumRaw);
+          pidProb->SetHe4Pdf(rawLHhe4/sumRaw);
         } else {
           pidProb->SetElectronPdf(0.2);
           pidProb->SetMuonPdf(0.2);
           pidProb->SetPionPdf(0.2);
           pidProb->SetKaonPdf(0.2);
           pidProb->SetProtonPdf(0.2);
+          pidProb->SetDeuteronPdf(0.2);
+          pidProb->SetTritonPdf(0.2);
+          pidProb->SetHe3Pdf(0.2);
+          pidProb->SetHe4Pdf(0.2);
         }
       }
 
@@ -1238,7 +1263,10 @@ void
 ChnsFastSim::smearMomentum(ChnsFsmTrack *t, double dp)
 {
   TLorentzVector p4=t->p4();
-  double newP = p4.Vect().Mag() + fRand->Gaus(0.0,dp);
+  double newP;
+	//if(fabs(t->charge()) <2 ) 
+		newP = p4.Vect().Mag() + fRand->Gaus(0.0,dp);
+	//else newP = p4.Vect().Mag()/fabs(t->charge()) + fRand->Gaus(0.0,dp); // Xionghong: z=2 (He3, He4)
   p4.SetVectM(p4.Vect().Unit()*newP,t->p4().M());
   t->setP4(p4);
 }
@@ -1363,6 +1391,10 @@ ChnsFastSim::sumResponse(FsmResponseList respList)
   double LH_pi=1.0;
   double LH_K=1.0;
   double LH_p=1.0;
+  double LH_d=1.0;
+  double LH_t=1.0;
+  double LH_he3=1.0;
+  double LH_he4=1.0;
 
   double LH_e_Emc = 0.0;
   double LH_mu_Emc = 0.0;
@@ -1432,8 +1464,12 @@ ChnsFastSim::sumResponse(FsmResponseList respList)
       double rawLHpi = resp->LHPion();
       double rawLHK  = resp->LHKaon();
       double rawLHp  = resp->LHProton();
+      double rawLHd  = resp->LHDeuteron();
+      double rawLHt  = resp->LHTriton();
+      double rawLHhe3  = resp->LHHe3();
+      double rawLHhe4  = resp->LHHe4();
 
-      double sumRaw = rawLHe+rawLHmu+rawLHpi+rawLHK+rawLHp;
+      double sumRaw = rawLHe+rawLHmu+rawLHpi+rawLHK+rawLHp+rawLHd+rawLHt+rawLHhe3+rawLHhe4;
 
       //cout<<"ChnsFastSim  sumResponse  LHemupikp: "<<rawLHe<<" "<<rawLHmu<<" "<<rawLHpi<<" "<<rawLHK<<" "<<rawLHp<<"  sum: "<<sumRaw<<"    "<<resp->detector()->detName()<<endl;
 
@@ -1587,6 +1623,10 @@ ChnsFastSim::sumResponse(FsmResponseList respList)
   allResponse->setLHPion(LH_pi);
   allResponse->setLHKaon(LH_K);
   allResponse->setLHProton(LH_p);
+  allResponse->setLHDeuteron(LH_d);
+  allResponse->setLHTriton(LH_t);
+  allResponse->setLHHe3(LH_he3);
+  allResponse->setLHHe4(LH_he4);
 
 
   if (fVb>2) cout <<"--------------------------------------"<<endl<<"*** OVERALL RESPONSE ***"<<endl<<"--------------------------------------" <<endl;

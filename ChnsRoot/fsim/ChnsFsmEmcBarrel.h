@@ -32,6 +32,10 @@
 #include "ArgList.h"
 #include "ChnsFsmAbsDet.h"
 
+#include "TFile.h"
+#include "TH1F.h"
+#include "TH2F.h"
+
 //--------------------------------------------
 // Collaborating class forward declarations --
 // -------------------------------------------
@@ -77,6 +81,10 @@ private:
   void   print(std::ostream &o);
   bool   setParameter(std::string &name, double value);
 
+	// sampleing histograms
+	TFile* file_n;
+	TH1F* h1_effi_n;
+	TH2F* h2_energy_n;
 
   //
   //  Modifiers

@@ -115,7 +115,8 @@ void ana_etaDecay_3pi_background()
 			hmeta->Fill(meta);
 			if(eta_gamma.at(0).E()>0.05 && eta_gamma.at(1).E()>0.05){
 				hmpi0_2->Fill(mpi0);
-				hmeta_2->Fill(meta);
+				if(mpi0>0.12 && mpi0<0.155)
+					hmeta_2->Fill(meta);
 			}
 		}
 

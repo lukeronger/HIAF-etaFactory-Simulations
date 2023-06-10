@@ -1,6 +1,24 @@
 [ ChnsGen.so ]
 # List of selected classes
+class ChnsBoxGenerator
 class ChnsEvtGenGenerator
+class ChnsJamGenerator
+class ChnsPlutoGenerator
+class PDataBase
+class PMesh
+class PParticle
+class PStaticData
+class PStdData
+class PValues
 class Pythia6Generator
+header ChnsBoxGenerator.h
 header ChnsEvtGenGenerator.h
+header ChnsJamGenerator.h
+header ChnsPlutoGenerator.h
+header PDataBase.h
+header PMesh.h
+header PParticle.h
+header PStaticData.h
+header PStdData.h
+header PValues.h
 header Pythia6Generator.h

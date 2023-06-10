@@ -68,6 +68,14 @@ ChnsFsmEmcBarrel::ChnsFsmEmcBarrel()
 ChnsFsmEmcBarrel::ChnsFsmEmcBarrel(ArgList &par)
 {
   initParameters();
+	
+	file_n		 	= new TFile("$VMCWORKDIR/fsim/neutron_EMC.root");
+	if(!file_n) cout << " <<<<<<<<<<< no root file <<<<<<<<<< " << endl;
+	h1_effi_n 	= (TH1F*)file_n->Get("h1_effi");
+	if(!h1_effi_n) cout << " <<<<<<<<<<< no histo1 <<<<<<<<<< " << endl;
+	h2_energy_n	= (TH2F*)file_n->Get("h2_e_sampling");
+	if(!h2_energy_n) cout << " <<<<<<<<<<< no histo2 <<<<<<<<<< " << endl;
+
   //set default parameter values and parses a parameter list
   //i.e. std::list<std::string> of the form
   //"a=1" "b=2" "c=3"
@@ -81,14 +89,13 @@ ChnsFsmEmcBarrel::ChnsFsmEmcBarrel(ArgList &par)
 }
 
 
-
-
 //--------------
 // Destructor --
 //--------------
 
 ChnsFsmEmcBarrel::~ChnsFsmEmcBarrel()
 {
+	file_n->Close();
 }
 
 //--------------
@@ -102,28 +109,36 @@ ChnsFsmEmcBarrel::respond(ChnsFsmTrack *t)
 
   result->setDetector(this);
   bool wasDetected=detected(t);
-  result->setDetected(wasDetected);
   double lund = t->pdt();
 
   double p=t->p4().Vect().Mag();
   double energy = t->p4().E();
 	double mass = t->p4().M();
 	double Ekin = energy - mass;
-  
 
-  if (wasDetected) //only gamma treated now in the neutral category!  --Yutie
+	if(Ekin<0.01) wasDetected = false; // Remove gamma and neutron with Ekin<10 MeV (Wang rong) --Xionghong(2023.06.06)
+	//sampleing according to hist from Tian Ye --Xionghong(20230606)
+	double effi_n = h1_effi_n->GetBinContent(h1_effi_n->FindBin(Ekin));
+	if(lund==2112 && _rand->Rndm()>effi_n) wasDetected = false;
+  
+  result->setDetected(wasDetected);
+
+  if (wasDetected) 
   {
     result->setdE(dE(t));
     result->setdphi(dphi(t));
     result->setdtheta(dtheta(t));
     
-    
     double dep_energy = compdepE(energy, lund);
     double sig = dE(t)/energy * dep_energy;
     double meas_dep_energy;
 		if(lund == 2112) {
-			double meas_dep_energy = _rand->Gaus(Ekin/8., Ekin/8.);
-			while(meas_dep_energy<0) meas_dep_energy = _rand->Gaus(Ekin/8., Ekin/8.);
+			//meas_dep_energy = _rand->Gaus(Ekin/8., Ekin/8.);
+			//while(meas_dep_energy<0) meas_dep_energy = _rand->Gaus(Ekin/8., Ekin/8.);
+
+			//sampleing according to hist from Tian Ye --Xionghong(20230606)
+			TH1D *proj_e = h2_energy_n->ProjectionY("proj_e", h2_energy_n->GetXaxis()->FindBin(Ekin), h2_energy_n->GetXaxis()->FindBin(Ekin));
+			meas_dep_energy = proj_e->GetRandom();
 		}
 		else{
 			meas_dep_energy = _rand->Gaus(dep_energy, sig);
@@ -197,8 +212,8 @@ ChnsFsmEmcBarrel::detected(ChnsFsmTrack *t) const
 			if(lund == 2112) { // for Nuetron --Xionghong
 				double x0=1.265;  // cm
 				double nx0 = 12;
-				double ncl = 15.42; // cm, nuclear collision length
-				double escapeFraction = TMath::Exp(-x0*nx0/ncl);
+				double ncl = 25.4; // cm, nuclear collision length
+				double escapeFraction = -1; // TMath::Exp(-x0*nx0/ncl);
 			  return ( theta>=_thtMin && theta<=_thtMax && phi>=_phiMin && phi<=_phiMax && _rand->Rndm()<=_efficiency && _rand->Rndm()>=escapeFraction);	
 			}
 

@@ -111,7 +111,7 @@ ChnsFsmTpc::respond(ChnsFsmTrack *t)
     double p=t->p4().Vect().Mag();
     
     // overall resolution for the dEdx measurement
-    double dEdx = compdEdx(p,mass);
+    double dEdx = compdEdx(p,mass,t->charge());
     double sig = _dEdxRes*dEdx;
     
     double m_e  = _fdbPDG->GetParticle(11)->Mass();
@@ -119,6 +119,10 @@ ChnsFsmTpc::respond(ChnsFsmTrack *t)
     double m_pi = _fdbPDG->GetParticle(211)->Mass(); 
     double m_K  = _fdbPDG->GetParticle(321)->Mass();
     double m_p  = _fdbPDG->GetParticle(2212)->Mass();
+    double m_d  = _fdbPDG->GetParticle(1000010020)->Mass();
+    double m_t  = _fdbPDG->GetParticle(1000010030)->Mass();
+    double m_he3  = _fdbPDG->GetParticle(1000020030)->Mass();
+    double m_he4  = _fdbPDG->GetParticle(1000020040)->Mass();
 
     // compute the expected dEdx values for all particle types
     // we need these to determine the pdf's (gaussian around nominal dEdx with res sig)
@@ -128,6 +132,10 @@ ChnsFsmTpc::respond(ChnsFsmTrack *t)
     double dEdx_pi = compdEdx(p,m_pi);
     double dEdx_K  = compdEdx(p,m_K);
     double dEdx_p  = compdEdx(p,m_p);
+    double dEdx_d  = compdEdx(p,m_d);
+    double dEdx_t  = compdEdx(p,m_t);
+    double dEdx_he3  = compdEdx(p,m_he3,2);
+    double dEdx_he4  = compdEdx(p,m_he4,2);
     
     double measdEdx = _rand->Gaus(dEdx,sig);
 
@@ -138,8 +146,10 @@ ChnsFsmTpc::respond(ChnsFsmTrack *t)
     if (dEdx_pi) result->setLHPion( gauss(measdEdx,dEdx_pi,sig) );
     if (dEdx_K)  result->setLHKaon( gauss(measdEdx,dEdx_K,sig) );
     if (dEdx_p)  result->setLHProton(gauss(measdEdx,dEdx_p,sig) );
-
-
+    if (dEdx_d)  result->setLHDeuteron(gauss(measdEdx,dEdx_d,sig) );
+    if (dEdx_t)  result->setLHTriton(gauss(measdEdx,dEdx_t,sig) );
+    if (dEdx_he3)  result->setLHHe3(gauss(measdEdx,dEdx_he3,sig) );
+    if (dEdx_he4)  result->setLHHe4(gauss(measdEdx,dEdx_he4,sig) );
   }
   
 
@@ -154,16 +164,16 @@ ChnsFsmTpc::gauss(double x, double x0, double s)
 }
 
 double 
-ChnsFsmTpc::compdEdx(double p, double M)
+ChnsFsmTpc::compdEdx(double p, double M, double charge)
 {
   double dEdX;
   
   p*=1000;
   M*=1000;
   
-  const double Z=10;
-  const double A=20;
-  const double z=1;//charge of incident particle in unit of e
+  const double Z=14;
+  const double A=28;
+  double z=charge;//charge of incident particle in unit of e
 
   double beta;
   beta=p/sqrt(M*M+p*p);//CalculateBeta(KE,M);
@@ -212,12 +222,16 @@ ChnsFsmTpc::detected(ChnsFsmTrack *t) const
 	  double theta  = t->p4().Theta();
 	  double p_t    = t->p4().Vect().Pt();
 	  double charge=t->charge();
-	  
+
+    if (theta<_thtMin || theta>_thtMax) return false; 
     //only charged particles give signal 
 	  if (fabs(charge)<0.001) return false; 
      
     // due to track curvature particle doesn't reach barrel
-	  double rho = 3.3356 * p_t / _Bfield;
+	  double rho;
+		if(fabs(charge<2)) rho = 3.3356 * p_t/_Bfield;
+		else rho = 3.3356 * p_t/_Bfield/fabs(charge);
+
 	  if (_rmin>(2*rho)) return false; 
         
 		Double_t trackerRadius = 0.30; // tracker radius in meter
@@ -229,7 +243,7 @@ ChnsFsmTpc::detected(ChnsFsmTrack *t) const
     double z=2*rho*asin(lengthT/(2*rho))/tan(theta);    
     double polar=atan2(trackerRadius,z);
 
-    if (polar<_thtMin || polar>_thtMax) return false; 
+    //if (polar<_thtMin || polar>_thtMax) return false; 
     //finally check for efficiency;
 	  return ( _rand->Rndm()<=_efficiency);   	  
   }
@@ -258,25 +272,25 @@ ChnsFsmTpc::dp(ChnsFsmTrack *t) const
 	
 	double effradlen = length/300 + radiationLengthPerSiLayer*_n; // Air raidation length 300 m + 0.4% per Si layer
 
-
-	double theta0 = 13.6*charge/beta/mom/1000*sqrt(effradlen/2.)*(1+0.038*TMath::Log(effradlen));
+	double theta0 = 0.0136*fabs(charge)/beta/mom/fabs(charge)*sqrt(effradlen/2.)*(1+0.038*TMath::Log(effradlen/2.)); // mom = mom/charge
   
   double cont1 = pt*_sigXY/(0.3*_Bfield*lengthT*lengthT)*sqrt((4*180*_n*_n*_n)/((_n-1)*(_n+1)*(_n+2)*(_n+3)));  //hit error, modified by Xionghong at 12.21 2022 (according to Hao Qiu's study)
-  double cont2 = pt*theta0/sin(theta)/(0.3*_Bfield*lengthT/2);  //
+  double cont2 = pt*theta0/(0.3*_Bfield*length);  //
   double cont3 = _sigTht/tan(theta);
-  return ( sqrt(cont1*cont1 + cont2*cont2) * mom );
+  return ( sqrt(cont1*cont1 + cont2*cont2) * mom/fabs(charge) );
+	
 }
 
 double
 ChnsFsmTpc::dphi(ChnsFsmTrack *) const // t //[R.K.03/2017] unused variable(s)
 {
-  return 0.0007; //to be refined
+  return 0.01; //to be refined
 }
 
 double
 ChnsFsmTpc::dtheta(ChnsFsmTrack *) const // t //[R.K.03/2017] unused variable(s)
 {
-  return 0.0007; //to be refined
+  return 0.01; //to be refined
 }
 
 void
@@ -302,18 +316,18 @@ void
 ChnsFsmTpc::initParameters()
 {
   _detName         = FsmDetName::name(FsmDetEnum::Tpc);
-  _n = 6.0; // hit points
+  _n = 8.0; // hit points
   _sigXY = 50.0e-6;
   _Bfield = 0.8;  
   _Lpath = 0.27;
   _X0 = 0.003;
   _sigTht = 6.0e-4;	  
-  _thtMin          = 5;
+  _thtMin          = 10;
   _thtMax          = 100;
   _radiationLength = 0.0;
   _pmin            = 0.0;
   _rmin            = 0.05;
-  _dEdxRes         = 0.2; // 20% dEdx resolution
+  _dEdxRes         = 0.1; // 10% dEdx resolution
   _efficiency	   =1.0; 
 
 }

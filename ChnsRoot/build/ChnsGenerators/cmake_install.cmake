@@ -45,7 +45,16 @@ endif()
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES
     "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/Pythia6Generator.h"
+    "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/ChnsBoxGenerator.h"
     "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/ChnsEvtGenGenerator.h"
+    "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/ChnsPlutoGenerator.h"
+    "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/ChnsJamGenerator.h"
+    "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PDataBase.h"
+    "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PMesh.h"
+    "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PParticle.h"
+    "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PStaticData.h"
+    "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PStdData.h"
+    "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PValues.h"
     )
 endif()
 

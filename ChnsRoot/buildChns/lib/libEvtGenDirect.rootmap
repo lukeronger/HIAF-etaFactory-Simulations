@@ -1,4 +1,0 @@
-[ EvtGenDirect.so ]
-# List of selected classes
-class ChnsEvtGenDirect
-header ChnsEvtGenDirect.h

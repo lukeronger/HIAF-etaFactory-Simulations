@@ -114,6 +114,13 @@ void ChnsMCTrack::Print(Int_t trackId) const
 // -----   Public method GetMass   -----------------------------------------
 Double_t ChnsMCTrack::GetMass() const
 {
+	if (fPdgCode==1000010020) return 1.8761223;
+	if (fPdgCode==1000010030) return 2.809386;
+	if (fPdgCode==1000020030) return 2.80923;
+	if (fPdgCode==1000020040) return 3.727379;
+	if (fPdgCode==1010010030) return 2.9913;
+	if (fPdgCode==1010010040) return 3.92503;
+
     if (TDatabasePDG::Instance()) {
         TParticlePDG* particle = TDatabasePDG::Instance()->GetParticle(fPdgCode);
         if (particle) {

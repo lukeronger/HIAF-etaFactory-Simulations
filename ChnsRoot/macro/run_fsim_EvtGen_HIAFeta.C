@@ -14,7 +14,7 @@ int run_fsim_EvtGen_HIAFeta(int nevts=0, int seed_num = 2001)
   // Load this example libraries
   TString outfile;
   if (outfile=="") {
-	outfile="../../../HIAF-etaFactory-Simulations-localData/run_fsim_EvtGen_HIAFeta_"; //1.root";
+	outfile="run_fsim_EvtGen_HIAFeta_"; //1.root";
   	outfile+= seed_num;
 	outfile+=".root";
   }
@@ -99,7 +99,7 @@ int run_fsim_EvtGen_HIAFeta(int nevts=0, int seed_num = 2001)
   primGen->AddGenerator(boxGen4);
 */
   if(UseEvtGen){
-    FairEvtGenGenerator* evtGen = new FairEvtGenGenerator("../../../HIAF-etaFactory-Simulations-localData/pp_to_ppeta_PipPimPi0_1.8GeV_v2.root.evt");
+    FairEvtGenGenerator* evtGen = new FairEvtGenGenerator("/data2/rwang/githubs/HIAF-etaFactory-Simulations-localData/pp_to_ppeta_PipPimPi0_1.8GeV_v2.root.evt");
     primGen->AddGenerator(evtGen);
   }
   

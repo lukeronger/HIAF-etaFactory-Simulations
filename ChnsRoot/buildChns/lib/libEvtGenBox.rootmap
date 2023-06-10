@@ -1,4 +1,0 @@
-[ EvtGenBox.so ]
-# List of selected classes
-class ChnsEvtGenBox
-header ChnsEvtGenBox.h

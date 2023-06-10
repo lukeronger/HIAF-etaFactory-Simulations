@@ -77,7 +77,16 @@ include ChnsGenerators/CMakeFiles/ChnsGen.dir/progress.make
 include ChnsGenerators/CMakeFiles/ChnsGen.dir/flags.make
 
 ChnsGenerators/G__ChnsGenDict.cxx: ../ChnsGenerators/Pythia6Generator.h
+ChnsGenerators/G__ChnsGenDict.cxx: ../ChnsGenerators/ChnsBoxGenerator.h
 ChnsGenerators/G__ChnsGenDict.cxx: ../ChnsGenerators/ChnsEvtGenGenerator.h
+ChnsGenerators/G__ChnsGenDict.cxx: ../ChnsGenerators/ChnsPlutoGenerator.h
+ChnsGenerators/G__ChnsGenDict.cxx: ../ChnsGenerators/ChnsJamGenerator.h
+ChnsGenerators/G__ChnsGenDict.cxx: ../ChnsGenerators/PDataBase.h
+ChnsGenerators/G__ChnsGenDict.cxx: ../ChnsGenerators/PMesh.h
+ChnsGenerators/G__ChnsGenDict.cxx: ../ChnsGenerators/PParticle.h
+ChnsGenerators/G__ChnsGenDict.cxx: ../ChnsGenerators/PStaticData.h
+ChnsGenerators/G__ChnsGenDict.cxx: ../ChnsGenerators/PStdData.h
+ChnsGenerators/G__ChnsGenDict.cxx: ../ChnsGenerators/PValues.h
 ChnsGenerators/G__ChnsGenDict.cxx: ../ChnsGenerators/GenLinkDef.h
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating G__ChnsGenDict.cxx, G__ChnsGenDict_rdict.pcm, ../lib/libChnsGen.rootmap"
 	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && ./generate_dictionary_G__ChnsGenDict.sh
@@ -102,9 +111,22 @@ ChnsGenerators/CMakeFiles/ChnsGen.dir/Pythia6Generator.cxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ChnsGen.dir/Pythia6Generator.cxx.s"
 	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/Pythia6Generator.cxx -o CMakeFiles/ChnsGen.dir/Pythia6Generator.cxx.s
 
+ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsBoxGenerator.cxx.o: ChnsGenerators/CMakeFiles/ChnsGen.dir/flags.make
+ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsBoxGenerator.cxx.o: ../ChnsGenerators/ChnsBoxGenerator.cxx
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsBoxGenerator.cxx.o"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ChnsGen.dir/ChnsBoxGenerator.cxx.o -c /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/ChnsBoxGenerator.cxx
+
+ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsBoxGenerator.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ChnsGen.dir/ChnsBoxGenerator.cxx.i"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/ChnsBoxGenerator.cxx > CMakeFiles/ChnsGen.dir/ChnsBoxGenerator.cxx.i
+
+ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsBoxGenerator.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ChnsGen.dir/ChnsBoxGenerator.cxx.s"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/ChnsBoxGenerator.cxx -o CMakeFiles/ChnsGen.dir/ChnsBoxGenerator.cxx.s
+
 ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsEvtGenGenerator.cxx.o: ChnsGenerators/CMakeFiles/ChnsGen.dir/flags.make
 ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsEvtGenGenerator.cxx.o: ../ChnsGenerators/ChnsEvtGenGenerator.cxx
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsEvtGenGenerator.cxx.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsEvtGenGenerator.cxx.o"
 	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ChnsGen.dir/ChnsEvtGenGenerator.cxx.o -c /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/ChnsEvtGenGenerator.cxx
 
 ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsEvtGenGenerator.cxx.i: cmake_force
@@ -115,9 +137,113 @@ ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsEvtGenGenerator.cxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ChnsGen.dir/ChnsEvtGenGenerator.cxx.s"
 	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/ChnsEvtGenGenerator.cxx -o CMakeFiles/ChnsGen.dir/ChnsEvtGenGenerator.cxx.s
 
+ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsPlutoGenerator.cxx.o: ChnsGenerators/CMakeFiles/ChnsGen.dir/flags.make
+ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsPlutoGenerator.cxx.o: ../ChnsGenerators/ChnsPlutoGenerator.cxx
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsPlutoGenerator.cxx.o"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ChnsGen.dir/ChnsPlutoGenerator.cxx.o -c /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/ChnsPlutoGenerator.cxx
+
+ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsPlutoGenerator.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ChnsGen.dir/ChnsPlutoGenerator.cxx.i"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/ChnsPlutoGenerator.cxx > CMakeFiles/ChnsGen.dir/ChnsPlutoGenerator.cxx.i
+
+ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsPlutoGenerator.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ChnsGen.dir/ChnsPlutoGenerator.cxx.s"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/ChnsPlutoGenerator.cxx -o CMakeFiles/ChnsGen.dir/ChnsPlutoGenerator.cxx.s
+
+ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsJamGenerator.cxx.o: ChnsGenerators/CMakeFiles/ChnsGen.dir/flags.make
+ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsJamGenerator.cxx.o: ../ChnsGenerators/ChnsJamGenerator.cxx
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsJamGenerator.cxx.o"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ChnsGen.dir/ChnsJamGenerator.cxx.o -c /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/ChnsJamGenerator.cxx
+
+ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsJamGenerator.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ChnsGen.dir/ChnsJamGenerator.cxx.i"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/ChnsJamGenerator.cxx > CMakeFiles/ChnsGen.dir/ChnsJamGenerator.cxx.i
+
+ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsJamGenerator.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ChnsGen.dir/ChnsJamGenerator.cxx.s"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/ChnsJamGenerator.cxx -o CMakeFiles/ChnsGen.dir/ChnsJamGenerator.cxx.s
+
+ChnsGenerators/CMakeFiles/ChnsGen.dir/PDataBase.cxx.o: ChnsGenerators/CMakeFiles/ChnsGen.dir/flags.make
+ChnsGenerators/CMakeFiles/ChnsGen.dir/PDataBase.cxx.o: ../ChnsGenerators/PDataBase.cxx
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object ChnsGenerators/CMakeFiles/ChnsGen.dir/PDataBase.cxx.o"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ChnsGen.dir/PDataBase.cxx.o -c /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PDataBase.cxx
+
+ChnsGenerators/CMakeFiles/ChnsGen.dir/PDataBase.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ChnsGen.dir/PDataBase.cxx.i"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PDataBase.cxx > CMakeFiles/ChnsGen.dir/PDataBase.cxx.i
+
+ChnsGenerators/CMakeFiles/ChnsGen.dir/PDataBase.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ChnsGen.dir/PDataBase.cxx.s"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PDataBase.cxx -o CMakeFiles/ChnsGen.dir/PDataBase.cxx.s
+
+ChnsGenerators/CMakeFiles/ChnsGen.dir/PMesh.cxx.o: ChnsGenerators/CMakeFiles/ChnsGen.dir/flags.make
+ChnsGenerators/CMakeFiles/ChnsGen.dir/PMesh.cxx.o: ../ChnsGenerators/PMesh.cxx
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object ChnsGenerators/CMakeFiles/ChnsGen.dir/PMesh.cxx.o"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ChnsGen.dir/PMesh.cxx.o -c /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PMesh.cxx
+
+ChnsGenerators/CMakeFiles/ChnsGen.dir/PMesh.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ChnsGen.dir/PMesh.cxx.i"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PMesh.cxx > CMakeFiles/ChnsGen.dir/PMesh.cxx.i
+
+ChnsGenerators/CMakeFiles/ChnsGen.dir/PMesh.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ChnsGen.dir/PMesh.cxx.s"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PMesh.cxx -o CMakeFiles/ChnsGen.dir/PMesh.cxx.s
+
+ChnsGenerators/CMakeFiles/ChnsGen.dir/PParticle.cxx.o: ChnsGenerators/CMakeFiles/ChnsGen.dir/flags.make
+ChnsGenerators/CMakeFiles/ChnsGen.dir/PParticle.cxx.o: ../ChnsGenerators/PParticle.cxx
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object ChnsGenerators/CMakeFiles/ChnsGen.dir/PParticle.cxx.o"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ChnsGen.dir/PParticle.cxx.o -c /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PParticle.cxx
+
+ChnsGenerators/CMakeFiles/ChnsGen.dir/PParticle.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ChnsGen.dir/PParticle.cxx.i"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PParticle.cxx > CMakeFiles/ChnsGen.dir/PParticle.cxx.i
+
+ChnsGenerators/CMakeFiles/ChnsGen.dir/PParticle.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ChnsGen.dir/PParticle.cxx.s"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PParticle.cxx -o CMakeFiles/ChnsGen.dir/PParticle.cxx.s
+
+ChnsGenerators/CMakeFiles/ChnsGen.dir/PStaticData.cxx.o: ChnsGenerators/CMakeFiles/ChnsGen.dir/flags.make
+ChnsGenerators/CMakeFiles/ChnsGen.dir/PStaticData.cxx.o: ../ChnsGenerators/PStaticData.cxx
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object ChnsGenerators/CMakeFiles/ChnsGen.dir/PStaticData.cxx.o"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ChnsGen.dir/PStaticData.cxx.o -c /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PStaticData.cxx
+
+ChnsGenerators/CMakeFiles/ChnsGen.dir/PStaticData.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ChnsGen.dir/PStaticData.cxx.i"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PStaticData.cxx > CMakeFiles/ChnsGen.dir/PStaticData.cxx.i
+
+ChnsGenerators/CMakeFiles/ChnsGen.dir/PStaticData.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ChnsGen.dir/PStaticData.cxx.s"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PStaticData.cxx -o CMakeFiles/ChnsGen.dir/PStaticData.cxx.s
+
+ChnsGenerators/CMakeFiles/ChnsGen.dir/PStdData.cxx.o: ChnsGenerators/CMakeFiles/ChnsGen.dir/flags.make
+ChnsGenerators/CMakeFiles/ChnsGen.dir/PStdData.cxx.o: ../ChnsGenerators/PStdData.cxx
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object ChnsGenerators/CMakeFiles/ChnsGen.dir/PStdData.cxx.o"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ChnsGen.dir/PStdData.cxx.o -c /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PStdData.cxx
+
+ChnsGenerators/CMakeFiles/ChnsGen.dir/PStdData.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ChnsGen.dir/PStdData.cxx.i"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PStdData.cxx > CMakeFiles/ChnsGen.dir/PStdData.cxx.i
+
+ChnsGenerators/CMakeFiles/ChnsGen.dir/PStdData.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ChnsGen.dir/PStdData.cxx.s"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PStdData.cxx -o CMakeFiles/ChnsGen.dir/PStdData.cxx.s
+
+ChnsGenerators/CMakeFiles/ChnsGen.dir/PValues.cxx.o: ChnsGenerators/CMakeFiles/ChnsGen.dir/flags.make
+ChnsGenerators/CMakeFiles/ChnsGen.dir/PValues.cxx.o: ../ChnsGenerators/PValues.cxx
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object ChnsGenerators/CMakeFiles/ChnsGen.dir/PValues.cxx.o"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ChnsGen.dir/PValues.cxx.o -c /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PValues.cxx
+
+ChnsGenerators/CMakeFiles/ChnsGen.dir/PValues.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ChnsGen.dir/PValues.cxx.i"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PValues.cxx > CMakeFiles/ChnsGen.dir/PValues.cxx.i
+
+ChnsGenerators/CMakeFiles/ChnsGen.dir/PValues.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ChnsGen.dir/PValues.cxx.s"
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PValues.cxx -o CMakeFiles/ChnsGen.dir/PValues.cxx.s
+
 ChnsGenerators/CMakeFiles/ChnsGen.dir/G__ChnsGenDict.cxx.o: ChnsGenerators/CMakeFiles/ChnsGen.dir/flags.make
 ChnsGenerators/CMakeFiles/ChnsGen.dir/G__ChnsGenDict.cxx.o: ChnsGenerators/G__ChnsGenDict.cxx
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object ChnsGenerators/CMakeFiles/ChnsGen.dir/G__ChnsGenDict.cxx.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object ChnsGenerators/CMakeFiles/ChnsGen.dir/G__ChnsGenDict.cxx.o"
 	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Wno-old-style-cast -o CMakeFiles/ChnsGen.dir/G__ChnsGenDict.cxx.o -c /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators/G__ChnsGenDict.cxx
 
 ChnsGenerators/CMakeFiles/ChnsGen.dir/G__ChnsGenDict.cxx.i: cmake_force
@@ -131,14 +257,32 @@ ChnsGenerators/CMakeFiles/ChnsGen.dir/G__ChnsGenDict.cxx.s: cmake_force
 # Object files for target ChnsGen
 ChnsGen_OBJECTS = \
 "CMakeFiles/ChnsGen.dir/Pythia6Generator.cxx.o" \
+"CMakeFiles/ChnsGen.dir/ChnsBoxGenerator.cxx.o" \
 "CMakeFiles/ChnsGen.dir/ChnsEvtGenGenerator.cxx.o" \
+"CMakeFiles/ChnsGen.dir/ChnsPlutoGenerator.cxx.o" \
+"CMakeFiles/ChnsGen.dir/ChnsJamGenerator.cxx.o" \
+"CMakeFiles/ChnsGen.dir/PDataBase.cxx.o" \
+"CMakeFiles/ChnsGen.dir/PMesh.cxx.o" \
+"CMakeFiles/ChnsGen.dir/PParticle.cxx.o" \
+"CMakeFiles/ChnsGen.dir/PStaticData.cxx.o" \
+"CMakeFiles/ChnsGen.dir/PStdData.cxx.o" \
+"CMakeFiles/ChnsGen.dir/PValues.cxx.o" \
 "CMakeFiles/ChnsGen.dir/G__ChnsGenDict.cxx.o"
 
 # External object files for target ChnsGen
 ChnsGen_EXTERNAL_OBJECTS =
 
 lib/libChnsGen.so.0.0.0: ChnsGenerators/CMakeFiles/ChnsGen.dir/Pythia6Generator.cxx.o
+lib/libChnsGen.so.0.0.0: ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsBoxGenerator.cxx.o
 lib/libChnsGen.so.0.0.0: ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsEvtGenGenerator.cxx.o
+lib/libChnsGen.so.0.0.0: ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsPlutoGenerator.cxx.o
+lib/libChnsGen.so.0.0.0: ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsJamGenerator.cxx.o
+lib/libChnsGen.so.0.0.0: ChnsGenerators/CMakeFiles/ChnsGen.dir/PDataBase.cxx.o
+lib/libChnsGen.so.0.0.0: ChnsGenerators/CMakeFiles/ChnsGen.dir/PMesh.cxx.o
+lib/libChnsGen.so.0.0.0: ChnsGenerators/CMakeFiles/ChnsGen.dir/PParticle.cxx.o
+lib/libChnsGen.so.0.0.0: ChnsGenerators/CMakeFiles/ChnsGen.dir/PStaticData.cxx.o
+lib/libChnsGen.so.0.0.0: ChnsGenerators/CMakeFiles/ChnsGen.dir/PStdData.cxx.o
+lib/libChnsGen.so.0.0.0: ChnsGenerators/CMakeFiles/ChnsGen.dir/PValues.cxx.o
 lib/libChnsGen.so.0.0.0: ChnsGenerators/CMakeFiles/ChnsGen.dir/G__ChnsGenDict.cxx.o
 lib/libChnsGen.so.0.0.0: ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make
 lib/libChnsGen.so.0.0.0: lib/libChnsData.so.0.0.0
@@ -147,7 +291,7 @@ lib/libChnsGen.so.0.0.0: /home/eicc/software/FairSoft/install/lib/libEG.so
 lib/libChnsGen.so.0.0.0: /home/eicc/software/FairSoft/install/lib/libPhysics.so
 lib/libChnsGen.so.0.0.0: /home/eicc/software/FairSoft/install/lib/libCore.so
 lib/libChnsGen.so.0.0.0: ChnsGenerators/CMakeFiles/ChnsGen.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX shared library ../lib/libChnsGen.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX shared library ../lib/libChnsGen.so"
 	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ChnsGen.dir/link.txt --verbose=$(VERBOSE)
 	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators && $(CMAKE_COMMAND) -E cmake_symlink_library ../lib/libChnsGen.so.0.0.0 ../lib/libChnsGen.so.0.0 ../lib/libChnsGen.so
 

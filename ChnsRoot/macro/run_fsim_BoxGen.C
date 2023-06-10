@@ -60,10 +60,10 @@ int run_fsim_BoxGen(int nevts=0, int seed_num = 1000)
 
   FairBoxGenerator *boxGen0=new FairBoxGenerator();
   boxGen0->SetMultiplicity(mult);
-  boxGen0->SetPDGType(22);
+  boxGen0->SetPDGType(211);
   boxGen0->SetThetaRange(5,178);
   boxGen0->SetPhiRange(0, 360);
-  boxGen0->SetEkinRange(0.5, 0.5);
+  boxGen0->SetPRange(0.5, 0.5);
   primGen->AddGenerator(boxGen0);
 /*
   FairBoxGenerator *boxGen1=new FairBoxGenerator();
@@ -145,7 +145,7 @@ int run_fsim_BoxGen(int nevts=0, int seed_num = 1000)
  
   run->Init();
 
-  if (nevts==0) nevts=1000;
+  if (nevts==0) nevts=1;
   run->Run(nevts);		
   
   timer.Stop();

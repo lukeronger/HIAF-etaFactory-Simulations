@@ -201,6 +201,33 @@ ChnsGen/fast:
 	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/build
 .PHONY : ChnsGen/fast
 
+ChnsBoxGenerator.o: ChnsBoxGenerator.cxx.o
+
+.PHONY : ChnsBoxGenerator.o
+
+# target to build an object file
+ChnsBoxGenerator.cxx.o:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsBoxGenerator.cxx.o
+.PHONY : ChnsBoxGenerator.cxx.o
+
+ChnsBoxGenerator.i: ChnsBoxGenerator.cxx.i
+
+.PHONY : ChnsBoxGenerator.i
+
+# target to preprocess a source file
+ChnsBoxGenerator.cxx.i:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsBoxGenerator.cxx.i
+.PHONY : ChnsBoxGenerator.cxx.i
+
+ChnsBoxGenerator.s: ChnsBoxGenerator.cxx.s
+
+.PHONY : ChnsBoxGenerator.s
+
+# target to generate assembly for a file
+ChnsBoxGenerator.cxx.s:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsBoxGenerator.cxx.s
+.PHONY : ChnsBoxGenerator.cxx.s
+
 ChnsEvtGenGenerator.o: ChnsEvtGenGenerator.cxx.o
 
 .PHONY : ChnsEvtGenGenerator.o
@@ -228,6 +255,60 @@ ChnsEvtGenGenerator.cxx.s:
 	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsEvtGenGenerator.cxx.s
 .PHONY : ChnsEvtGenGenerator.cxx.s
 
+ChnsJamGenerator.o: ChnsJamGenerator.cxx.o
+
+.PHONY : ChnsJamGenerator.o
+
+# target to build an object file
+ChnsJamGenerator.cxx.o:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsJamGenerator.cxx.o
+.PHONY : ChnsJamGenerator.cxx.o
+
+ChnsJamGenerator.i: ChnsJamGenerator.cxx.i
+
+.PHONY : ChnsJamGenerator.i
+
+# target to preprocess a source file
+ChnsJamGenerator.cxx.i:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsJamGenerator.cxx.i
+.PHONY : ChnsJamGenerator.cxx.i
+
+ChnsJamGenerator.s: ChnsJamGenerator.cxx.s
+
+.PHONY : ChnsJamGenerator.s
+
+# target to generate assembly for a file
+ChnsJamGenerator.cxx.s:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsJamGenerator.cxx.s
+.PHONY : ChnsJamGenerator.cxx.s
+
+ChnsPlutoGenerator.o: ChnsPlutoGenerator.cxx.o
+
+.PHONY : ChnsPlutoGenerator.o
+
+# target to build an object file
+ChnsPlutoGenerator.cxx.o:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsPlutoGenerator.cxx.o
+.PHONY : ChnsPlutoGenerator.cxx.o
+
+ChnsPlutoGenerator.i: ChnsPlutoGenerator.cxx.i
+
+.PHONY : ChnsPlutoGenerator.i
+
+# target to preprocess a source file
+ChnsPlutoGenerator.cxx.i:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsPlutoGenerator.cxx.i
+.PHONY : ChnsPlutoGenerator.cxx.i
+
+ChnsPlutoGenerator.s: ChnsPlutoGenerator.cxx.s
+
+.PHONY : ChnsPlutoGenerator.s
+
+# target to generate assembly for a file
+ChnsPlutoGenerator.cxx.s:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsPlutoGenerator.cxx.s
+.PHONY : ChnsPlutoGenerator.cxx.s
+
 G__ChnsGenDict.o: G__ChnsGenDict.cxx.o
 
 .PHONY : G__ChnsGenDict.o
@@ -254,6 +335,168 @@ G__ChnsGenDict.s: G__ChnsGenDict.cxx.s
 G__ChnsGenDict.cxx.s:
 	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/G__ChnsGenDict.cxx.s
 .PHONY : G__ChnsGenDict.cxx.s
+
+PDataBase.o: PDataBase.cxx.o
+
+.PHONY : PDataBase.o
+
+# target to build an object file
+PDataBase.cxx.o:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/PDataBase.cxx.o
+.PHONY : PDataBase.cxx.o
+
+PDataBase.i: PDataBase.cxx.i
+
+.PHONY : PDataBase.i
+
+# target to preprocess a source file
+PDataBase.cxx.i:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/PDataBase.cxx.i
+.PHONY : PDataBase.cxx.i
+
+PDataBase.s: PDataBase.cxx.s
+
+.PHONY : PDataBase.s
+
+# target to generate assembly for a file
+PDataBase.cxx.s:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/PDataBase.cxx.s
+.PHONY : PDataBase.cxx.s
+
+PMesh.o: PMesh.cxx.o
+
+.PHONY : PMesh.o
+
+# target to build an object file
+PMesh.cxx.o:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/PMesh.cxx.o
+.PHONY : PMesh.cxx.o
+
+PMesh.i: PMesh.cxx.i
+
+.PHONY : PMesh.i
+
+# target to preprocess a source file
+PMesh.cxx.i:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/PMesh.cxx.i
+.PHONY : PMesh.cxx.i
+
+PMesh.s: PMesh.cxx.s
+
+.PHONY : PMesh.s
+
+# target to generate assembly for a file
+PMesh.cxx.s:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/PMesh.cxx.s
+.PHONY : PMesh.cxx.s
+
+PParticle.o: PParticle.cxx.o
+
+.PHONY : PParticle.o
+
+# target to build an object file
+PParticle.cxx.o:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/PParticle.cxx.o
+.PHONY : PParticle.cxx.o
+
+PParticle.i: PParticle.cxx.i
+
+.PHONY : PParticle.i
+
+# target to preprocess a source file
+PParticle.cxx.i:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/PParticle.cxx.i
+.PHONY : PParticle.cxx.i
+
+PParticle.s: PParticle.cxx.s
+
+.PHONY : PParticle.s
+
+# target to generate assembly for a file
+PParticle.cxx.s:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/PParticle.cxx.s
+.PHONY : PParticle.cxx.s
+
+PStaticData.o: PStaticData.cxx.o
+
+.PHONY : PStaticData.o
+
+# target to build an object file
+PStaticData.cxx.o:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/PStaticData.cxx.o
+.PHONY : PStaticData.cxx.o
+
+PStaticData.i: PStaticData.cxx.i
+
+.PHONY : PStaticData.i
+
+# target to preprocess a source file
+PStaticData.cxx.i:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/PStaticData.cxx.i
+.PHONY : PStaticData.cxx.i
+
+PStaticData.s: PStaticData.cxx.s
+
+.PHONY : PStaticData.s
+
+# target to generate assembly for a file
+PStaticData.cxx.s:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/PStaticData.cxx.s
+.PHONY : PStaticData.cxx.s
+
+PStdData.o: PStdData.cxx.o
+
+.PHONY : PStdData.o
+
+# target to build an object file
+PStdData.cxx.o:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/PStdData.cxx.o
+.PHONY : PStdData.cxx.o
+
+PStdData.i: PStdData.cxx.i
+
+.PHONY : PStdData.i
+
+# target to preprocess a source file
+PStdData.cxx.i:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/PStdData.cxx.i
+.PHONY : PStdData.cxx.i
+
+PStdData.s: PStdData.cxx.s
+
+.PHONY : PStdData.s
+
+# target to generate assembly for a file
+PStdData.cxx.s:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/PStdData.cxx.s
+.PHONY : PStdData.cxx.s
+
+PValues.o: PValues.cxx.o
+
+.PHONY : PValues.o
+
+# target to build an object file
+PValues.cxx.o:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/PValues.cxx.o
+.PHONY : PValues.cxx.o
+
+PValues.i: PValues.cxx.i
+
+.PHONY : PValues.i
+
+# target to preprocess a source file
+PValues.cxx.i:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/PValues.cxx.i
+.PHONY : PValues.cxx.i
+
+PValues.s: PValues.cxx.s
+
+.PHONY : PValues.s
+
+# target to generate assembly for a file
+PValues.cxx.s:
+	cd /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build && $(MAKE) $(MAKESILENT) -f ChnsGenerators/CMakeFiles/ChnsGen.dir/build.make ChnsGenerators/CMakeFiles/ChnsGen.dir/PValues.cxx.s
+.PHONY : PValues.cxx.s
 
 Pythia6Generator.o: Pythia6Generator.cxx.o
 
@@ -296,12 +539,39 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... ChnsGen"
+	@echo "... ChnsBoxGenerator.o"
+	@echo "... ChnsBoxGenerator.i"
+	@echo "... ChnsBoxGenerator.s"
 	@echo "... ChnsEvtGenGenerator.o"
 	@echo "... ChnsEvtGenGenerator.i"
 	@echo "... ChnsEvtGenGenerator.s"
+	@echo "... ChnsJamGenerator.o"
+	@echo "... ChnsJamGenerator.i"
+	@echo "... ChnsJamGenerator.s"
+	@echo "... ChnsPlutoGenerator.o"
+	@echo "... ChnsPlutoGenerator.i"
+	@echo "... ChnsPlutoGenerator.s"
 	@echo "... G__ChnsGenDict.o"
 	@echo "... G__ChnsGenDict.i"
 	@echo "... G__ChnsGenDict.s"
+	@echo "... PDataBase.o"
+	@echo "... PDataBase.i"
+	@echo "... PDataBase.s"
+	@echo "... PMesh.o"
+	@echo "... PMesh.i"
+	@echo "... PMesh.s"
+	@echo "... PParticle.o"
+	@echo "... PParticle.i"
+	@echo "... PParticle.s"
+	@echo "... PStaticData.o"
+	@echo "... PStaticData.i"
+	@echo "... PStaticData.s"
+	@echo "... PStdData.o"
+	@echo "... PStdData.i"
+	@echo "... PStdData.s"
+	@echo "... PValues.o"
+	@echo "... PValues.i"
+	@echo "... PValues.s"
 	@echo "... Pythia6Generator.o"
 	@echo "... Pythia6Generator.i"
 	@echo "... Pythia6Generator.s"

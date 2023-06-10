@@ -4,8 +4,17 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/ChnsBoxGenerator.cxx" "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsBoxGenerator.cxx.o"
   "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/ChnsEvtGenGenerator.cxx" "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsEvtGenGenerator.cxx.o"
+  "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/ChnsJamGenerator.cxx" "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsJamGenerator.cxx.o"
+  "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/ChnsPlutoGenerator.cxx" "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators/CMakeFiles/ChnsGen.dir/ChnsPlutoGenerator.cxx.o"
   "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators/G__ChnsGenDict.cxx" "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators/CMakeFiles/ChnsGen.dir/G__ChnsGenDict.cxx.o"
+  "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PDataBase.cxx" "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators/CMakeFiles/ChnsGen.dir/PDataBase.cxx.o"
+  "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PMesh.cxx" "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators/CMakeFiles/ChnsGen.dir/PMesh.cxx.o"
+  "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PParticle.cxx" "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators/CMakeFiles/ChnsGen.dir/PParticle.cxx.o"
+  "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PStaticData.cxx" "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators/CMakeFiles/ChnsGen.dir/PStaticData.cxx.o"
+  "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PStdData.cxx" "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators/CMakeFiles/ChnsGen.dir/PStdData.cxx.o"
+  "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/PValues.cxx" "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators/CMakeFiles/ChnsGen.dir/PValues.cxx.o"
   "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators/Pythia6Generator.cxx" "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/build/ChnsGenerators/CMakeFiles/ChnsGen.dir/Pythia6Generator.cxx.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
@@ -22,6 +31,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/eicc/FairRoot/build_18.4.2/include"
   "../ChnsGenerators"
   "../generators"
+  "../ChnsData"
+  "../gconfig"
   "/home/eicc/software/FairSoft/install/include/root"
   "/home/eicc/software/FairSoft/install/include"
   )

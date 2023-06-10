@@ -539,7 +539,7 @@ USE_PATH_INFO:BOOL=OFF
 VGM_DIR:PATH=/home/eicc/software/FairSoft/install/lib/VGM-4.8.0
 
 //Path to a library.
-VMC_LIB:FILEPATH=/data2/rwang/packages/root/lib/libVMC.so
+VMC_LIB:FILEPATH=VMC_LIB-NOTFOUND
 
 //Path to a file.
 X11_ICE_INCLUDE_PATH:PATH=/usr/include
@@ -677,7 +677,7 @@ X11_Xrender_INCLUDE_PATH:PATH=/usr/include
 X11_Xrender_LIB:FILEPATH=/usr/lib/x86_64-linux-gnu/libXrender.so
 
 //Path to a file.
-X11_Xshape_INCLUDE_PATH:PATH=/usr/include
+X11_Xshape_INCLUDE_PATH:PATH=/data/rwang/packages/root/build/include
 
 //Path to a file.
 X11_Xss_INCLUDE_PATH:PATH=X11_Xss_INCLUDE_PATH-NOTFOUND

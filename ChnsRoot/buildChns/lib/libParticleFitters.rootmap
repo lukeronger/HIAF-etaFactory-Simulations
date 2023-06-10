@@ -1,9 +1,0 @@
-[ ParticleFitters.so ]
-# List of selected typedefs and outer classes
-typedef Chns4CFitter
-typedef ChnsDecayTreeFitter
-typedef ChnsKinVtxFitter
-typedef ChnsKinFitter
-typedef ChnsVtxPoca
-typedef ChnsVtxPRG
-typedef ChnsKalmanVtxFitter

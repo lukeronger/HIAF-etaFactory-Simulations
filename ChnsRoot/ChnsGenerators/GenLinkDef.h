@@ -18,5 +18,14 @@
 
 #pragma link C++ class  Pythia6Generator+;
 //#pragma link C++ class  Pythia8Generator+;
+#pragma link C++ class  ChnsBoxGenerator+;
 #pragma link C++ class  ChnsEvtGenGenerator+;
+#pragma link C++ class  ChnsPlutoGenerator+;
+#pragma link C++ class  ChnsJamGenerator+;
+#pragma link C++ class  PParticle+;
+#pragma link C++ class  PDataBase+;
+#pragma link C++ class  PMesh+;
+#pragma link C++ class  PStaticData+;
+#pragma link C++ class  PStdData+;
+#pragma link C++ class  PValues+;
 #endif

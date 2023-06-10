@@ -105,7 +105,7 @@ ChnsFsmTof::respond(ChnsFsmTrack *t)
     double theta = t->p4().Theta();
     double p=t->p4().Vect().Mag();
     double stht=sin(theta);
-    double p_t=p*stht;
+    double p_t=p*stht/fabs(t->charge());
     double En=t->p4().E();
     double sigp=_dp*p;       
     double dt=_dt  * 1e-12 * 2.998*(1e+8); // time resolution of tof
@@ -113,7 +113,7 @@ ChnsFsmTof::respond(ChnsFsmTrack *t)
     if ( p==0 || p_t==0 || En==0 ) {result->setDetected(false);return result;} // floating point check ********************
   
     // curvature of track due to magnet field
-    double rho = 3.3356 * p_t / _Bfield;
+    double rho = 3.3356 * p_t/fabs(t->charge()) / _Bfield;
 		double lengthTStraight = _rBarrel;
 		if(theta<atan2(_rBarrel, _lBarrel))
 				lengthTStraight = _rBarrel*tan(theta);
@@ -129,7 +129,7 @@ ChnsFsmTof::respond(ChnsFsmTrack *t)
 		double oneOverBeta = meastime/length;
 		double measbeta = length/meastime;
 		
-		double measp = _rand->Gaus(p,sigp);
+		double measp = _rand->Gaus(p/fabs(t->charge()),sigp);
 		double measmas2 = measp*measp*(1/measbeta/measbeta-1);
 
 		double m_e  = _fdbPDG->GetParticle(11)->Mass();
@@ -152,11 +152,11 @@ ChnsFsmTof::respond(ChnsFsmTrack *t)
 		result->setbeta(measbeta);
 		result->setm2(measmas2,dm2);
 
-		result->setLHElectron( gauss_t(measmas,m_e,sig_e) );
-		result->setLHMuon( gauss_t(measmas,m_mu,sig_mu) );
-		result->setLHPion( gauss_t(measmas,m_pi,sig_pi) );;
-		result->setLHKaon ( gauss_t(measmas,m_K,sig_K) ); 
-		result->setLHProton( gauss_t(measmas,m_p,sig_p) );
+		//result->setLHElectron( gauss_t(measmas,m_e,sig_e) );
+		//result->setLHMuon( gauss_t(measmas,m_mu,sig_mu) );
+		//result->setLHPion( gauss_t(measmas,m_pi,sig_pi) );;
+		//result->setLHKaon ( gauss_t(measmas,m_K,sig_K) ); 
+		//result->setLHProton( gauss_t(measmas,m_p,sig_p) );
  }  
   return result;
 }
@@ -182,15 +182,19 @@ ChnsFsmTof::detected(ChnsFsmTrack *t) const
     double p_t    = t->p4().Vect().Pt();
     double charge=t->charge();
      
-    //only charged particles give signal 
+    if (theta<_thtMin || theta>_thtMax) return false; 
+    
+		//only charged particles give signal 
     if (fabs(charge)<0.001) return false; 
      
     //particle doesn't produce cherenkov light
     //if (!(lundId==11 || lundId==13 || lundId==211 || lundId==321 || lundId==2212)) return false;
     
     // due to helix trajectory particle reach ToF
-    double rho = 3.3356 * p_t / _Bfield;
-    if (_rBarrel<(2*rho) && theta>atan2(_rBarrel, _lBarrel)) return false; 
+    double rho;
+		if(fabs(charge)<2) rho= 3.3356 * p_t/ _Bfield;
+		else rho= 3.3356 * p_t/_Bfield/fabs(charge);
+    if (_rBarrel>(2*rho)) return false; 
 
 		double lengthTStraight = _rBarrel;
 		if(theta<atan2(_rBarrel, _lBarrel))
@@ -198,7 +202,7 @@ ChnsFsmTof::detected(ChnsFsmTrack *t) const
     double z=2*rho*asin(lengthTStraight/(2*rho))/tan(theta);    
     double polar=atan2(_rBarrel,z);
 
-    if (polar<_thtMin || polar>_thtMax) return false; 
+    //if (polar<_thtMin || polar>_thtMax) return false; 
    
     //finally check for efficiency;
     return ( _rand->Rndm()<=_efficiency); 
@@ -232,7 +236,7 @@ ChnsFsmTof::initParameters()
   _radiationLength = 0.0;
   _Bfield = 0.8;               
   _rBarrel = 0.3;             
-  _lBarrel = 0.9;             
+  _lBarrel = 1.0;             
   _dSlab = 0.01;               
   _dp=0.05;                  //5 % is resolution of Tpc
   _dt=30;                   //time res in ps

@@ -79,6 +79,10 @@ ChnsFsmResponse::ChnsFsmResponse()
   setLHPion(0.0);
   setLHKaon(0.0);
   setLHProton(0.0);
+  setLHDeuteron(0.0);
+  setLHTriton(0.0);
+  setLHHe3(0.0);
+  setLHHe4(0.0);
 }
 
 //--------------
@@ -232,6 +236,30 @@ ChnsFsmResponse::setLHProton(double val)
   _LHProton=val;
 }
 
+void
+ChnsFsmResponse::setLHDeuteron(double val)
+{
+  _LHDeuteron=val;
+}
+
+void
+ChnsFsmResponse::setLHTriton(double val)
+{
+  _LHTriton=val;
+}
+
+void
+ChnsFsmResponse::setLHHe3(double val)
+{
+  _LHHe3=val;
+}
+
+void
+ChnsFsmResponse::setLHHe4(double val)
+{
+  _LHHe4=val;
+}
+
 void 
 ChnsFsmResponse::setdV(TVector3 v)
 {
@@ -280,4 +308,8 @@ void ChnsFsmResponse::print(ostream &o)
   o<<"LH_pi = "<< _LHPion<<" / ";
   o<<"LH_K = "<< _LHKaon<<" / ";
   o<<"LH_p = "<<_LHProton <<endl; 
+  o<<"LH_d = "<<_LHDeuteron <<endl; 
+  o<<"LH_t = "<<_LHTriton <<endl; 
+  o<<"LH_he3 = "<<_LHHe3 <<endl; 
+  o<<"LH_he4 = "<<_LHHe4 <<endl; 
 }

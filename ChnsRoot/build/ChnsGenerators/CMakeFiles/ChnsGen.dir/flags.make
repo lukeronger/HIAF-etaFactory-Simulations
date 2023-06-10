@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DChnsGen_EXPORTS -DHAS_SHAREDPOINTER
 
-CXX_INCLUDES = -I/home/eicc/software/FairSoft/install/lib/CLHEP-2.4.1.3/../../include -I/home/eicc/FairRoot/build_18.4.2/include -I/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators -I/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/generators -isystem /home/eicc/software/FairSoft/install/include/root -isystem /home/eicc/software/FairSoft/install/include
+CXX_INCLUDES = -I/home/eicc/software/FairSoft/install/lib/CLHEP-2.4.1.3/../../include -I/home/eicc/FairRoot/build_18.4.2/include -I/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsGenerators -I/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/generators -I/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/ChnsData -I/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot/gconfig -isystem /home/eicc/software/FairSoft/install/include/root -isystem /home/eicc/software/FairSoft/install/include
 
 CXX_FLAGS =  -std=c++14 -g -Wshadow  -fPIC
 

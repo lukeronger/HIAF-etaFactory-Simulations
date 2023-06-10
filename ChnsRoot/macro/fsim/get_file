@@ -1,0 +1,6 @@
+go to rootfiles directory
+ls -1 |awk '{print i$0}' i=`pwd`'/' > file.list
+ls | sort -k1.1n |awk '{print i$0}' i=`pwd`'/' > file.list
+REMOVE the file.list from rootfiles directory and file.list itself at the
+last line.
+

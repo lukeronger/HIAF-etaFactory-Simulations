@@ -69,7 +69,7 @@ private:
   double dphi(ChnsFsmTrack *t) const;
   double dtheta(ChnsFsmTrack *t) const;
    
-  double compdEdx(double p, double M);
+  double compdEdx(double p, double M, double charge=1.);
   double gauss(double x, double x0, double s);
 
   void   initParameters();
