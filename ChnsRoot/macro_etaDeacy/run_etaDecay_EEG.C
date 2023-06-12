@@ -3,7 +3,7 @@
 */
 
 
-int run_etaDecay_EEG(int nevts=10000000, int seed_num = 2023)
+int run_etaDecay_EEG(int nevts=1000000, int seed_num = 2023)
 {
   TString input_file = "../../../HIAF-etaFactory-Simulations-localData/pluto6-data/pp_to_ppeta_DileptonGamma_1.8GeV_Random2023.root.evt"; 
 
