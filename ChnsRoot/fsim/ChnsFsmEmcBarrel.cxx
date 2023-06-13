@@ -213,7 +213,7 @@ ChnsFsmEmcBarrel::detected(ChnsFsmTrack *t) const
 				double x0=1.265;  // cm
 				double nx0 = 12;
 				double ncl = 25.4; // cm, nuclear collision length
-				double escapeFraction = -1; // TMath::Exp(-x0*nx0/ncl);
+				double escapeFraction = -1.; /// TMath::Exp(-x0*nx0/ncl);
 			  return ( theta>=_thtMin && theta<=_thtMax && phi>=_phiMin && phi<=_phiMax && _rand->Rndm()<=_efficiency && _rand->Rndm()>=escapeFraction);	
 			}
 

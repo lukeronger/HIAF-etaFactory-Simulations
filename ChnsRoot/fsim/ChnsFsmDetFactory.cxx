@@ -103,7 +103,7 @@ ChnsFsmDetFactory::create(std::string &name,ArgList &par)
   if (tname.BeginsWith("EmcBarrel")){
     ChnsFsmAbsDet* aDet = (ChnsFsmAbsDet*)(new ChnsFsmEmcBarrel(par));
     aDet->setName(name);
-    aDet->setStorePid();
+    //aDet->setStorePid();
     return aDet;
   } else
   if (tname=="EmcFwCap"){
@@ -121,7 +121,7 @@ ChnsFsmDetFactory::create(std::string &name,ArgList &par)
   if (tname=="EmcFS"){
     ChnsFsmAbsDet* aDet = (ChnsFsmAbsDet*)(new ChnsFsmEmcFS(par));
     aDet->setName(name);
-    aDet->setStorePid();
+    //aDet->setStorePid();
     return aDet;
   } else
   if (tname=="Stt"){
@@ -178,19 +178,19 @@ ChnsFsmDetFactory::create(std::string &name,ArgList &par)
   if (tname=="Tof"){
     ChnsFsmAbsDet* aDet = (ChnsFsmAbsDet*)(new ChnsFsmTof(par));
     aDet->setName(name);
-    aDet->setStorePid();
+    //aDet->setStorePid();
     return aDet;
   } else
   if (tname=="TofBwCap"){
     ChnsFsmAbsDet* aDet = (ChnsFsmAbsDet*)(new ChnsFsmTofBwCap(par));
     aDet->setName(name);
-    aDet->setStorePid();
+    //aDet->setStorePid();
     return aDet;
   } else
   if (tname=="TofFwCap"){
     ChnsFsmAbsDet* aDet = (ChnsFsmAbsDet*)(new ChnsFsmTofFwCap(par));
     aDet->setName(name);
-    aDet->setStorePid();
+    //aDet->setStorePid();
     return aDet;
   }
   if (tname=="GemBwCap"){
@@ -227,7 +227,7 @@ ChnsFsmDetFactory::create(std::string &name,ArgList &par)
   if (tname.BeginsWith("ScEmcPidBarrel") || tname=="ScEmcPidFwCap" || tname=="ScEmcPidBwCap" || tname=="ScEmcPidFS"){
     ChnsFsmAbsDet* aDet = (ChnsFsmAbsDet*)(new ChnsFsmEmcPid(par) );
 	aDet->setName(name);
-    aDet->setStorePid();
+    //aDet->setStorePid();
 	return aDet;
   } else
   if (tname=="SttPid"){
@@ -266,7 +266,7 @@ ChnsFsmDetFactory::create(std::string &name,ArgList &par)
   if (tname=="IdealPid") {
     ChnsFsmAbsDet* aDet = (ChnsFsmAbsDet*)(new ChnsFsmIdealPid(par));
     aDet->setName(name);
-    aDet->setStorePid();
+    //aDet->setStorePid();
     return aDet;
   }
   if (tname=="CmpDet") {

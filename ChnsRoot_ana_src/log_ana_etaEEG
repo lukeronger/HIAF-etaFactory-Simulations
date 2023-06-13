@@ -2,12 +2,12 @@
 Processing ana_etaDecay_EEG.C...
   10000000 total input events
 Efficiency: 
-10000000 7.71656e+06 0.771656
-10000000 7.7155e+06 0.77155
+10000000 6.37092e+06 0.637092
+10000000 6.37014e+06 0.637015
 
 
- positron pid effi.: 0.977038   =9258752/9476346
- electron pid effi.: 0.977039   =9258755/9476346
- gamma Ecut effi.: 0.999868   =8507326/8508445
- gamma Ecut effi. (v2): 0.999862   =7715496/7716562
- total effi.: 0.77155   =7715496/10000000
+ positron pid effi.: 0.978152   =7577534/7746782
+ electron pid effi.: 0.978163   =7577614/7746782
+ gamma Ecut effi.: 0.999867   =8507314/8508445
+ gamma Ecut effi. (v2): 0.999879   =6370145/6370917
+ total effi.: 0.637015   =6370145/10000000

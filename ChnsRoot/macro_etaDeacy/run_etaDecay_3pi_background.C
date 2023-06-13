@@ -3,7 +3,7 @@
 */
 
 
-int run_etaDecay_3pi_background(int nevts=2400000, int seed_num = 2023)
+int run_etaDecay_3pi_background(int nevts=6440000, int seed_num = 2023)
 {
   TString input_file = "/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/GiBUU-data/evt-data/GiBUU_final_states.evt";
 

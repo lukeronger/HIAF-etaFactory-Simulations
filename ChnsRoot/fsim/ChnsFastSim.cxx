@@ -933,6 +933,7 @@ void ChnsFastSim::Exec(Option_t*)
 
           //pidCand->SetTpcDEdxErr( ft->detResponse()->TpcdEdxErr() );
 					pidCand->SetTofBeta( ft->detResponse()->beta());
+					cout << " <<<<< fast sim " << ft->detResponse()->beta() << endl;
           pidCand->SetTofM2( ft->detResponse()->m2() );
           //pidCand->SetTofM2Err( ft->detResponse()->m2Err() );
           pidCand->SetDrcThetaC( ft->detResponse()->DrcBarrelThtc() );
@@ -1022,7 +1023,7 @@ bool ChnsFastSim::smearTrack(ChnsFsmTrack *t, int chcandsize )
     ChnsFsmResponse *resp=*riter;
     if (!resp) continue;
 
-    if(success && fabs(t->charge())>1e-6&&resp->detector()->doesPid())
+    if(success && fabs(t->charge())>1e-6 && resp->detector()->doesPid())
     { //save PID information only if particle is stored
       TString detname = resp->detector()->detName();
       TClonesArray* myPidarray = fPidArrayList[detname];
@@ -1041,7 +1042,8 @@ bool ChnsFastSim::smearTrack(ChnsFsmTrack *t, int chcandsize )
         double rawLHhe4  = resp->LHHe4();
 
         double sumRaw = rawLHe+rawLHmu+rawLHpi+rawLHK+rawLHp+rawLHd+rawLHt+rawLHhe3+rawLHhe4;
-        if (sumRaw!=0.)
+				
+        if (sumRaw>0.)
         {
           pidProb->SetElectronPdf(rawLHe/sumRaw);
           pidProb->SetMuonPdf(rawLHmu/sumRaw);
@@ -1053,15 +1055,15 @@ bool ChnsFastSim::smearTrack(ChnsFsmTrack *t, int chcandsize )
           pidProb->SetHe3Pdf(rawLHhe3/sumRaw);
           pidProb->SetHe4Pdf(rawLHhe4/sumRaw);
         } else {
-          pidProb->SetElectronPdf(0.2);
-          pidProb->SetMuonPdf(0.2);
-          pidProb->SetPionPdf(0.2);
-          pidProb->SetKaonPdf(0.2);
-          pidProb->SetProtonPdf(0.2);
-          pidProb->SetDeuteronPdf(0.2);
-          pidProb->SetTritonPdf(0.2);
-          pidProb->SetHe3Pdf(0.2);
-          pidProb->SetHe4Pdf(0.2);
+          pidProb->SetElectronPdf(0.0001);
+          pidProb->SetMuonPdf(0.0001);
+          pidProb->SetPionPdf(0.0001);
+          pidProb->SetKaonPdf(0.0001);
+          pidProb->SetProtonPdf(0.0001);
+          pidProb->SetDeuteronPdf(0.0001);
+          pidProb->SetTritonPdf(0.0001);
+          pidProb->SetHe3Pdf(0.0001);
+          pidProb->SetHe4Pdf(0.0001);
         }
       }
 
@@ -1364,6 +1366,7 @@ ChnsFastSim::sumResponse(FsmResponseList respList)
   double dm=0.0;
 
   double m2=0;
+  double tofbeta=0.;
   double MvddEdx=0;
   double MvdDCA=0; //DCA in track level; yutie 0328
   double TpcdEdx=0;
@@ -1386,15 +1389,15 @@ ChnsFastSim::sumResponse(FsmResponseList respList)
   double dVy=0.0;
   double dVz=0.0;
 
-  double LH_e=1.0;
-  double LH_mu=1.0;
-  double LH_pi=1.0;
-  double LH_K=1.0;
-  double LH_p=1.0;
-  double LH_d=1.0;
-  double LH_t=1.0;
-  double LH_he3=1.0;
-  double LH_he4=1.0;
+  double LH_e=0.0;
+  double LH_mu=0.0;
+  double LH_pi=0.0;
+  double LH_K=0.0;
+  double LH_p=0.0;
+  double LH_d=0.0;
+  double LH_t=0.0;
+  double LH_he3=0.0;
+  double LH_he4=0.0;
 
   double LH_e_Emc = 0.0;
   double LH_mu_Emc = 0.0;
@@ -1437,6 +1440,7 @@ ChnsFastSim::sumResponse(FsmResponseList respList)
       if (fabs(val = resp->dt()) > 1e-8)     dt += val*val;
       if (fabs(val = resp->dm()) > 1e-8)     dm =val;
       if (fabs (val = resp->m2()) > 1e-11)    m2=val;
+      if (fabs (val = resp->beta()) > 1e-11)    tofbeta=val;
       if (fabs (val = resp->MvddEdx()) > 1e-11)    MvddEdx=val;
       if (fabs (val = resp->MvdDCA()) > 1e-11)    MvdDCA=val;      //DCA in track level; yutie 0328
       if (fabs (val = resp->TpcdEdx()) > 1e-11)    TpcdEdx=val;
@@ -1471,11 +1475,11 @@ ChnsFastSim::sumResponse(FsmResponseList respList)
 
       double sumRaw = rawLHe+rawLHmu+rawLHpi+rawLHK+rawLHp+rawLHd+rawLHt+rawLHhe3+rawLHhe4;
 
-      //cout<<"ChnsFastSim  sumResponse  LHemupikp: "<<rawLHe<<" "<<rawLHmu<<" "<<rawLHpi<<" "<<rawLHK<<" "<<rawLHp<<"  sum: "<<sumRaw<<"    "<<resp->detector()->detName()<<endl;
+      //cout<<"ChnsFastSim  sumResponse  LHemupikp: "<<rawLHe<<" "<<rawLHmu<<" "<<rawLHpi<<" "<<rawLHK<<" "<<rawLHp<< " " << rawLHhe3 <<"  sum: "<<sumRaw<<"    "<<resp->detector()->detName()<<endl;
 
 
       //New strategy:  deal with Emc and others separatly!
-
+/*
       if(resp->detector()->detName() == "EmcBarrel" || 
 	resp->detector()->detName() == "EmcBwCap"   ||
 	resp->detector()->detName() == "EmcFwCap"   ||
@@ -1492,53 +1496,57 @@ ChnsFastSim::sumResponse(FsmResponseList respList)
                 LH_pi_Others += rawLHpi;
                 LH_K_Others  += rawLHK;
                 LH_p_Others  += rawLHp;
-	}
+	}*/
 
 
+      if (sumRaw>0 && resp->detector()->doesPid()) {
 
+//
+//        rawLHe  /= sumRaw;
+//        rawLHmu /= sumRaw;
+//        rawLHpi /= sumRaw;
+//        rawLHK  /= sumRaw;
+//        rawLHp  /= sumRaw;
+//
+//	//weight it  --Yutie  11.29.2018
+//	if(rawLHe < 0.001) rawLHe = 0.001;
+//	if(rawLHmu < 0.001) rawLHmu = 0.001;
+//	if(rawLHpi < 0.001) rawLHpi = 0.001;
+//	if(rawLHK < 0.001) rawLHK = 0.001;
+//	if(rawLHp < 0.001) rawLHp = 0.001;
 
+        LH_e  = rawLHe;
+        LH_mu = rawLHmu;
+        LH_pi = rawLHpi;
+        LH_K  = rawLHK;
+        LH_p  = rawLHp;
+        LH_d  = rawLHd;
+        LH_t  = rawLHt;
+        LH_he3  = rawLHhe3;
+        LH_he4  = rawLHhe4;
 
+//        LH_e  += rawLHe;
+//        LH_mu += rawLHmu;
+//        LH_pi += rawLHpi;
+//        LH_K  += rawLHK;
+//        LH_p  += rawLHp;
 
-      if (sumRaw>0) {
-
-/*
-        rawLHe  /= sumRaw;
-        rawLHmu /= sumRaw;
-        rawLHpi /= sumRaw;
-        rawLHK  /= sumRaw;
-        rawLHp  /= sumRaw;
-
-	//weight it  --Yutie  11.29.2018
-	if(rawLHe < 0.001) rawLHe = 0.001;
-	if(rawLHmu < 0.001) rawLHmu = 0.001;
-	if(rawLHpi < 0.001) rawLHpi = 0.001;
-	if(rawLHK < 0.001) rawLHK = 0.001;
-	if(rawLHp < 0.001) rawLHp = 0.001;
-
-        LH_e  *= rawLHe;
-        LH_mu *= rawLHmu;
-        LH_pi *= rawLHpi;
-        LH_K  *= rawLHK;
-        LH_p  *= rawLHp;
-
-        LH_e  += rawLHe;
-        LH_mu += rawLHmu;
-        LH_pi += rawLHpi;
-        LH_K  += rawLHK;
-        LH_p  += rawLHp;
-
-      } else {
-        LH_e  *= 0.2;
-        LH_mu *= 0.2;
-        LH_pi *= 0.2;
-        LH_K  *= 0.2;
-        LH_p  *= 0.2;
-*/
+      } 
+/*			else {
+        LH_e  *= 0.00001;
+        LH_mu *= 0.00001;
+        LH_pi *= 0.00001;
+        LH_K  *= 0.00001;
+        LH_p  *= 0.00001;
+        LH_d  *= 0.00001;
+        LH_t  *= 0.00001;
+        LH_he3  *= 0.00001;
+        LH_he4  *= 0.00001;
       }
 
       //here a weighted Likelihood evaluation has to be done
 
-      /*
+      
       if (val = rawLHe)  LH_e  == 0.0 ? LH_e  = val : LH_e  *= val;
       if (val = rawLHmu) LH_mu == 0.0 ? LH_mu = val : LH_mu *= val;
       if (val = rawLHpi) LH_pi == 0.0 ? LH_pi = val : LH_pi *= val;
@@ -1601,6 +1609,7 @@ ChnsFastSim::sumResponse(FsmResponseList respList)
   allResponse->setdm(dm);
 
   allResponse->setm2(m2, m2Err);
+  allResponse->setbeta(tofbeta);
   allResponse->setMvddEdx(MvddEdx,MvddEdxErr);
   allResponse->setMvdDCA(MvdDCA);//DCA in track level; yutie 0328
   allResponse->setTpcdEdx(TpcdEdx,TpcdEdxErr);

@@ -76,12 +76,12 @@ void ana_etaDecay_3pi_background_with_neutron()
 
 
 
-			if(pdg==211 && iCand1_prob->GetPionPidProb()>0.004 && iCand1->GetCharge()>0) {
+			if(pdg==211 && iCand1_prob->GetPionPidProb()>0.1 && iCand1->GetCharge()>0) {
 //				cout<<"pi+ find,    ";
 				TLorentzVector pip = iCand1->GetLorentzVector();
 				eta_pip.push_back(pip);
 			}
-			else if(pdg==-211 && iCand1_prob->GetPionPidProb()>0.004 && iCand1->GetCharge()<0) {
+			else if(pdg==-211 && iCand1_prob->GetPionPidProb()>0.1 && iCand1->GetCharge()<0) {
 //				cout<<"pi- find,    ";
 				TLorentzVector pim = iCand1->GetLorentzVector();
 				eta_pim.push_back(pim);

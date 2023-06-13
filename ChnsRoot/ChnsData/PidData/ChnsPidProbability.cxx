@@ -12,15 +12,15 @@
 
 
 ChnsPidProbability::ChnsPidProbability() :
-  fElectronPdf(0.2),
-  fMuonPdf(0.2),
-  fPionPdf(0.2),
-  fKaonPdf(0.2),
-  fProtonPdf(0.2),
-  fDeuteronPdf(0.2),
-  fTritonPdf(0.2),
-  fHe3Pdf(0.2),
-  fHe4Pdf(0.2),
+  fElectronPdf(0.0),
+  fMuonPdf(0.0),
+  fPionPdf(0.0),
+  fKaonPdf(0.0),
+  fProtonPdf(0.0),
+  fDeuteronPdf(0.0),
+  fTritonPdf(0.0),
+  fHe3Pdf(0.0),
+  fHe4Pdf(0.0),
   fIndex(-1)
 {}
 
@@ -83,15 +83,15 @@ void ChnsPidProbability::Print()
 
 void ChnsPidProbability::Reset()
 {
-  fElectronPdf = 0.2 ;
-  fMuonPdf = 0.2 ;
-  fPionPdf = 0.2 ;
-  fKaonPdf = 0.2 ;
-  fProtonPdf = 0.2 ;
-  fDeuteronPdf = 0.2 ;
-  fTritonPdf = 0.2 ;
-  fHe3Pdf = 0.2 ;
-  fHe4Pdf = 0.2 ;
+  fElectronPdf = 0.0 ;
+  fMuonPdf = 0.0 ;
+  fPionPdf = 0.0 ;
+  fKaonPdf = 0.0 ;
+  fProtonPdf = 0.0 ;
+  fDeuteronPdf = 0.0 ;
+  fTritonPdf = 0.0 ;
+  fHe3Pdf = 0.0 ;
+  fHe4Pdf = 0.0 ;
   fIndex = -1;
 }
 

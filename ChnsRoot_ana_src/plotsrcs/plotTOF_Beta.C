@@ -8,22 +8,22 @@
 	chain->AddFile("/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/ChnsRoot-data/run_fsim_EvtGen_HIAFeta_EEG_1.8GeV_2023.root");
 	//TFile file("/data2/rwang/githubs/HIAF-etaFactory-Simulations-localData/ChnsRoot-data/run_fsim_EvtGen_HIAFeta_1.8GeV_2023.root");
 	//chain->Draw("1.0 / PidChargedCand.fTofBeta : sqrt(pow(PidChargedCand.fEnergy,2) - 0.139*0.139) >>hpip(200,0,1, 200,0,1) ","","");
-	chain->Draw("1.0 / PidChargedCand.fTofBeta >> hpip","","");
+	chain->Draw(" PidChargedCand.fTofBeta : sqrt(pow(PidChargedCand.fEnergy,2) - 0.139*0.139) >> hpip(100,0,1,100,0,1.2)","","");
 	hpip->Draw("col");
 	hpip->SetTitle("");
-	hpip->GetXaxis()->SetTitle("m^{2} / GeV^{2}c^{-4}");
+	hpip->GetXaxis()->SetTitle("P / GeV/c");
 	hpip->GetXaxis()->SetTitleSize(0.06);
 	hpip->GetXaxis()->CenterTitle();
 	hpip->GetXaxis()->SetTitleOffset(1.05);
 	hpip->GetXaxis()->SetLabelSize(0.06);
-	hpip->GetYaxis()->SetTitle("Counts");
+	hpip->GetYaxis()->SetTitle("#beta");
 	hpip->GetYaxis()->SetTitleSize(0.06);
 	hpip->GetYaxis()->CenterTitle();
 	hpip->GetYaxis()->SetTitleOffset(1.05);
 	hpip->GetYaxis()->SetLabelSize(0.06);
 	hpip->GetZaxis()->SetLabelSize(0.05);
 
-	//gPad->SetLogy();
+	gPad->SetLogz();
 
 	//hpip->GetXaxis()->SetRangeUser(-0.1,1.1);
 	//hpip->SetLineColor(4);
@@ -42,8 +42,8 @@
 	gPad->SetRightMargin(0.03);
 
 
-	double y_maximum = 1e5; //0.5  * hpip->GetMaximum();
-	TLatex *tex = new TLatex(0.05, y_maximum, "TOF");
+	double y_maximum = 0.4; //0.5  * hpip->GetMaximum();
+	TLatex *tex = new TLatex(0.6, y_maximum, "TOF");
 	tex->SetTextSize(0.07);
 	tex->Draw();
 

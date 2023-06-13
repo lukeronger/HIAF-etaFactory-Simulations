@@ -159,8 +159,7 @@ ChnsFsmTpc::respond(ChnsFsmTrack *t)
 double
 ChnsFsmTpc::gauss(double x, double x0, double s)
 {
-  return (1.0/(sqrt(2.0*M_PI)*s))*
-          exp(-(x-x0)*(x-x0)/(2.0*s*s));
+  return (1.0/(sqrt(2.0*M_PI)*s))*exp(-(x-x0)*(x-x0)/(2.0*s*s));
 }
 
 double 
