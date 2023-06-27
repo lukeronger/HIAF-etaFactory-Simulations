@@ -10,27 +10,27 @@
 	TCanvas c1("c1","c1",630,500);
 
 	TFile file("../../../HIAF-etaFactory-Simulations-localData/ChnsRoot-data/hiaf-etaDecay-3pi-background-with-neutron-results.root");
-	hmpi0_2->Draw();
-	hmpi0_2->SetTitle("");
-	hmpi0_2->GetXaxis()->SetTitle("M(#gamma#gamma) / GeV");
-	hmpi0_2->GetXaxis()->SetTitleSize(0.06);
-	hmpi0_2->GetXaxis()->CenterTitle();
-	hmpi0_2->GetXaxis()->SetTitleOffset(1.05);
-	hmpi0_2->GetXaxis()->SetLabelSize(0.06);
-	hmpi0_2->GetYaxis()->SetTitle("Counts");
-	hmpi0_2->GetYaxis()->SetTitleSize(0.06);
-	hmpi0_2->GetYaxis()->CenterTitle();
-	hmpi0_2->GetYaxis()->SetTitleOffset(1.05);
-	hmpi0_2->GetYaxis()->SetLabelSize(0.06);
-	hmpi0_2->GetZaxis()->SetLabelSize(0.05);
+	hmpi0_3PiChannel_2->Draw();
+	hmpi0_3PiChannel_2->SetTitle("");
+	hmpi0_3PiChannel_2->GetXaxis()->SetTitle("M(#gamma#gamma) / GeV");
+	hmpi0_3PiChannel_2->GetXaxis()->SetTitleSize(0.06);
+	hmpi0_3PiChannel_2->GetXaxis()->CenterTitle();
+	hmpi0_3PiChannel_2->GetXaxis()->SetTitleOffset(1.05);
+	hmpi0_3PiChannel_2->GetXaxis()->SetLabelSize(0.06);
+	hmpi0_3PiChannel_2->GetYaxis()->SetTitle("Counts");
+	hmpi0_3PiChannel_2->GetYaxis()->SetTitleSize(0.06);
+	hmpi0_3PiChannel_2->GetYaxis()->CenterTitle();
+	hmpi0_3PiChannel_2->GetYaxis()->SetTitleOffset(1.05);
+	hmpi0_3PiChannel_2->GetYaxis()->SetLabelSize(0.06);
+	hmpi0_3PiChannel_2->GetZaxis()->SetLabelSize(0.05);
 
-	hmpi0_2->GetXaxis()->SetNdivisions(505);
+	hmpi0_3PiChannel_2->GetXaxis()->SetNdivisions(505);
 
-	hmpi0_2->Rebin(2);
-	//hmpi0_2->GetXaxis()->SetRangeUser(0.48, 0.7);
-	hmpi0_2->GetXaxis()->SetRangeUser(0.1, 0.2);
-	hmpi0_2->SetLineWidth(2);
-	hmpi0_2->SetLineColor(4);
+	hmpi0_3PiChannel_2->Rebin(2);
+	//hmpi0_3PiChannel_2->GetXaxis()->SetRangeUser(0.48, 0.7);
+	hmpi0_3PiChannel_2->GetXaxis()->SetRangeUser(0.1, 0.2);
+	hmpi0_3PiChannel_2->SetLineWidth(2);
+	hmpi0_3PiChannel_2->SetLineColor(4);
 
 	//gPad->SetLogy();
 
@@ -40,7 +40,7 @@
 	gPad->SetRightMargin(0.06);
 
 
-	double height = 1.05 * hmpi0_2->GetMaximum();
+	double height = 1.05 * hmpi0_3PiChannel_2->GetMaximum();
 	cout<<height<<endl;
 	double mpi0_a = 0.12;
 	double mpi0_b = 0.155;
@@ -55,7 +55,7 @@
 	li->SetLineStyle(3);
 	li->Draw();
 
-	//hmpi0_2->Fit("gaus");
+	//hmpi0_3PiChannel_2->Fit("gaus");
 
 
 
@@ -65,12 +65,12 @@
 	TF1 *bgmodel = new TF1("bgmodel","[0]*x+[1]", 0.1,0.17);
 
 	model0.SetParameters(1e5,0.135,0.01);
-	hmpi0_2->Fit("model0","","",0.1,0.17);
+	hmpi0_3PiChannel_2->Fit("model0","","",0.1,0.17);
 	double pars[6] = {0};
 	model0.GetParameters(pars);
 	model.SetParameters(pars);
 	//model.SetParLimits(1,0.4,0.6);
-	hmpi0_2->Fit("model","","",0.1,0.17);
+	hmpi0_3PiChannel_2->Fit("model","","",0.1,0.17);
 	model.GetParameters(pars);
 
 	bgmodel->SetParameters(pars+3);
@@ -85,8 +85,8 @@
 	double xb = pars[1] + 3*pars[2];
 	cout<<"Integration range: ["<<xa<<", "<<xb<<"]"<<endl;
 
-	double Nsignal = model.Integral(xa, xb) / hmpi0_2->GetBinWidth(1);
-	double Nbg  = bgmodel->Integral(xa, xb) / hmpi0_2->GetBinWidth(1);
+	double Nsignal = model.Integral(xa, xb) / hmpi0_3PiChannel_2->GetBinWidth(1);
+	double Nbg  = bgmodel->Integral(xa, xb) / hmpi0_3PiChannel_2->GetBinWidth(1);
 
 	cout<<"Nsignal:   "<< Nsignal - Nbg <<endl;
 	cout<<"Nbg:       "<< Nbg <<endl;

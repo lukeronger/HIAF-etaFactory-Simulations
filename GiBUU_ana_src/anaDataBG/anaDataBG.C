@@ -47,6 +47,10 @@ void anaDataBG::Begin(TTree * /*tree*/)
    out_file = new TFile("hiaf-bg-results.root","recreate");
    hm3pi = new TH1F("hm3pi","hm3pi",500,  0, 3);
    hm2gammas = new TH1F("hm2gammas","hm2gammas",500,  0, 3);
+   hChargedPionMulti = new TH1F("hChargedPionMulti","hChargedPionMulti",40,-0.2,7);
+   hProtonMulti = new TH1F("hProtonMulti","hProtonMulti",40,-0.2,7);
+   hChargedPionMomentum = new TH1F("hChargedPionMomentum","hChargedPionMomentum",50,0,1.8);
+   hProtonMomentum = new TH1F("hProtonMomentum","hProtonMomentum",50,0,1.8);
 
 }
 
@@ -89,31 +93,56 @@ Bool_t anaDataBG::Process(Long64_t entry)
    TLorentzVector pim;
    TLorentzVector pi0;
    TLorentzVector gamma;
+   TLorentzVector prot;
+   vector<TLorentzVector> pips;
+   vector<TLorentzVector> pims;
+   vector<TLorentzVector> pi0s;
    vector<TLorentzVector> gammas;
+   vector<TLorentzVector> prots;
 
 
    int instance = barcode.GetSize();
-
+   pips.clear();
+   pims.clear();
+   pi0s.clear();
    gammas.clear();
    for(int i=0; i<instance; i++){
 	   if(barcode[i]==211){
 		   npip++;
 		   pip.SetXYZT(Px[i], Py[i], Pz[i], E[i]);
+		   pips.push_back(pip);
+		   hChargedPionMomentum->Fill( pip.P() );
 	   }
 	   if(barcode[i]==-211){
 		   npim++;
 		   pim.SetXYZT(Px[i], Py[i], Pz[i], E[i]);
+		   pims.push_back(pim);
+		   hChargedPionMomentum->Fill( pim.P() );
 	   }
 	   if(barcode[i]==111){
 		   npi0++;
 		   pi0.SetXYZT(Px[i], Py[i], Pz[i], E[i]);
+		   pi0s.push_back(pi0);
 	   }
 	   if(barcode[i]==22){
 		   ngamma++;
 		   gamma.SetXYZT(Px[i], Py[i], Pz[i], E[i]);
 		   gammas.push_back(gamma);
 	   }
+	   if(barcode[i]==2212 && (E[i]-0.938272)>0.001){
+		   prot.SetXYZT(Px[i], Py[i], Pz[i], E[i]);
+		   prots.push_back(prot);
+		   hProtonMomentum->Fill( prot.P() );
+	   }
    }
+
+   hChargedPionMulti->Fill(pips.size() + pims.size());
+   hProtonMulti->Fill(prots.size()  );
+
+
+
+
+
    if(npip>0) Npip++;
    if(npim>0) Npim++;
    if(npi0>0) Npi0++;
@@ -126,6 +155,7 @@ Bool_t anaDataBG::Process(Long64_t entry)
 
    }
    Nevents++;
+
 
 
 
@@ -150,7 +180,12 @@ void anaDataBG::Terminate()
    out_file->cd();
    hm3pi->Write();
    hm2gammas->Write();
+   hChargedPionMulti->Write();
+   hProtonMulti->Write();
+   hChargedPionMomentum->Write();
+   hProtonMomentum->Write();
    out_file->Close();
+
    cout<<"Nevnets: "<<Nevents<<endl;
    cout<<"Npip: "<<Npip<<endl;
    cout<<"Npim: "<<Npim<<endl;

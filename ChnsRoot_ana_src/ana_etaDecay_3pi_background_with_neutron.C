@@ -44,6 +44,8 @@ void ana_etaDecay_3pi_background_with_neutron()
 
 	TH1D * hmpi0 = new TH1D("hmpi0","m_{#pi0}",600,0,0.3);
 	TH1D * hmpi0_2 = new TH1D("hmpi0_2","",600,0,0.3);
+	TH1D * hmpi0_3PiChannel = new TH1D("hmpi0_3PiChannel","m_{#pi0}",600,0,0.3);
+	TH1D * hmpi0_3PiChannel_2 = new TH1D("hmpi0_3PiChannel_2","",600,0,0.3);
 	TH1D * hmeta = new TH1D("hmeta","m_{#eta}",600,0.2,1.2);
 	TH1D * hmeta_2 = new TH1D("hmeta_2","",600,0.2,1.2);
 	TH1D * hn_energy = new TH1D("hn_energy","",600,0,2);
@@ -124,17 +126,26 @@ void ana_etaDecay_3pi_background_with_neutron()
 //		cout<<"Nneutral_tracks="<<fNeuts->GetEntriesFast()<<endl;
 
 
+
+
+
+		vector<TLorentzVector>  eta_gamma_cpy;
+		eta_gamma_cpy.clear();
+		for(int i=0; i<eta_gamma.size(); i++) eta_gamma_cpy.push_back( eta_gamma.at(i) );
+
+
+
 		if(eta_pip.size()>=1 && eta_pim.size()>=1 && eta_gamma.size()>=2){
 			while(eta_gamma.size()>=2){
 				for(int i=1;i<eta_gamma.size();i++){
 					double mpi0 = (eta_gamma.at(0) + eta_gamma.at(i)).M();
 					double meta = (eta_gamma.at(0) + eta_gamma.at(i) + eta_pip.at(0) + eta_pim.at(0)).M();
 					//cout<<mpi0<<"    "<<meta<<endl;
-					hmpi0->Fill(mpi0);
+					hmpi0_3PiChannel->Fill(mpi0);
 					hmeta->Fill(meta);
 
 					if(eta_gamma.at(0).E()>0.05 && eta_gamma.at(i).E()>0.05){
-						hmpi0_2->Fill(mpi0);
+						hmpi0_3PiChannel_2->Fill(mpi0);
 						if(mpi0>0.12 && mpi0<0.155)
 							hmeta_2->Fill(meta);
 					}
@@ -146,15 +157,40 @@ void ana_etaDecay_3pi_background_with_neutron()
 		}
 
 
+
+
+
+		while(eta_gamma_cpy.size()>=2){
+			for(int i=1;i<eta_gamma_cpy.size();i++){
+				double mpi0 = (eta_gamma_cpy.at(0) + eta_gamma_cpy.at(i)).M();
+				hmpi0->Fill(mpi0);
+
+				if(eta_gamma_cpy.at(0).E()>0.05 && eta_gamma_cpy.at(i).E()>0.05){
+					hmpi0_2->Fill(mpi0);
+				}
+			}
+			eta_gamma_cpy.erase(eta_gamma_cpy.begin());
+		}
+
+
+
+
+
+
+
+
+
+
+
 	} // end of event loop
 
 
 
 /*
 	TCanvas *c1 = new TCanvas("c1","c1");
-	hmpi0->Draw();
-	hmpi0_2->SetLineColor(2);
-	hmpi0_2->Draw("same");
+	hmpi0_3PiChannel->Draw();
+	hmpi0_3PiChannel_2->SetLineColor(2);
+	hmpi0_3PiChannel_2->Draw("same");
 	TCanvas *c2 = new TCanvas("c2","c2");
 	hmeta->Draw();  */
 
@@ -164,6 +200,8 @@ void ana_etaDecay_3pi_background_with_neutron()
 
 
 	TFile outfile(output_file,"recreate");
+	hmpi0_3PiChannel->Write();
+	hmpi0_3PiChannel_2->Write();
 	hmpi0->Write();
 	hmpi0_2->Write();
 	hmeta->Write();

@@ -58,4 +58,42 @@
 	//hmpi0->Fit("gaus");
 
 
+
+	TF1 model0("model0","[0]*TMath::Gaus(x,[1],[2])");
+	TF1 model("model","[0]*TMath::Gaus(x,[1],[2]) + [3]*x+[4]");
+	model.SetParNames("N","mean","sigma","a","b");
+	TF1 *bgmodel = new TF1("bgmodel","[0]*x+[1]", 0.1,0.17);
+
+	model0.SetParameters(1e5,0.135,0.01);
+	hmpi0->Fit("model0","","",0.1,0.17);
+	double pars[6] = {0};
+	model0.GetParameters(pars);
+	model.SetParameters(pars);
+	//model.SetParLimits(1,0.4,0.6);
+	hmpi0->Fit("model","","",0.1,0.17);
+	model.GetParameters(pars);
+
+	bgmodel->SetParameters(pars+3);
+	bgmodel->SetLineWidth(2);
+	bgmodel->SetLineStyle(7);
+	bgmodel->SetLineColor(2);
+	bgmodel->Draw("lsame");
+
+
+	/// now, we calculate the signal to bg ratio
+	double xa = pars[1] - 3*pars[2];
+	double xb = pars[1] + 3*pars[2];
+	cout<<"Integration range: ["<<xa<<", "<<xb<<"]"<<endl;
+
+	double Nsignal = model.Integral(xa, xb) / hmpi0->GetBinWidth(1);
+	double Nbg  = bgmodel->Integral(xa, xb) / hmpi0->GetBinWidth(1);
+
+	cout<<"Nsignal:   "<< Nsignal - Nbg <<endl;
+	cout<<"Nbg:       "<< Nbg <<endl;
+	cout<<"s/b ratio: "<< (Nsignal - Nbg)  / Nbg <<endl;
+
+
+
+	
+
 }

@@ -66,6 +66,10 @@ public :
 
    TH1F *hm3pi;
    TH1F *hm2gammas;
+   TH1F *hChargedPionMulti;
+   TH1F *hProtonMulti;
+   TH1F *hChargedPionMomentum;
+   TH1F *hProtonMomentum;
 
    TFile *out_file;
    TTree *tree;
