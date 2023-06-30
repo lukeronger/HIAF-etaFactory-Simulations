@@ -39,6 +39,7 @@ void ana_etaDecay_3pi_background_with_neutron()
 	vector<TLorentzVector>  eta_pip;
 	vector<TLorentzVector>  eta_pim;
 	vector<TLorentzVector>  eta_gamma;
+	vector<TLorentzVector>  eta_gamma_pure;
 
 
 
@@ -48,14 +49,17 @@ void ana_etaDecay_3pi_background_with_neutron()
 	TH1D * hmpi0_3PiChannel_2 = new TH1D("hmpi0_3PiChannel_2","",600,0,0.3);
 	TH1D * hmeta = new TH1D("hmeta","m_{#eta}",600,0.2,1.2);
 	TH1D * hmeta_2 = new TH1D("hmeta_2","",600,0.2,1.2);
+	TH1D * hmeta_WO_neutrons = new TH1D("hmeta_WO_neutrons","",600,0.2,1.2);
+	TH1D * hmeta_WO_neutrons_2 = new TH1D("hmeta_WO_neutrons_2","",600,0.2,1.2);
 	TH1D * hn_energy = new TH1D("hn_energy","",600,0,2);
 
+	TH1D * hDeltaTheta_n = new TH1D("hDeltaTheta_n","",1000,-1,1);
 
 
 	Int_t num = t->GetEntries();
 	cout<< num <<"  input events "<<endl<<endl;
 	Int_t nn(0);
-	/// num = 1000000;
+	//num = 100000;
 	for(Int_t j=0; j<num;j++)
 	{
 		t->GetEntry(j);
@@ -63,6 +67,7 @@ void ana_etaDecay_3pi_background_with_neutron()
 		eta_pip.clear();
 		eta_pim.clear();
 		eta_gamma.clear();
+		eta_gamma_pure.clear();
 
 		
 
@@ -107,6 +112,7 @@ void ana_etaDecay_3pi_background_with_neutron()
 				TVector3 v3_gamma = iCand1->GetMomentum();
 				TLorentzVector gamma(v3_gamma, v3_gamma.Mag());
 				eta_gamma.push_back(gamma);	
+				eta_gamma_pure.push_back(gamma);	
 			}
 			if(pdg==2112){
 //				cout<<"miss-identified neutorn find,   ";
@@ -118,6 +124,7 @@ void ana_etaDecay_3pi_background_with_neutron()
 				v3_gamma.SetX(energy * sin(theta) * cos(phi));
 				v3_gamma.SetY(energy * sin(theta) * sin(phi));
 				v3_gamma.SetZ(energy * cos(theta) );
+				hDeltaTheta_n->Fill(theta - iMC->Get4Momentum().Theta() );
 
 				TLorentzVector gamma(v3_gamma, v3_gamma.Mag());
 				eta_gamma.push_back(gamma);	
@@ -156,6 +163,16 @@ void ana_etaDecay_3pi_background_with_neutron()
 
 		}
 
+		if(eta_pip.size()>=1 && eta_pim.size()>=1 && eta_gamma_pure.size()>=2){
+			double mpi0 = (eta_gamma_pure.at(0) + eta_gamma_pure.at(1)).M();
+			double meta = (eta_gamma_pure.at(0) + eta_gamma_pure.at(1) + eta_pip.at(0) + eta_pim.at(0)).M();
+			//cout<<mpi0<<"    "<<meta<<endl;
+			hmeta_WO_neutrons->Fill(meta);
+
+			if(eta_gamma_pure.at(0).E()>0.05 && eta_gamma_pure.at(1).E()>0.05){
+				if(mpi0>0.12 && mpi0<0.155) hmeta_WO_neutrons_2->Fill(meta);
+			}
+		}
 
 
 
@@ -207,6 +224,10 @@ void ana_etaDecay_3pi_background_with_neutron()
 	hmeta->Write();
 	hmeta_2->Write();
 	hn_energy->Write();
+	hDeltaTheta_n->Write();
+	hmeta_WO_neutrons->Write();
+	hmeta_WO_neutrons_2->Write();
+
 	outfile.Close();
 
 /*

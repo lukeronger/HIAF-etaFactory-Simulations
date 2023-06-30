@@ -230,15 +230,18 @@ ChnsFsmEmcBarrel::dE(ChnsFsmTrack *t) const
 }
 
 double
-ChnsFsmEmcBarrel::dphi(ChnsFsmTrack *) const // t //[R.K.03/2017] unused variable(s)
+ChnsFsmEmcBarrel::dphi(ChnsFsmTrack *t) const // t //[R.K.03/2017] unused variable(s)
 {
-  return (_resFactor*M_PI/int(2*M_PI*_barrelRadius/_xtalDim) );
+  double theta = t->p4().Vect().Theta();
+  return _resFactor * 1.2 * M_PI / 180.0 / sin(theta); 
+  return   (_resFactor*M_PI/int(2*M_PI*_barrelRadius/_xtalDim) );
 }
 
 double
 ChnsFsmEmcBarrel::dtheta(ChnsFsmTrack *t) const
 {
   double theta = t->p4().Vect().Theta();
+  return _resFactor * 1.2 * M_PI / 180.0; 
   return ( _resFactor*atan(_xtalDim*sin(theta)/(2*_barrelRadius)) );
 }
 
@@ -347,7 +350,7 @@ ChnsFsmEmcBarrel::initParameters()
   _xtalDim = 0.02;
   _Emin = 0.01;
   _barrelRadius = 0.35;
-  _resFactor = 0.25;
+  _resFactor = 1.0; ///0.25;
   _thtMin = 10.0;
   _thtMax = 100.0;
   _radiationLength = 0.0;

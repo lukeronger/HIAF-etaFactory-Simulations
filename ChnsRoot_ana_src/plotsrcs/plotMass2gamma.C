@@ -20,6 +20,7 @@
 	hmpi0_2->GetYaxis()->SetTitle("Counts");
 	hmpi0_2->GetYaxis()->SetTitleSize(0.06);
 	hmpi0_2->GetYaxis()->CenterTitle();
+	hmpi0_2->GetYaxis()->SetNdivisions(505);
 	hmpi0_2->GetYaxis()->SetTitleOffset(1.05);
 	hmpi0_2->GetYaxis()->SetLabelSize(0.06);
 	hmpi0_2->GetZaxis()->SetLabelSize(0.05);

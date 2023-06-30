@@ -53,6 +53,9 @@ void ana_etaDecay_3pi()
 
 	TH1D * hgamma_energy = new TH1D("hgamma_energy","",200,0,2);
 
+	TH1D * hDeltaTheta_pip = new TH1D("hDeltaTheta_pip","", 1000,-1,1);
+	TH1D * hDeltaTheta_gamma = new TH1D("hDeltaTheta_gamma","",1000,-1,1);
+
 	/// define some variables for particle counting
 	int Npip_tot = 0;
 	int Npip_selected = 0;
@@ -96,6 +99,7 @@ void ana_etaDecay_3pi()
 //				cout<<"pi+ find,    ";
 				TLorentzVector pip = iCand1->GetLorentzVector();
 				eta_pip.push_back(pip);
+				hDeltaTheta_pip->Fill(pip.Theta() - iMC->Get4Momentum().Theta());
 
 				Npip_selected++;
 			}
@@ -136,6 +140,7 @@ void ana_etaDecay_3pi()
 				TVector3 v3_gamma = iCand1->GetMomentum();
 				TLorentzVector gamma(v3_gamma, v3_gamma.Mag());
 				eta_gamma.push_back(gamma);	
+				hDeltaTheta_gamma->Fill(gamma.Theta() - iMC->Get4Momentum().Theta());
 
 				Ngamma_tot++;
 			}
@@ -201,6 +206,9 @@ void ana_etaDecay_3pi()
 	hpim_prob -> Write();
 	hpim_charge -> Write();
 	hgamma_energy -> Write();
+	hDeltaTheta_pip->Write();
+	hDeltaTheta_gamma->Write();
+
 	outfile.Close();
 
 /*

@@ -20,7 +20,8 @@
 	hmpi0_2->GetYaxis()->SetTitle("Counts");
 	hmpi0_2->GetYaxis()->SetTitleSize(0.06);
 	hmpi0_2->GetYaxis()->CenterTitle();
-	hmpi0_2->GetYaxis()->SetTitleOffset(1.05);
+	hmpi0_2->GetYaxis()->SetTitleOffset(1.5);
+	//hmpi0_2->GetYaxis()->SetNdivisions(505);
 	hmpi0_2->GetYaxis()->SetLabelSize(0.06);
 	hmpi0_2->GetZaxis()->SetLabelSize(0.05);
 
@@ -28,32 +29,18 @@
 
 	hmpi0_2->Rebin(2);
 	//hmpi0_2->GetXaxis()->SetRangeUser(0.48, 0.7);
-	hmpi0_2->GetXaxis()->SetRangeUser(0.1, 0.2);
+	//hmpi0_2->GetXaxis()->SetRangeUser(0.1, 0.2);
 	hmpi0_2->SetLineWidth(2);
 	hmpi0_2->SetLineColor(4);
 
 	//gPad->SetLogy();
 
-	gPad->SetLeftMargin(0.145);
+	gPad->SetLeftMargin(0.17);
 	gPad->SetBottomMargin(0.14);
 	gPad->SetTopMargin(0.08);
 	gPad->SetRightMargin(0.06);
 
 
-	double height = 1.05 * hmpi0_2->GetMaximum();
-	cout<<height<<endl;
-	double mpi0_a = 0.12;
-	double mpi0_b = 0.155;
-	TLine *li = new TLine(mpi0_a,0,  mpi0_a,height);
-	li->SetLineWidth(2);
-	li->SetLineColor(2);
-	li->SetLineStyle(3);
-	li->Draw();
-	li = new TLine(mpi0_b,0,  mpi0_b,height);
-	li->SetLineWidth(2);
-	li->SetLineColor(2);
-	li->SetLineStyle(3);
-	li->Draw();
 
 	//hmpi0_2->Fit("gaus");
 
@@ -70,7 +57,7 @@
 	model0.GetParameters(pars);
 	model.SetParameters(pars);
 	//model.SetParLimits(1,0.4,0.6);
-	hmpi0_2->Fit("model","","",0.1,0.17);
+	hmpi0_2->Fit("model","","",0.095,0.18);
 	model.GetParameters(pars);
 
 	bgmodel->SetParameters(pars+3);
@@ -94,5 +81,19 @@
 
 
 
+	double height = 1.05 * hmpi0_2->GetMaximum();
+	cout<<height<<endl;
+	double mpi0_a = xa;//0.12;
+	double mpi0_b = xb;//0.155;
+	TLine *li = new TLine(mpi0_a,0,  mpi0_a,height);
+	li->SetLineWidth(2);
+	li->SetLineColor(2);
+	li->SetLineStyle(3);
+	li->Draw();
+	li = new TLine(mpi0_b,0,  mpi0_b,height);
+	li->SetLineWidth(2);
+	li->SetLineColor(2);
+	li->SetLineStyle(3);
+	li->Draw();
 
 }

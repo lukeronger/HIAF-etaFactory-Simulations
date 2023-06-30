@@ -9,25 +9,25 @@
 	TCanvas c1("c1","c1",630,500);
 
 	TFile file("../../../HIAF-etaFactory-Simulations-localData/ChnsRoot-data/hiaf-etaDecay-3pi-background-with-neutron-results.root");
-	hmeta_2->Draw();
-	hmeta_2->SetTitle("");
-	hmeta_2->GetXaxis()->SetTitle("M(#pi^{+}#pi^{-}#pi^{0}) / GeV");
-	hmeta_2->GetXaxis()->SetTitleSize(0.06);
-	hmeta_2->GetXaxis()->CenterTitle();
-	hmeta_2->GetXaxis()->SetTitleOffset(1.05);
-	hmeta_2->GetXaxis()->SetLabelSize(0.06);
-	hmeta_2->GetYaxis()->SetTitle("Counts");
-	hmeta_2->GetYaxis()->SetTitleSize(0.06);
-	hmeta_2->GetYaxis()->CenterTitle();
-	hmeta_2->GetYaxis()->SetTitleOffset(1.05);
-	hmeta_2->GetYaxis()->SetLabelSize(0.06);
-	hmeta_2->GetZaxis()->SetLabelSize(0.05);
+	hmeta_WO_neutrons_2->Draw();
+	hmeta_WO_neutrons_2->SetTitle("");
+	hmeta_WO_neutrons_2->GetXaxis()->SetTitle("M(#pi^{+}#pi^{-}#pi^{0}) / GeV");
+	hmeta_WO_neutrons_2->GetXaxis()->SetTitleSize(0.06);
+	hmeta_WO_neutrons_2->GetXaxis()->CenterTitle();
+	hmeta_WO_neutrons_2->GetXaxis()->SetTitleOffset(1.05);
+	hmeta_WO_neutrons_2->GetXaxis()->SetLabelSize(0.06);
+	hmeta_WO_neutrons_2->GetYaxis()->SetTitle("Counts");
+	hmeta_WO_neutrons_2->GetYaxis()->SetTitleSize(0.06);
+	hmeta_WO_neutrons_2->GetYaxis()->CenterTitle();
+	hmeta_WO_neutrons_2->GetYaxis()->SetTitleOffset(1.05);
+	hmeta_WO_neutrons_2->GetYaxis()->SetLabelSize(0.06);
+	hmeta_WO_neutrons_2->GetZaxis()->SetLabelSize(0.05);
 
-	//hmeta_2->Rebin(2);
-	//hmeta_2->GetXaxis()->SetRangeUser(0.48, 0.7);
-	hmeta_2->GetXaxis()->SetRangeUser(0.4, 1.2);
-	hmeta_2->SetLineWidth(2);
-	hmeta_2->SetLineColor(4);
+	//hmeta_WO_neutrons_2->Rebin(2);
+	//hmeta_WO_neutrons_2->GetXaxis()->SetRangeUser(0.48, 0.7);
+	hmeta_WO_neutrons_2->GetXaxis()->SetRangeUser(0.4, 1.2);
+	hmeta_WO_neutrons_2->SetLineWidth(2);
+	hmeta_WO_neutrons_2->SetLineColor(4);
 
 	//gPad->SetLogy();
 
@@ -43,12 +43,12 @@
 	TF1 *bgmodel = new TF1("bgmodel","[0]*x+[1]", 0.45,0.65);
 
 	model0.SetParameters(1e5,0.547,0.01);
-	hmeta_2->Fit("model0","","",0.45,0.65);
+	hmeta_WO_neutrons_2->Fit("model0","","",0.45,0.65);
 	double pars[6] = {0};
 	model0.GetParameters(pars);
 	model.SetParameters(pars);
 	//model.SetParLimits(1,0.4,0.6);
-	hmeta_2->Fit("model","","",0.45,0.65);
+	hmeta_WO_neutrons_2->Fit("model","","",0.45,0.65);
 	model.GetParameters(pars);
 
 	bgmodel->SetParameters(pars+3);
