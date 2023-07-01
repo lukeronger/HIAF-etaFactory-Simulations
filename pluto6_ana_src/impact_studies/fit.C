@@ -93,7 +93,7 @@ int fit(){
 
 
 	TCanvas *c2 = new TCanvas("c2","c2",900,680);
-	TH2F *h2 = new TH2F("h2","h2",200,-1,1.3,  200,1e10,7e10);
+	TH2F *h2 = new TH2F("h2","h2",200,-1,1.3,  200,1e10/1e6*3300,7e10/1e6*3300);
 	h2->SetTitle("");
 	h2->Draw("");
 	h2->GetXaxis()->SetTitle("X");

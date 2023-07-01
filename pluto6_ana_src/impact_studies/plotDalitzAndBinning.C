@@ -1,14 +1,20 @@
 {
 
+	double totEvents = 3.3e10;
+
+
+
+
 	gStyle->SetOptStat(0);
 	gStyle->SetNdivisions(505,"XY");
 
 
-
-
 	TFile file("/data2/rwang/githubs/HIAF-etaFactory-Simulations-localData/Eta_1.8GeV.root");
 	//tree->Draw("X","Y>-0.6 && Y<-0.5","lego2");
-	tree->Draw("Y:X>>h2(20,-1,1,20,-1,1)","","colz");
+	cout<< tree->Draw("Y:X>>h2(20,-1,1,20,-1,1)","","colz")  <<endl;
+
+	double scale_ratio = totEvents / tree->GetEntries();
+	cout<< scale_ratio << endl;
 
 	TF2 model("model","[0]*(1+[1]*y+[2]*y*y+[3]*x+[4]*x*x+[5]*x*y+[6]*y*y*y+[7]*x*x*y+[8]*x*y*y+[9]*x*x*x)");
 	//h2->Fit("model");
@@ -52,8 +58,8 @@
 		}
 		cout<<endl<<ia<<endl;
 		for(int j=ia; j<=21-ia; j++){
-			h2_2->SetBinContent(j,i,  1e6*h2->GetBinContent(j,i));
-			fout<<(j*0.1-1.05)<<"  "<<(i*0.1-1.05)<<"  "<<  1e6*h2->GetBinContent(j,i)  <<endl;
+			h2_2->SetBinContent(j,i,  scale_ratio*h2->GetBinContent(j,i));
+			fout<<(j*0.1-1.05)<<"  "<<(i*0.1-1.05)<<"  "<<  scale_ratio*h2->GetBinContent(j,i)  <<endl;
 			fout2<<(j*0.1-1.05)<<"  "<<(i*0.1-1.05)<<endl;  //// "  "<<h2->GetBinContent(j,i)<<endl;
 		}
 	}

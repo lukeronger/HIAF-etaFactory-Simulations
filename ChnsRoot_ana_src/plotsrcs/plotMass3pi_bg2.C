@@ -63,8 +63,8 @@
 	double xb = pars[1] + 3*pars[2];
 	cout<<"Integration range: ["<<xa<<", "<<xb<<"]"<<endl;
 
-	double Nsignal = model.Integral(xa, xb) / hmpi0->GetBinWidth(1);
-	double Nbg  = bgmodel->Integral(xa, xb) / hmpi0->GetBinWidth(1);
+	double Nsignal = model.Integral(xa, xb) / hmeta_2->GetBinWidth(1);
+	double Nbg  = bgmodel->Integral(xa, xb) / hmeta_2->GetBinWidth(1);
 
 	cout<<"Nsignal:   "<< Nsignal - Nbg <<endl;
 	cout<<"Nbg:       "<< Nbg <<endl;

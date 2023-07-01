@@ -58,6 +58,7 @@ void ana_etaDecay_EEG()
 	TH1D * hmeta_MC = new TH1D("hmeta_MC","m_{#eta}",300,0.4,0.8);
 	TH1D * hmeta_2 = new TH1D("hmeta_2","",300,0.4,0.8);
 	TH1D * helec_prob = new TH1D("helec_prob","",400,-1,5);
+	TH1D * helec_PionPID_prob = new TH1D("helec_PionPID_prob","",400,-1,5);
 	TH1D * helec_charge = new TH1D("helec_charge","",200,-10,10);
 	TH1D * hposi_prob = new TH1D("hposi_prob","",400,-1,5);
 	TH1D * hposi_charge = new TH1D("hposi_charge","",200,-10,10);
@@ -134,6 +135,7 @@ void ana_etaDecay_EEG()
 			}
 			else if(pdg==11 ) {
 				helec_prob -> Fill(iCand1_prob->GetElectronPidProb());
+				helec_PionPID_prob -> Fill(iCand1_prob->GetPionPidProb());
 				helec_charge -> Fill(iCand1->GetCharge() );
 				Nem_tot++;
 			}
@@ -226,6 +228,8 @@ void ana_etaDecay_EEG()
 	hposi_prob -> Write(); 
 	hposi_charge -> Write(); 
 	hgamma_energy -> Write(); 
+	helec_PionPID_prob -> Write();
+
 	outfile.Close();
 
 /*

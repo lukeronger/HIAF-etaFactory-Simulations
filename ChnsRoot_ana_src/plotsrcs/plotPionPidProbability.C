@@ -14,11 +14,11 @@
 	hpip_prob->GetYaxis()->SetTitle("Counts");
 	hpip_prob->GetYaxis()->SetTitleSize(0.06);
 	hpip_prob->GetYaxis()->CenterTitle();
-	hpip_prob->GetYaxis()->SetTitleOffset(1.05);
+	hpip_prob->GetYaxis()->SetTitleOffset(1.25);
 	hpip_prob->GetYaxis()->SetLabelSize(0.06);
 	hpip_prob->GetZaxis()->SetLabelSize(0.05);
 
-	gPad->SetLogy();
+	//gPad->SetLogy();
 
 	hpip_prob->GetXaxis()->SetRangeUser(-0.1,1.1);
 	hpip_prob->SetLineColor(4);
@@ -33,8 +33,8 @@
 
 	gPad->SetLeftMargin(0.145);
 	gPad->SetBottomMargin(0.14);
-	gPad->SetTopMargin(0.03);
-	gPad->SetRightMargin(0.03);
+	gPad->SetTopMargin(0.08);
+	gPad->SetRightMargin(0.04);
 
 
 }
