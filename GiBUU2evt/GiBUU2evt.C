@@ -78,9 +78,11 @@ Bool_t GiBUU2evt::Process(Long64_t entry)
 
 
    vector<TLorentzVector> neutrons;
+   vector<TLorentzVector> protons;
    vector<TLorentzVector> pips;
    vector<TLorentzVector> pims;
    vector<TLorentzVector> pi0s;
+   protons.clear();
    neutrons.clear();
    pips.clear();
    pims.clear();
@@ -97,6 +99,11 @@ Bool_t GiBUU2evt::Process(Long64_t entry)
    		   vector4.SetXYZT(Px[i], Py[i], Pz[i], E[i]);
 	   	   neutrons.push_back(vector4);
 	   }
+	   if(barcode[i]==2212  &&  (E[i]-0.93827)>0.001){
+	   //if(barcode[i]==2212){
+   		   vector4.SetXYZT(Px[i], Py[i], Pz[i], E[i]);
+	   	   protons.push_back(vector4);
+	   }
 	   if(barcode[i]==211){
    		   vector4.SetXYZT(Px[i], Py[i], Pz[i], E[i]);
 	   	   pips.push_back(vector4);
@@ -111,9 +118,9 @@ Bool_t GiBUU2evt::Process(Long64_t entry)
 	   }
    }
 
-   if((neutrons.size() + pips.size() + pims.size() + pi0s.size())>0){
+   if((neutrons.size() + protons.size() + pips.size() + pims.size() + pi0s.size())>0){
 	   int i = 0;
-	   int N = neutrons.size() + pips.size() + pims.size() + pi0s.size()*2;
+	   int N = protons.size() + neutrons.size() + pips.size() + pims.size() + pi0s.size()*2;
 	   (*file_evt)<<Nevents<<"\t"<<N<<endl;
 	   (*file_evt)<<"  "<<"N\t"<<"Id\t"<<"Ist\t"<<"M1\t"<<"M2\t"<<"DF\t"<<"DL\t";
 	   (*file_evt)<<"px\t"<<"py\t"<<"pz\t"<<"E\t"<<"t\t"<<"x\t"<<"y\t"<<"z"<<endl;
@@ -148,6 +155,12 @@ Bool_t GiBUU2evt::Process(Long64_t entry)
 	   for(int j=0;j<neutrons.size();j++){
 		   (*file_evt)<<"  "<<i<<"\t"<<2112<<"\t"<<1<<"\t"<<0<<"\t"<<0<<"\t"<<-1<<"\t"<<-1<<"\t";
 		   (*file_evt)<<neutrons[j].Px()<<" "<<neutrons[j].Py()<<" "<<neutrons[j].Pz()<<" "<<neutrons[j].E()<<" ";
+		   (*file_evt)<<0<<" "<<0<<" "<<0<<" "<<0<<endl;
+		   i++;
+	   }
+	   for(int j=0;j<protons.size();j++){
+		   (*file_evt)<<"  "<<i<<"\t"<<2212<<"\t"<<1<<"\t"<<0<<"\t"<<0<<"\t"<<-1<<"\t"<<-1<<"\t";
+		   (*file_evt)<<protons[j].Px()<<" "<<protons[j].Py()<<" "<<protons[j].Pz()<<" "<<protons[j].E()<<" ";
 		   (*file_evt)<<0<<" "<<0<<" "<<0<<" "<<0<<endl;
 		   i++;
 	   }

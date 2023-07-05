@@ -19,7 +19,7 @@
 	h2_e_sampling->GetXaxis()->SetTitleOffset(1.05);
 	h2_e_sampling->GetXaxis()->SetLabelSize(0.06);
 	h2_e_sampling->GetXaxis()->SetNdivisions(505);  
-	h2_e_sampling->GetYaxis()->SetTitle("Depo. energy in EMCal (GeV)");
+	h2_e_sampling->GetYaxis()->SetTitle("Rec. energy in EMCal (GeV)");
 	h2_e_sampling->GetYaxis()->SetTitleSize(0.06);
 	h2_e_sampling->GetYaxis()->CenterTitle();
 	h2_e_sampling->GetYaxis()->SetTitleOffset(1.05);

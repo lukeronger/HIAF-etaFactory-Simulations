@@ -19,7 +19,7 @@
 	h2_Edep_vs_En->GetXaxis()->SetTitleOffset(1.05);
 	h2_Edep_vs_En->GetXaxis()->SetLabelSize(0.06);
 	h2_Edep_vs_En->GetXaxis()->SetNdivisions(505);  
-	h2_Edep_vs_En->GetYaxis()->SetTitle("Depo. energy in EMCal (GeV)");
+	h2_Edep_vs_En->GetYaxis()->SetTitle("Rec. energy in EMCal (GeV)");
 	h2_Edep_vs_En->GetYaxis()->SetTitleSize(0.06);
 	h2_Edep_vs_En->GetYaxis()->CenterTitle();
 	h2_Edep_vs_En->GetYaxis()->SetTitleOffset(1.05);

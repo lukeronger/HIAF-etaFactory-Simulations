@@ -55,6 +55,9 @@ void ana_etaDecay_3pi_background_with_neutron()
 
 	TH1D * hDeltaTheta_n = new TH1D("hDeltaTheta_n","",1000,-1,1);
 
+	
+	long Ntrigered = 0;
+	int EMCal_hit;
 
 	Int_t num = t->GetEntries();
 	cout<< num <<"  input events "<<endl<<endl;
@@ -68,10 +71,11 @@ void ana_etaDecay_3pi_background_with_neutron()
 		eta_pim.clear();
 		eta_gamma.clear();
 		eta_gamma_pure.clear();
-
+		
+		EMCal_hit = 0;
 		
 
-		if(fCands->GetEntriesFast()>=2)
+		//if(fCands->GetEntriesFast()>=2)
 		for (Int_t i1=0; i1<fCands->GetEntriesFast(); i1++)
 		{
 			iCand1 = (ChnsPidCandidate*)fCands->At(i1);
@@ -87,17 +91,25 @@ void ana_etaDecay_3pi_background_with_neutron()
 //				cout<<"pi+ find,    ";
 				TLorentzVector pip = iCand1->GetLorentzVector();
 				eta_pip.push_back(pip);
+				if(iCand1->GetEmcCalEnergy()>0.05) EMCal_hit = 1;
 			}
 			else if(pdg==-211 && iCand1_prob->GetPionPidProb()>0.1 && iCand1->GetCharge()<0) {
 //				cout<<"pi- find,    ";
 				TLorentzVector pim = iCand1->GetLorentzVector();
 				eta_pim.push_back(pim);
+				if(iCand1->GetEmcCalEnergy()>0.05) EMCal_hit = 1;
+			}
+			else if(pdg==2212  ) {
+//				cout<<"proton find,    ";
+				//TLorentzVector prot = iCand1->GetLorentzVector();
+				//eta_pim.push_back(pim);
+				if(iCand1->GetEmcCalEnergy()>0.06) EMCal_hit = 1;
 			}
 		} // end of charged track loop
 //		cout<<"Ncharged_tracks="<<fCands->GetEntriesFast()<<",   ";
 
 
-		if(fNeuts->GetEntriesFast()>=2)
+		//if(fNeuts->GetEntriesFast()>=2)
 		for (Int_t i1=0; i1<fNeuts->GetEntriesFast(); i1++)
 		{
 			iCand1 = (ChnsPidCandidate*)fNeuts->At(i1);
@@ -113,6 +125,7 @@ void ana_etaDecay_3pi_background_with_neutron()
 				TLorentzVector gamma(v3_gamma, v3_gamma.Mag());
 				eta_gamma.push_back(gamma);	
 				eta_gamma_pure.push_back(gamma);	
+				if(gamma.E()>0.05) EMCal_hit = 1;
 			}
 			if(pdg==2112){
 //				cout<<"miss-identified neutorn find,   ";
@@ -128,12 +141,13 @@ void ana_etaDecay_3pi_background_with_neutron()
 
 				TLorentzVector gamma(v3_gamma, v3_gamma.Mag());
 				eta_gamma.push_back(gamma);	
+				if(energy>0.05) EMCal_hit = 1;
 			}
 		} // end of neutral track loop
 //		cout<<"Nneutral_tracks="<<fNeuts->GetEntriesFast()<<endl;
 
 
-
+		if(EMCal_hit>0)Ntrigered++;
 
 
 		vector<TLorentzVector>  eta_gamma_cpy;
@@ -229,6 +243,10 @@ void ana_etaDecay_3pi_background_with_neutron()
 	hmeta_WO_neutrons_2->Write();
 
 	outfile.Close();
+
+
+	cout<<"total events: "<< num <<endl;
+	cout<<"triggeer: "<< Ntrigered <<endl;
 
 /*
 	TCanvas *c1 = new TCanvas("c1", "", 600, 400);
