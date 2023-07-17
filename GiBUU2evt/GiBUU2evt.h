@@ -23,6 +23,7 @@
 #include <TTree.h>
 #include <TLorentzVector.h>
 #include <TGenPhaseSpace.h>
+#include <TRandom3.h>
 #include <fstream>
 
 class GiBUU2evt : public TSelector {
@@ -61,9 +62,13 @@ public :
 
 
    long Nevents;
+   double BR_pi0_2gammas;
+   double BR_pi0_epgamma;
 
    ofstream *file_evt;
    TGenPhaseSpace *phase_generator;
+   TRandom3 *random3;
+   TF1 *dileptonMassDist_TF1;
 };
 
 #endif

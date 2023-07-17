@@ -48,7 +48,7 @@
 	TF1 model0("model0","[0]*TMath::Gaus(x,[1],[2])");
 	TF1 model("model","[0]*TMath::Gaus(x,[1],[2]) + [3]*x+[4]");
 	model.SetParNames("N","mean","sigma","a","b");
-	TF1 *bgmodel = new TF1("bgmodel","[0]*x+[1]", 0.1,0.17);
+	TF1 *bgmodel = new TF1("bgmodel","[0]*x+[1]", 0.08,0.2);
 
 	model0.SetParameters(1e5,0.135,0.01);
 	hmpi0_3PiChannel_2->Fit("model0","","",0.1,0.17);
@@ -56,7 +56,7 @@
 	model0.GetParameters(pars);
 	model.SetParameters(pars);
 	//model.SetParLimits(1,0.4,0.6);
-	hmpi0_3PiChannel_2->Fit("model","","",0.095,0.18);
+	hmpi0_3PiChannel_2->Fit("model","","",0.08,0.2);
 	model.GetParameters(pars);
 
 	bgmodel->SetParameters(pars+3);

@@ -55,6 +55,8 @@ void ana_etaDecay_3pi_background_with_neutron()
 
 	TH1D * hDeltaTheta_n = new TH1D("hDeltaTheta_n","",1000,-1,1);
 
+	TH1D * hmass6gammas = new TH1D("hmass6gammas","", 600,0,2);
+
 	
 	long Ntrigered = 0;
 	int EMCal_hit;
@@ -103,7 +105,8 @@ void ana_etaDecay_3pi_background_with_neutron()
 //				cout<<"proton find,    ";
 				//TLorentzVector prot = iCand1->GetLorentzVector();
 				//eta_pim.push_back(pim);
-				if(iCand1->GetEmcCalEnergy()>0.06) EMCal_hit = 1;
+				//if(iCand1->GetEmcCalEnergy()>0.06) EMCal_hit = 1;
+				if(iMC->Get4Momentum().E()>0.05) EMCal_hit = 1;
 			}
 		} // end of charged track loop
 //		cout<<"Ncharged_tracks="<<fCands->GetEntriesFast()<<",   ";
@@ -188,7 +191,11 @@ void ana_etaDecay_3pi_background_with_neutron()
 			}
 		}
 
-
+		if(eta_gamma_pure.size()>=6){
+			TLorentzVector eta = eta_gamma_pure.at(0) + eta_gamma_pure.at(1) + eta_gamma_pure.at(2) 
+						+eta_gamma_pure.at(3) +eta_gamma_pure.at(4) +eta_gamma_pure.at(5); 
+			hmass6gammas -> Fill(eta.M());
+		}
 
 
 		while(eta_gamma_cpy.size()>=2){
@@ -241,7 +248,7 @@ void ana_etaDecay_3pi_background_with_neutron()
 	hDeltaTheta_n->Write();
 	hmeta_WO_neutrons->Write();
 	hmeta_WO_neutrons_2->Write();
-
+	hmass6gammas -> Write();
 	outfile.Close();
 
 
