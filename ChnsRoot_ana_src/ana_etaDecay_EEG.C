@@ -54,9 +54,9 @@ void ana_etaDecay_EEG()
 	/// define some histograms
 	TH1D * hmEE = new TH1D("hmEE","m_{ee}",300,0.01,0.58);
 	TH1D * hmEE_2 = new TH1D("hmEE_2","",300,0.01,0.58);
-	TH1D * hmeta = new TH1D("hmeta","m_{#eta}",300,0.4,0.8);
+	TH1D * hmeta = new TH1D("hmeta","m_{#eta}",300,0.0,0.9);
 	TH1D * hmeta_MC = new TH1D("hmeta_MC","m_{#eta}",300,0.4,0.8);
-	TH1D * hmeta_2 = new TH1D("hmeta_2","",300,0.4,0.8);
+	TH1D * hmeta_2 = new TH1D("hmeta_2","",300,0.0,0.9);
 	TH1D * helec_prob = new TH1D("helec_prob","",400,-1,5);
 	TH1D * helec_PionPID_prob = new TH1D("helec_PionPID_prob","",400,-1,5);
 	TH1D * helec_charge = new TH1D("helec_charge","",200,-10,10);

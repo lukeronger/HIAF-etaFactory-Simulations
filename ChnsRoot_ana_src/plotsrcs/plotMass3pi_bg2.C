@@ -23,7 +23,7 @@
 	hmeta_2->GetYaxis()->SetLabelSize(0.06);
 	hmeta_2->GetZaxis()->SetLabelSize(0.05);
 
-	//hmeta_2->Rebin(2);
+	hmeta_2->Rebin(2);
 	//hmeta_2->GetXaxis()->SetRangeUser(0.48, 0.7);
 	hmeta_2->GetXaxis()->SetRangeUser(0.4, 1.2);
 	hmeta_2->SetLineWidth(2);

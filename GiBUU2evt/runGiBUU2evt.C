@@ -2,8 +2,9 @@
 int runGiBUU2evt(){
 	TChain *chain = new TChain("RootTuple","RootTuple");
 
-	ifstream listin("/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/GiBUU-data/filelist_p7Li_1.8GeV");
-	for(int i=0;i<129;i++){
+	ifstream listin("/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/GiBUU-data-evt/filelist_combined");
+	int N_files = 311;
+	for(int i=0; i<N_files; i++){
 	//for(int i=0;i<10;i++){
 		string filename;
 		listin>>filename;
