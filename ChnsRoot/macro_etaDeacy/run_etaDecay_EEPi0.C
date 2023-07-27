@@ -3,10 +3,10 @@
 */
 
 
-int run_etaDecay_EEG(int nevts=10000000, int seed_num = 2023)
+int run_etaDecay_EEPi0(int nevts=10000000, int seed_num = 2023)
 //int run_etaDecay_EEG(int nevts=372, int seed_num = 2023)
 {
-  TString input_file = "../../../HIAF-etaFactory-Simulations-localData/pluto6-data/pp_to_ppeta_DileptonGamma_1.8GeV_Random2023.root.evt"; 
+  TString input_file = "/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/Pluto6-evt/pp_to_ppeta_EEPi0_1.8GeV_Random2023.root.evt"; 
 
   TStopwatch timer;
   timer.Start();
@@ -17,7 +17,7 @@ int run_etaDecay_EEG(int nevts=10000000, int seed_num = 2023)
   // Load this example libraries
   TString outfile;
   if (outfile=="") {
-	outfile="/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/ChnsRoot-data/run_fsim_EvtGen_HIAFeta_EEG_"; //1.root";
+	outfile="/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/ChnsRoot-data/run_fsim_EvtGen_HIAFeta_EEPi0_"; //1.root";
 	outfile+=1.8;
 	outfile+="GeV_";
   	outfile+= seed_num;
