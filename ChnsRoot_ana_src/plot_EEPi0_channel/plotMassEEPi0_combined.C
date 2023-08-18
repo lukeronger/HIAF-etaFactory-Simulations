@@ -103,5 +103,19 @@
 
 
 
+	cout<< "\n\nTwo-sigma range:"<<endl;
+	/// now, we calculate the signal to bg ratio
+	xa = pars[1] - 2*pars[2];
+	xb = pars[1] + 2*pars[2];
+	cout<<"Integration range: ["<<xa<<", "<<xb<<"]"<<endl;
+
+	Nsignal = model.Integral(xa, xb) / hbg->GetBinWidth(1);
+	Nbg  = bgmodel->Integral(xa, xb) / hbg->GetBinWidth(1);
+
+	cout<<"Nsignal:   "<< Nsignal - Nbg <<endl;
+	cout<<"Nbg:       "<< Nbg <<endl;
+	cout<<"s/b ratio: "<< (Nsignal - Nbg)  / Nbg <<endl;
+
+
 
 }

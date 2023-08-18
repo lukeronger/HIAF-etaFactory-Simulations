@@ -9,25 +9,25 @@
 	TCanvas c1("c1","c1",630,500);
 
 	TFile file("../../../HIAF-etaFactory-Simulations-localData/ChnsRoot-data/hiaf-GiBUU-EEG-background-with-neutrons-results.root");
-	hmEEG->Draw();
-	hmEEG->SetTitle("");
-	hmEEG->GetXaxis()->SetTitle("M(e^{+}e^{-}#gamma) / GeV");
-	hmEEG->GetXaxis()->SetTitleSize(0.06);
-	hmEEG->GetXaxis()->CenterTitle();
-	hmEEG->GetXaxis()->SetTitleOffset(1.05);
-	hmEEG->GetXaxis()->SetLabelSize(0.06);
-	hmEEG->GetYaxis()->SetTitle("Counts");
-	hmEEG->GetYaxis()->SetTitleSize(0.06);
-	hmEEG->GetYaxis()->CenterTitle();
-	hmEEG->GetYaxis()->SetTitleOffset(1.05);
-	hmEEG->GetYaxis()->SetLabelSize(0.06);
-	hmEEG->GetZaxis()->SetLabelSize(0.05);
+	hmEEG_2->Draw();
+	hmEEG_2->SetTitle("");
+	hmEEG_2->GetXaxis()->SetTitle("M(e^{+}e^{-}#gamma) / GeV");
+	hmEEG_2->GetXaxis()->SetTitleSize(0.06);
+	hmEEG_2->GetXaxis()->CenterTitle();
+	hmEEG_2->GetXaxis()->SetTitleOffset(1.05);
+	hmEEG_2->GetXaxis()->SetLabelSize(0.06);
+	hmEEG_2->GetYaxis()->SetTitle("Counts");
+	hmEEG_2->GetYaxis()->SetTitleSize(0.06);
+	hmEEG_2->GetYaxis()->CenterTitle();
+	hmEEG_2->GetYaxis()->SetTitleOffset(1.05);
+	hmEEG_2->GetYaxis()->SetLabelSize(0.06);
+	hmEEG_2->GetZaxis()->SetLabelSize(0.05);
 
-	hmEEG->Rebin(2);
-	hmEEG->GetXaxis()->SetRangeUser(0.4, 0.75);
-	hmEEG->GetYaxis()->SetRangeUser(0, 20);
-	hmEEG->SetLineWidth(2);
-	hmEEG->SetLineColor(4);
+	hmEEG_2->Rebin(2);
+	hmEEG_2->GetXaxis()->SetRangeUser(0.4, 0.75);
+	hmEEG_2->GetYaxis()->SetRangeUser(0, 20);
+	hmEEG_2->SetLineWidth(2);
+	hmEEG_2->SetLineColor(4);
 
 
 	//gPad->SetLogy();
@@ -38,9 +38,9 @@
 	gPad->SetRightMargin(0.06);
 
 
-//	hmEEG->Fit("gaus");
+//	hmEEG_2->Fit("gaus");
 
-	TH1D *hbg = (TH1D *) hmEEG->Clone();
+	TH1D *hbg = (TH1D *) hmEEG_2->Clone();
 
 
 	TFile file2("../../../HIAF-etaFactory-Simulations-localData/ChnsRoot-data/hiaf-etaDecay-EEG-results.root");
