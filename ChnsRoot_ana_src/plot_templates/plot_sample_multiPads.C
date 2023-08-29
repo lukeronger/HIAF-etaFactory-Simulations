@@ -1,4 +1,4 @@
-#include"myDrawTools_bak.C"
+#include"myDrawTools.C"
 
 void plot_sample_multiPads(){
 	//create a canvas of two pads
@@ -59,5 +59,70 @@ void plot_sample_multiPads(){
 	fun4->SetLineColor(kYellow+1);
 	fun4->Draw("l same");
 
+
+
+	//create a canvas of six pads
+	TCanvas *c3 = CreateCanvas_for_3Times2Pads();
+	//go to one pad
+	c3->cd(1);
+	//create a frame
+	TH2F *frame7 = CreateFrame_for_3Times2Pads();
+	//go to one pad
+	c3->cd(2);
+	//create a frame
+	TH2F *frame8 = CreateFrame_for_3Times2Pads();
+	//go to one pad
+	c3->cd(3);
+	//create a frame
+	TH2F *frame9 = CreateFrame_for_3Times2Pads();
+	//go to one pad
+	c3->cd(4);
+	//create a frame
+	TH2F *frame10 = CreateFrame_for_3Times2Pads();
+	//go to one pad
+	c3->cd(5);
+	//create a frame
+	TH2F *frame11 = CreateFrame_for_3Times2Pads();
+	//go to one pad
+	c3->cd(6);
+	//create a frame
+	TH2F *frame12 = CreateFrame_for_3Times2Pads();
+
+
+
+
+	//create a canvas of six pads
+	TCanvas *c4 = CreateCanvas_for_2Times3Pads();
+	//go to one pad
+	c4->cd(1);
+	//create a frame
+	TH2F *frame13 = CreateFrame_for_2Times3Pads();
+	//go to one pad
+	c4->cd(2);
+	//create a frame
+	TH2F *frame14 = CreateFrame_for_2Times3Pads();
+	//go to one pad
+	c4->cd(3);
+	//create a frame
+	TH2F *frame15 = CreateFrame_for_2Times3Pads();
+	//go to one pad
+	c4->cd(4);
+	//create a frame
+	TH2F *frame16 = CreateFrame_for_2Times3Pads();
+	//go to one pad
+	c4->cd(5);
+	//create a frame
+	TH2F *frame17 = CreateFrame_for_2Times3Pads();
+	//go to one pad
+	c4->cd(6);
+	//create a frame
+	TH2F *frame18 = CreateFrame_for_2Times3Pads(-5,5,  -5,5,  "random-x","random-y");
+	TH2D *h2_example = new TH2D("","",40,-5,5,40,-5,5);
+	for(int i=0; i<100000; i++){
+		h2_example->Fill(gRandom->Gaus(0,1), gRandom->Gaus(0,1));
+	}
+	frame18->SetMinimum(h2_example->GetMinimum() + 1);
+	frame18->SetMaximum(h2_example->GetMaximum()*1.1 );
+	h2_example->Draw("col same");
 
 }
