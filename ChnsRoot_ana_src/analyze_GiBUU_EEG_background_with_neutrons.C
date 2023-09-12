@@ -41,9 +41,9 @@ void analyze_GiBUU_EEG_background_with_neutrons(){
 	vector<TLorentzVector> gammas; 
 
 	/// Define some histograms for output file
-	TH1D *hmEE  = new TH1D("hmEE","m_{ee}",600,0,2); 
+	TH1D *hmEE  = new TH1D("hmEE","m_{ee}",43,0,0.53); 
 	TH1D *hmEEG = new TH1D("hmEEG","m_{eeg}",600,0,2); 
-	TH1D *hmEE_2  = new TH1D("hmEE_2","m_{ee}, E > 50 MeV",600,0,2); 
+	TH1D *hmEE_2  = new TH1D("hmEE_2","m_{ee}, E > 50 MeV",43,0,0.53); 
 	TH1D *hmEEG_2 = new TH1D("hmEEG_2","m_{eeg}, E > 50 MeV",600,0,2); 
 
 
@@ -146,8 +146,10 @@ void analyze_GiBUU_EEG_background_with_neutrons(){
 					double mEEG = (gammas.at(k) + positrons.at(i) + electrons.at(j)).M();
 					hmEEG->Fill(mEEG);
 					//if(positrons.at(i).E()>0.05  &&  electrons.at(j).E()>0.05 && gammas.at(k).E()>0.05)
-					if(gammas.at(k).E()>0.05)
+					if(gammas.at(k).E()>0.05){
+						if(mEEG>0.49  &&  mEEG<0.61) hmEE_2->Fill(mEE);
 						hmEEG_2->Fill(mEEG);
+					}
 				}
 			}
 		}

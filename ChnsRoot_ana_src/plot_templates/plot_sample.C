@@ -22,4 +22,17 @@ void plot_sample(){
 	fun->SetLineColor(6);
 	fun->Draw("l same");
 
+
+
+	TCanvas *c3 = CreateCanvas();
+	TH2F *frame3 = CreateFrame();
+	//frame3->GetXaxis()->SetTitleSize(0.2);
+	//gPad->SetBottomMargin(0.3);
+	TLatex *tex = new TLatex();
+	tex->SetTextSize(0.06);
+	tex->DrawLatex(1,6,"#eta#rightarrowh#pi^{0}");
+
+
+
+
 }

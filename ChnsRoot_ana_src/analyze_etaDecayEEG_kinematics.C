@@ -5,10 +5,10 @@
 #include "TProfile.h"
 #include <vector>
 
-void analyze_etaDecayEEG()
+void analyze_etaDecayEEG_kinematics()
 {
 
-	int total_EEGDecay_events = 581; //372; 
+	int total_EEGDecay_events = 100000; 
 
 	/// Input the simulation data from ChnsRoot
 	gSystem->Load("libfsim");
@@ -16,7 +16,7 @@ void analyze_etaDecayEEG()
 	t->Add("/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/ChnsRoot-data/run_fsim_EvtGen_HIAFeta_EEG_1.8GeV_2023.root");
 
 	/// The output file:
-	TString output_file = "../../HIAF-etaFactory-Simulations-localData/ChnsRoot-data/hiaf-etaDecay-EEG-results.root";
+	TString output_file = "../../HIAF-etaFactory-Simulations-localData/ChnsRoot-data/hiaf-etaDecay-EEG-kinematics-results.root";
 
 	gStyle->SetOptStat(1);
 
@@ -54,11 +54,13 @@ void analyze_etaDecayEEG()
 	vector<TLorentzVector>  eta_gamma_MC;
 
 	/// define some histograms
-	TH1D * hmEE = new TH1D("hmEE","m_{ee}",43,0,0.53);
-	TH1D * hmEE_2 = new TH1D("hmEE_2","",43,0,0.53);
-	TH1D * hmeta = new TH1D("hmeta","m_{#eta}",300,0.0,2);
+	TH1D * hmEE_MC = new TH1D("hmEE_MC","m_{ee}",30,0.01,0.58);
+
+	TH1D * hmEE = new TH1D("hmEE","m_{ee}",30,0.01,0.58);
+	TH1D * hmEE_2 = new TH1D("hmEE_2","",30,0.01,0.58);
+	TH1D * hmeta = new TH1D("hmeta","m_{#eta}",300,0.0,0.9);
 	TH1D * hmeta_MC = new TH1D("hmeta_MC","m_{#eta}",300,0.4,0.8);
-	TH1D * hmeta_2 = new TH1D("hmeta_2","",300,0.0,2);
+	TH1D * hmeta_2 = new TH1D("hmeta_2","",300,0.0,0.9);
 	TH1D * helec_prob = new TH1D("helec_prob","",400,-1,5);
 	TH1D * helec_PionPID_prob = new TH1D("helec_PionPID_prob","",400,-1,5);
 	TH1D * helec_charge = new TH1D("helec_charge","",200,-10,10);
@@ -67,6 +69,13 @@ void analyze_etaDecayEEG()
 
 	TH1D * hgamma_energy = new TH1D("hgamma_energy","",200,0,2);
 
+
+	TH2D *helec = new TH2D("helec","",50,0,180,100,0,3);
+	TH2D *hposi = new TH2D("hposi","",50,0,180,100,0,3);
+	TH2D *hgamma = new TH2D("hgamma","",50,0,180,100,0,3);
+	TH2D *helecMC = new TH2D("helecMC","",50,0,180,100,0,3);
+	TH2D *hposiMC = new TH2D("hposiMC","",50,0,180,100,0,3);
+	TH2D *hgammaMC = new TH2D("hgammaMC","",50,0,180,100,0,3);
 
 	/// define some variables for particle counting
 	int Nep_tot = 0;
@@ -98,9 +107,17 @@ void analyze_etaDecayEEG()
 		eta_Em_MC.clear();
 		eta_gamma_MC.clear();
 
-		
-
-		if(fCands->GetEntriesFast()>=2)
+		// get the MC particles which are used for the detector simulation
+		for (Int_t i1=0; i1<fMC->GetEntries(); i1++){
+			iMC = (ChnsMCTrack*)fMC->At(i1);
+			int pdg = iMC->GetPdgCode();
+			if(pdg==-11) eta_Ep_MC.push_back(iMC->Get4Momentum());
+			if(pdg==11)  eta_Em_MC.push_back(iMC->Get4Momentum());
+			if(pdg==11) helecMC->Fill(iMC->Get4Momentum().Theta()*TMath::RadToDeg(),  iMC->Get4Momentum().P());
+			if(pdg==-11) hposiMC->Fill(iMC->Get4Momentum().Theta()*TMath::RadToDeg(),  iMC->Get4Momentum().P());
+			if(pdg==22) hgammaMC->Fill(iMC->Get4Momentum().Theta()*TMath::RadToDeg(),  iMC->Get4Momentum().P());
+		}
+		// get the reconstructed particles which are from the detector simulation
 		for (Int_t i1=0; i1<fCands->GetEntriesFast(); i1++)
 		{
 			iCand1 = (ChnsPidCandidate*)fCands->At(i1);
@@ -111,22 +128,21 @@ void analyze_etaDecayEEG()
 			int pdg = iMC->GetPdgCode();
 
 
-
 			if(pdg==-11 && iCand1_prob->GetElectronPidProb()>0.1 && iCand1->GetCharge()>0) {
 //				cout<<"e^+ find,    ";
 				TLorentzVector ep = iCand1->GetLorentzVector();
 				ep.SetE( sqrt(ep.E()*ep.E() - ep.M()*ep.M() + 0.000511*0.000511)  );
 				//cout<<ep.M()<<endl;
+				hposi->Fill(ep.Theta()*TMath::RadToDeg(),  ep.P());
 				eta_Ep.push_back(ep);
-				eta_Ep_MC.push_back(iMC->Get4Momentum());
 				Nep_selected++;
 			}
 			else if(pdg==11 && iCand1_prob->GetElectronPidProb()>0.1 && iCand1->GetCharge()<0) {
 //				cout<<"e^- find,    ";
 				TLorentzVector em = iCand1->GetLorentzVector();
 				em.SetE( sqrt(em.E()*em.E() - em.M()*em.M() + 0.000511*0.000511)  );
+				helec->Fill(em.Theta()*TMath::RadToDeg(),  em.P());
 				eta_Em.push_back(em);
-				eta_Em_MC.push_back(iMC->Get4Momentum());
 				Nem_selected++;
 			}
 
@@ -161,6 +177,7 @@ void analyze_etaDecayEEG()
 				TLorentzVector gamma(v3_gamma, v3_gamma.Mag());
 				eta_gamma.push_back(gamma);	
 				eta_gamma_MC.push_back(iMC->Get4Momentum());	
+				if(gamma.E()>0.05) hgamma->Fill(gamma.Theta()*TMath::RadToDeg(),  gamma.P());
 
 				Ngamma_tot++;
 			}
@@ -169,6 +186,9 @@ void analyze_etaDecayEEG()
 //		cout<<"Nneutral_tracks="<<fNeuts->GetEntriesFast()<<endl;
 
 
+		/// filling MC eta distributions
+		hmEE_MC->Fill(  ( eta_Ep_MC.at(0)+eta_Em_MC.at(0) ).M()  );
+		/// filling reconstructed eta distributions 
 		if(eta_Ep.size()>=1 && eta_Em.size()>=1 && eta_gamma.size()>=1){
 			double mEE = (eta_Ep.at(0) + eta_Em.at(0)).M();
 			double meta = (eta_gamma.at(0) + eta_Ep.at(0) + eta_Em.at(0)).M();
@@ -184,7 +204,7 @@ void analyze_etaDecayEEG()
 
 			//if(eta_gamma.at(0).E()>0.05 && eta_Ep.at(0).E()>0.05 && eta_Em.at(0).E()>0.05){
 			if(eta_gamma.at(0).E()>0.05 ){
-				if(meta>0.49  &&  meta<0.61) hmEE_2->Fill(mEE);
+				hmEE_2->Fill(mEE);
 				hmeta_2->Fill(meta);
 				Neta_final++;
 			}
@@ -220,6 +240,7 @@ void analyze_etaDecayEEG()
 
 
 	TFile outfile(output_file,"recreate");
+	hmEE_MC->Write();
 	hmEE->Write();
 	hmEE_2->Write();
 	hmeta->Write();
@@ -231,6 +252,13 @@ void analyze_etaDecayEEG()
 	hposi_charge -> Write(); 
 	hgamma_energy -> Write(); 
 	helec_PionPID_prob -> Write();
+
+	helec->Write();
+	hposi->Write();
+	hgamma->Write();
+	helecMC->Write();
+	hposiMC->Write();
+	hgammaMC->Write();
 
 	outfile.Close();
 
