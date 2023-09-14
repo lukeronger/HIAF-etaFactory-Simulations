@@ -54,10 +54,10 @@ void analyze_etaDecayEEG_counting_MC_and_rec_particles()
 	vector<TLorentzVector>  eta_gamma_MC;
 
 	/// define some histograms
-	TH1D * hmEE_MC = new TH1D("hmEE_MC","m_{ee}",30,0.01,0.58);
+	TH1D * hmEE_MC = new TH1D("hmEE_MC","m_{ee}",43,0,0.53);
 
-	TH1D * hmEE = new TH1D("hmEE","m_{ee}",30,0.01,0.58);
-	TH1D * hmEE_2 = new TH1D("hmEE_2","",30,0.01,0.58);
+	TH1D * hmEE = new TH1D("hmEE","m_{ee}",43,0,0.53);
+	TH1D * hmEE_2 = new TH1D("hmEE_2","",43,0,0.53);
 	TH1D * hmeta = new TH1D("hmeta","m_{#eta}",300,0.0,0.9);
 	TH1D * hmeta_MC = new TH1D("hmeta_MC","m_{#eta}",300,0.4,0.8);
 	TH1D * hmeta_2 = new TH1D("hmeta_2","",300,0.0,0.9);
