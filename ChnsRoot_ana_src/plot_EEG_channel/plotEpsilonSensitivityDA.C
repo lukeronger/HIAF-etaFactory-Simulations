@@ -46,7 +46,7 @@
 		double sensi = 3*sqrt(nbg) / Neta_produced / effi;
 
 		double MA = hbg->GetBinCenter(i);
-		double tff = tff_eta(MA*MA);  cout<<i<<"\t"<<MA<<"\t"<<tff<<endl; 
+		double tff = tff_eta(-MA*MA);  cout<<i<<"\t"<<MA<<"\t"<<tff<<endl; 
 		double kine_factor = pow(1-MA*MA/Meta/Meta,  3); cout<<i<<"\t"<<kine_factor<<"   kine"<<endl;
 
 		sensi /= 2.0;
@@ -64,7 +64,7 @@
 	gPad->SetLogy();
 	gPad->SetTopMargin(0.05);
 
-	tex.DrawLatex(0.05,4e-5, "#eta#rightarrowA#gamma#rightarrowe^{+}e^{-}#gamma");
+	tex.DrawLatex(0.05,7e-6, "#eta#rightarrowA#gamma#rightarrowe^{+}e^{-}#gamma");
 
 
 
