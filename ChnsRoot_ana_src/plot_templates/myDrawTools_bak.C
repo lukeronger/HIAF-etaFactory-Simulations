@@ -52,7 +52,7 @@ TH2F *CreateFrame(double xmin=0, double xmax=2, double ymin=0, double ymax=10, s
 
 
 TCanvas *CreateCanvas_for_2Times1Pads(int xsize=950, int ysize=500, string name=" ", string title=" "){
-	double lmargin = 0.165;
+	double lmargin = 0.173;
 	double bmargin = 0.15;
 	double tmargin = 0.03;
 	double rmargin = 0.05;
