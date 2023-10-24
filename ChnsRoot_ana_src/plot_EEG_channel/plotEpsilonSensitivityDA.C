@@ -5,6 +5,7 @@
 	double effi = 0.6;
 
 	double Meta = 0.547862;
+	double Br_Eta2GG = 0.3936;
 	TF1 tff_eta("tff_eta", "1 - [1]*x/pow([0],2) + [2]*pow(x,2)/pow([0],4) - [3]*pow(x,3)/pow([0],6)");
 	tff_eta.SetParameters(0.547862,  0.576, 0.339, 0.2);
 
@@ -52,6 +53,7 @@
 		sensi /= 2.0;
 		sensi /= (tff*tff);
 		sensi /= kine_factor;
+		sensi /= Br_Eta2GG;
 		hbg->SetBinContent(i, sensi);
 	}
 	hbg->SetLineColor(4);
