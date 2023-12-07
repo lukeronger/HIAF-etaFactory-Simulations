@@ -7,7 +7,7 @@ int plot_theta_of_3He(){
 	file->cd();
 	TH1D *h3He_theta_MC = (TH1D*)file->Get("h3He_theta_MC");
 	TH1D *h3He_theta = (TH1D*)file->Get("h3He_theta");
-	CreateFrame(0,35, 1e-4,h3He_theta_MC->GetMaximum()*1.2,    "#theta of #^{3}He (#circ)","Counts");
+	CreateFrame(0,35, 1e-4,h3He_theta_MC->GetMaximum()*1.2,    "#theta of ^{3}He (#circ)","Counts");
 	h3He_theta_MC->SetLineColor(4);
 	h3He_theta_MC->SetLineWidth(2);
 	h3He_theta->SetLineColor(2);
