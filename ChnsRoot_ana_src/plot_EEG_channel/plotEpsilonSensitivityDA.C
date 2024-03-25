@@ -6,8 +6,9 @@
 
 	double Meta = 0.547862;
 	double Br_Eta2GG = 0.3936;
-	TF1 tff_eta("tff_eta", "1 - [1]*x/pow([0],2) + [2]*pow(x,2)/pow([0],4) - [3]*pow(x,3)/pow([0],6)");
-	tff_eta.SetParameters(0.547862,  0.576, 0.339, 0.2);
+	TF1 tff_eta("tff_eta", "1 / (1+x/0.722/0.722)");
+	TF1 tff_eta_v1("tff_eta_v1", "(1 - [1]*x/pow([0],2) + [2]*pow(x,2)/pow([0],4) - [3]*pow(x,3)/pow([0],6)) * 0.25");
+	tff_eta_v1.SetParameters(0.547862,  0.576, 0.339, 0.2);
 
 	gROOT->ProcessLine(".L ../plot_templates/myDrawTools.C");
 

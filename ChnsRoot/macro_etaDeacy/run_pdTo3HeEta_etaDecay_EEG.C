@@ -3,7 +3,7 @@
 */
 
 
-int run_pdTo3HeEta_etaDecay_EEG(int nevts=1000000, int seed_num = 2023)
+int run_pdTo3HeEta_etaDecay_EEG(int nevts=10000000, int seed_num = 2023)
 //int run_etaDecay_EEG(int nevts=372, int seed_num = 2023)
 {
   TString input_file = "/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/pdTo3HeEta_data/pd_to_3He_eta.evt"; 

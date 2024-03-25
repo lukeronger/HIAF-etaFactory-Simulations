@@ -10,6 +10,20 @@
 
 #include"../ChnsRoot_ana_src/plot_templates/myDrawTools.C"
 
+double MeeDist(double *x, double *par){
+	double meta = 0.547862;
+	double me = 0.00051099895;
+	double q2 = x[0]*x[0];
+	double Lambda2 = 0.75*0.75; 
+
+	double Feta = 1.0 / (1 - q2/Lambda2);
+
+	return 1.0/x[0] *sqrt(1-4*me*me/q2) * (1+2*me*me/q2) *pow(1-q2/meta/meta, 3) *Feta*Feta; 
+}
+
+
+
+
 void Gene_pdTo3HeEta() {
 
 	double T_p = 1.8;
@@ -40,8 +54,10 @@ void Gene_pdTo3HeEta() {
 
 
    TRandom3 *random3 = new TRandom3();   /// (342085);
-   TF1 *dileptonMassDist_TF1 = new TF1("dileptonMassDist_TF1","[0]*pow(x,[1])*pow(fabs(x-0.5478),[2])");
-   dileptonMassDist_TF1->SetParameters(2.52264e+03, -8.64483e-01, 1.54142);
+   //TF1 *dileptonMassDist_TF1 = new TF1("dileptonMassDist_TF1","[0]*pow(x,[1])*pow(fabs(x-0.5478),[2])");
+   //dileptonMassDist_TF1->SetParameters(2.52264e+03, -8.64483e-01, 1.54142);
+   TF1 *dileptonMassDist_TF1 = new TF1("dileptonMassDist_TF1", MeeDist,  0.01,0.547,   0);
+   ///dileptonMassDist_TF1->SetParameters(2.52264e+03, -8.64483e-01, 1.54142);
 
 
 
@@ -58,7 +74,7 @@ void Gene_pdTo3HeEta() {
    string filename = "pd_to_3He_eta.evt";
    ofstream evtout(dir+filename);
 
-   for (Int_t n=0;n<1000000;n++) {
+   for (Int_t n=0;n<10000000;n++) {
       event.SetDecay(W, 2, masses);
       Double_t weight = event.Generate();
       hweight->Fill(weight);
@@ -78,7 +94,8 @@ void Gene_pdTo3HeEta() {
 
 
 	TLorentzVector W2(pEta->Px(), pEta->Py(), pEta->Pz(), pEta->E());
-	double dielectronmass = dileptonMassDist_TF1->GetRandom(2*me+0.0001, meta-0.0001);
+	//double dielectronmass = dileptonMassDist_TF1->GetRandom(2*me+0.0001, meta-0.0001); 
+	double dielectronmass = dileptonMassDist_TF1->GetRandom(2*me+0.001, meta-0.001); 
 	masses2[1] = dielectronmass;
 	event.SetDecay(W2, 2, masses2);
 	weight = event.Generate();
