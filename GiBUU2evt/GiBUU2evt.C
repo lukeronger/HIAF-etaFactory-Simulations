@@ -39,7 +39,7 @@ void GiBUU2evt::Begin(TTree * /*tree*/)
 
    //TString directory_path = "/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/GiBUU-data/evt-data/";
    TString directory_path = "/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/GiBUU-data-evt/";
-   file_evt = new ofstream(directory_path + "GiBUU_final_states.evt");
+   file_evt = new ofstream(directory_path + "GiBUU_final_states-part7.evt");
 
    phase_generator = new TGenPhaseSpace();
    random3 = new TRandom3();   /// (342085);
