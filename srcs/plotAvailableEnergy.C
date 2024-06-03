@@ -19,6 +19,7 @@ int plotAvailableEnergy(){
 
 	cout<<1.8<<" GeV,  c.m. energy = "<<myfun->Eval(1.8)<<endl;
 	cout<<3.5<<" GeV,  c.m. energy = "<<myfun->Eval(3.5)<<endl;
+	cout<<2.41<<" GeV,  c.m. energy = "<<myfun->Eval(2.41)<<endl;
 	cout<<6<<" GeV,  c.m. energy = "<<myfun->Eval(6)<<endl;
 	cout<<9<<" GeV,  c.m. energy = "<<myfun->Eval(9)<<endl;
 	cout<<3<<" GeV,  c.m. energy = "<<myfun->Eval(3)<<endl;

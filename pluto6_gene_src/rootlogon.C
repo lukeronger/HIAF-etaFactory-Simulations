@@ -37,8 +37,9 @@
     //to load the FAIRROOT version
     gSystem->SetDynamicPath(TString(".:")+TString(gSystem->GetDynamicPath()));
 
-    
-    if (gSystem->Load("/data2/rwang/pluto_v6.00/libPluto.so")==0) {
+
+    //if (gSystem->Load("/data2/rwang/pluto_v6.00/libPluto.so")==0) {
+    if (gSystem->Load("/mnt/c/work2/HIAF-eta-factory/pluto_v6.00/libPluto.so")==0) {
 	printf("Shared library Pluto.so loaded\n");
     } else {
 	printf("Unable to load Pluto.so\n");
