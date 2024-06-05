@@ -5,13 +5,13 @@
 #include "TProfile.h"
 #include <vector>
 
-void analyze_GiBUU_PipPimPi0_background_with_neutrons(){
+void analyze_GiBUU_PipPimPi0_background_without_neutrons(){
 	/// Load ChnsRoot simulation data into TChain *t
 	gSystem->Load("libfsim");
 	TChain* t = new TChain("chnssim");
 	t->Add("/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/ChnsRoot-data/run_fsim_EvtGen_GiBUU_final_state_particles_1.8GeV_2023.root");
 	/// Set output file directory and name
-	TString output_file = "../../HIAF-etaFactory-Simulations-localData/ChnsRoot-data/hiaf-GiBUU-PipPimPi0-background-with-neutrons-results.root";
+	TString output_file = "../../HIAF-etaFactory-Simulations-localData/ChnsRoot-data/hiaf-GiBUU-PipPimPi0-background-without-neutrons-results.root";
 
 
 	gStyle->SetOptStat(1);
@@ -47,11 +47,6 @@ void analyze_GiBUU_PipPimPi0_background_with_neutrons(){
 	TH1D *hmTwoGammas_PipPimTwoGammas_2  = new TH1D("hmTwoGammas_PipPimTwoGammas_2","m_{#gamma#gamma}",600,0,2); 
 	TH1D *hmPipPimPi0 = new TH1D("hmPipPimPi0","m_{#pi+#pi-#pi0}",600,0,2); 
 	TH1D *hmPipPimPi0_2 = new TH1D("hmPipPimPi0_2","m_{#pi+#pi-#pi0}",600,0,2); 
-
-	
-	///TH2D *hpip_PTheta = new TH1D();
-
-
 
 
 
@@ -115,6 +110,7 @@ void analyze_GiBUU_PipPimPi0_background_with_neutrons(){
 				TLorentzVector gamma(v3_gamma, v3_gamma.Mag());
 				gammas.push_back(gamma);	
 			}
+#if 0
 			/// Neutrons miss-identified as gammas
 			if(pdg==2112){
 //				cout<<"miss-identified neutorn found,   ";
@@ -129,6 +125,7 @@ void analyze_GiBUU_PipPimPi0_background_with_neutrons(){
 				TLorentzVector gamma(v3_gamma, v3_gamma.Mag());
 				gammas.push_back(gamma);	
 			}
+#endif
 		} // end of neutral track loop
 //		cout<<"N neutral_tracks="<<fNeuts->GetEntriesFast()<<endl;
 
