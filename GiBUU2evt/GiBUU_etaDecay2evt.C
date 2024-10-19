@@ -148,12 +148,17 @@ Bool_t GiBUU_etaDecay2evt::Process(Long64_t entry)
 					   pips.erase(pips.begin()+i);
 					   pims.erase(pims.begin()+j);
 					   pi0s.erase(pi0s.begin()+k);
+
+					   break;
 				   }
 			   }
    }
 
 
 
+
+
+   if(etas.size()<1) return kTRUE;
 
    int Ntot = neutrons.size() + protons.size() + pips.size() + pims.size() + pi0s.size() + Kps.size();
    if(Ntot>0){

@@ -1,0 +1,14 @@
+[ RhoFitter.so ]
+# List of selected classes
+class Rho4CFitter
+class RhoDecayTreeFitter
+class RhoKalmanVtxFitter
+class RhoKinFitter
+class RhoKinVtxFitter
+class RhoVtxPoca
+header Rho4CFitter.h
+header RhoDecayTreeFitter.h
+header RhoKalmanVtxFitter.h
+header RhoKinFitter.h
+header RhoKinVtxFitter.h
+header RhoVtxPoca.h

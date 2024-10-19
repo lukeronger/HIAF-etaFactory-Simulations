@@ -2,7 +2,9 @@
 int runGiBUU2evt_v2(){
 	TChain *chain = new TChain("RootTuple","RootTuple");
 
+	//ifstream listin("/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/GiBUU-data-Random1002024/filelist-8");
 	ifstream listin("/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/GiBUU-data-RandSeed2023/filelist-3");
+
 
 	string filename;
 	while(listin>>filename){

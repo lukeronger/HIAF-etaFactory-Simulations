@@ -1,0 +1,58 @@
+21,25d20
+< // Note for v4:
+< // In this version, the pdg selection is added and the extropolation method is changed
+< //
+< // By Guoaq -- Dec./30/2021
+< //***********************************************************************************
+196,199c191,192
+<     
+<     int NHits_Low = 3;   //   
+<     int NHits_High = 9;  //
+<     
+---
+>     int NHits_Low = 4;   //   
+>     int NHits_High = 10;  //
+202a196
+> 
+221,222d214
+<     std::cout<<"Input root file is "<<fin_name<<std::endl;
+<     std::cout<<"Output root file is "<<fout_name<<std::endl;
+291a284,285
+> 
+> 
+305a300,302
+> 
+> 
+> 
+352d348
+<     int TotTrack = 0;
+419d414
+< 	    TotTrack++;
+450,453d444
+< 
+<             // Only select the pion, kaon and proton
+< 	    if(abs(pdg)!=211&&abs(pdg)!=321&&abs(pdg)!=2212) continue;
+< 
+669,670c660,661
+< 	            rep->extrapolateToPoint(kfsop, TVector3(0, 0, 0),false); // to the origin  Changed by Guoaq to get the DCA
+< 		    //rep->extrapolateToLine(kfsop, TVector3(0, 0, 0),TVector3(0,0,1),false,false); // to the beam line
+---
+> 	            // rep->extrapolateToPoint(kfsop, TVector3(0, 0, 0),false); // Changed by Guoaq to get the DCA
+> 		    rep->extrapolateToLine(kfsop, TVector3(0, 0, 0),TVector3(0,0,1),false,false);
+679a671,673
+> 
+> 
+> 
+716a711,712
+> 	t_track->Write();
+> 	t_out_eff->Write();
+723d718
+< 	
+816,817d810
+<     
+<     std::cout << "total track number is : " <<TotTrack << "\n";
+820,821d812
+<     t_track->Write();
+<     t_out_eff->Write();
+823d813
+<     

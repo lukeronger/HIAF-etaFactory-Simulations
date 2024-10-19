@@ -1,0 +1,12 @@
+[EiccEmcReadPar]
+Deposit_ratio_shashlik:  Double_t 0.3297
+Deposit_ratio_e: Double_t 0.98
+W0: Double_t 4.2
+Cluster_enenrgy_cut: Double_t 0.01
+Block_energy_cut: Double_t 0.001
+Reverse_phi_k: Int_t 6
+N_loop_safety: Int_t 6
+Max_cluster: Int_t 20
+Max_blocks: Int_t 200
+Total_max_cluster: Int_t 6
+M_particle: Double_t 0

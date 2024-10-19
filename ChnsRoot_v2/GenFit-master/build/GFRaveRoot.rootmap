@@ -1,0 +1,9 @@
+{ decls }
+namespace genfit {  }
+
+[ libgenfit2.so ]
+# List of selected classes
+class genfit::GFRaveTrackParameters
+class genfit::GFRaveVertex
+# List of selected namespaces
+namespace genfit

@@ -3,9 +3,10 @@
 */
 
 
-int run_GiBUU_final_state_particles_part1(int nevts=4950000, int seed_num = 2023)
+int run_GiBUU_final_state_particles_part1(int nevts=1000000, int seed_num = 2023)
 {
-  TString input_file = "/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/GiBUU-data-evt/GiBUU_final_states-part7.evt";
+  //TString input_file = "/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/GiBUU-data-evt/GiBUU_final_states-part8.evt";
+  TString input_file = "/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/GiBUU-data-evt/GiBUU_final_states-pd-part5.evt";
 
 
 
@@ -19,7 +20,8 @@ int run_GiBUU_final_state_particles_part1(int nevts=4950000, int seed_num = 2023
   // Load this example libraries
   TString outfile;
   if (outfile=="") {
-	outfile="/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/ChnsRoot-data/run_fsim_EvtGen_GiBUU_final_state_particles_part7_"; //1.root";
+	//outfile="/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/ChnsRoot-data/run_fsim_EvtGen_GiBUU_final_state_particles_part8_"; //1.root";
+	outfile="/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/ChnsRoot-data/fsim_GiBUU_pd_collision_part5_"; //1.root";
 	outfile+=1.8;
 	outfile+="GeV_";
   	outfile+= seed_num;

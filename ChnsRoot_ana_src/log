@@ -1,0 +1,13 @@
+
+Processing analyze_etaDecayEEG_counting_MC_and_rec_particles.C...
+  10000000 total input events
+Efficiency: 
+10000000 6.37092e+06 0.637092
+10000000 6.36975e+06 0.636975
+
+
+ positron pid effi.: 0.977945   =8185714/8370320
+ electron pid effi.: 0.977958   =8184327/8368791
+ gamma Ecut effi.: 0.9998   =8506743/8508445
+ gamma Ecut effi. (v2): 0.999817   =6369751/6370917
+ total effi.: 0.636975   =6369751/10000000

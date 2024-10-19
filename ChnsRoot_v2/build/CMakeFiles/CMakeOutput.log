@@ -1,0 +1,632 @@
+The system is: Linux - 5.4.0-150-generic - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/cc 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/3.18.3/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/3.18.3/CompilerIdCXX/a.out"
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_f4d00/fast && /usr/bin/make  -f CMakeFiles/cmTC_f4d00.dir/build.make CMakeFiles/cmTC_f4d00.dir/build
+make[1]: Entering directory '/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f4d00.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc   -v -o CMakeFiles/cmTC_f4d00.dir/CMakeCCompilerABI.c.o -c /home/eicc/software/cmake/share/cmake-3.18/Modules/CMakeCCompilerABI.c
+Using built-in specs.
+COLLECT_GCC=/usr/bin/cc
+OFFLOAD_TARGET_NAMES=nvptx-none
+OFFLOAD_TARGET_DEFAULT=1
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 7.5.0-3ubuntu1~18.04' --with-bugurl=file:///usr/share/doc/gcc-7/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-7 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --enable-default-pie --with-system-zlib --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f4d00.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/7/cc1 -quiet -v -imultiarch x86_64-linux-gnu /home/eicc/software/cmake/share/cmake-3.18/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_f4d00.dir/CMakeCCompilerABI.c.o -version -fstack-protector-strong -Wformat -Wformat-security -o /tmp/ccQKi6dq.s
+GNU C11 (Ubuntu 7.5.0-3ubuntu1~18.04) version 7.5.0 (x86_64-linux-gnu)
+	compiled by GNU C version 7.5.0, GMP version 6.1.2, MPFR version 4.0.1, MPC version 1.1.0, isl version isl-0.19-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"
+ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/7/../../../../x86_64-linux-gnu/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /data2/rwang/intel_packages/tbb/2021.7.0/env/../include
+ /data2/rwang/intel_packages/mpi/2021.7.0//include
+ /data2/rwang/intel_packages/dev-utilities/2021.7.0/include
+ /usr/lib/gcc/x86_64-linux-gnu/7/include
+ /usr/local/include
+ /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed
+ /usr/include/x86_64-linux-gnu
+ /usr/include
+End of search list.
+GNU C11 (Ubuntu 7.5.0-3ubuntu1~18.04) version 7.5.0 (x86_64-linux-gnu)
+	compiled by GNU C version 7.5.0, GMP version 6.1.2, MPFR version 4.0.1, MPC version 1.1.0, isl version isl-0.19-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: b62ed4a2880cd4159476ea8293b72fa8
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f4d00.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
+ as -v --64 -o CMakeFiles/cmTC_f4d00.dir/CMakeCCompilerABI.c.o /tmp/ccQKi6dq.s
+GNU assembler version 2.30 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.30
+COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/
+LIBRARY_PATH=/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/../lib/:/data2/rwang/intel_packages/mpi/2021.7.0//lib/../lib/:/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/data2/rwang/intel_packages/tbb/2021.7.0/env/../lib/intel64/gcc4.8/:/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/:/data2/rwang/intel_packages/mpi/2021.7.0//lib/release/:/data2/rwang/intel_packages/mpi/2021.7.0//lib/:/data2/rwang/intel_packages/compiler/2022.2.0/linux/compiler/lib/intel64_lin/:/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/:/data2/rwang/intel_packages/clck/2021.7.0/lib/intel64/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f4d00.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
+Linking C executable cmTC_f4d00
+/home/eicc/software/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f4d00.dir/link.txt --verbose=1
+/usr/bin/cc  -v CMakeFiles/cmTC_f4d00.dir/CMakeCCompilerABI.c.o -o cmTC_f4d00 
+Using built-in specs.
+COLLECT_GCC=/usr/bin/cc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper
+OFFLOAD_TARGET_NAMES=nvptx-none
+OFFLOAD_TARGET_DEFAULT=1
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 7.5.0-3ubuntu1~18.04' --with-bugurl=file:///usr/share/doc/gcc-7/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-7 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --enable-default-pie --with-system-zlib --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) 
+COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/
+LIBRARY_PATH=/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/../lib/:/data2/rwang/intel_packages/mpi/2021.7.0//lib/../lib/:/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/data2/rwang/intel_packages/tbb/2021.7.0/env/../lib/intel64/gcc4.8/:/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/:/data2/rwang/intel_packages/mpi/2021.7.0//lib/release/:/data2/rwang/intel_packages/mpi/2021.7.0//lib/:/data2/rwang/intel_packages/compiler/2022.2.0/linux/compiler/lib/intel64_lin/:/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/:/data2/rwang/intel_packages/clck/2021.7.0/lib/intel64/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f4d00' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/cceqjpsw.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_f4d00 /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/../lib -L/data2/rwang/intel_packages/mpi/2021.7.0//lib/../lib -L/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/data2/rwang/intel_packages/tbb/2021.7.0/env/../lib/intel64/gcc4.8 -L/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib -L/data2/rwang/intel_packages/mpi/2021.7.0//lib/release -L/data2/rwang/intel_packages/mpi/2021.7.0//lib -L/data2/rwang/intel_packages/compiler/2022.2.0/linux/compiler/lib/intel64_lin -L/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib -L/data2/rwang/intel_packages/clck/2021.7.0/lib/intel64 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_f4d00.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f4d00' '-mtune=generic' '-march=x86-64'
+make[1]: Leaving directory '/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp'
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/data2/rwang/intel_packages/tbb/2021.7.0/env/../include]
+    add: [/data2/rwang/intel_packages/mpi/2021.7.0//include]
+    add: [/data2/rwang/intel_packages/dev-utilities/2021.7.0/include]
+    add: [/usr/lib/gcc/x86_64-linux-gnu/7/include]
+    add: [/usr/local/include]
+    add: [/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed]
+    add: [/usr/include/x86_64-linux-gnu]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/data2/rwang/intel_packages/tbb/2021.7.0/env/../include] ==> [/data2/rwang/intel_packages/tbb/2021.7.0/include]
+  collapse include dir [/data2/rwang/intel_packages/mpi/2021.7.0//include] ==> [/data2/rwang/intel_packages/mpi/2021.7.0/include]
+  collapse include dir [/data2/rwang/intel_packages/dev-utilities/2021.7.0/include] ==> [/data2/rwang/intel_packages/dev-utilities/2021.7.0/include]
+  collapse include dir [/usr/lib/gcc/x86_64-linux-gnu/7/include] ==> [/usr/lib/gcc/x86_64-linux-gnu/7/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed] ==> [/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed]
+  collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/data2/rwang/intel_packages/tbb/2021.7.0/include;/data2/rwang/intel_packages/mpi/2021.7.0/include;/data2/rwang/intel_packages/dev-utilities/2021.7.0/include;/usr/lib/gcc/x86_64-linux-gnu/7/include;/usr/local/include;/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed;/usr/include/x86_64-linux-gnu;/usr/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/make cmTC_f4d00/fast && /usr/bin/make  -f CMakeFiles/cmTC_f4d00.dir/build.make CMakeFiles/cmTC_f4d00.dir/build]
+  ignore line: [make[1]: Entering directory '/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_f4d00.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_f4d00.dir/CMakeCCompilerABI.c.o -c /home/eicc/software/cmake/share/cmake-3.18/Modules/CMakeCCompilerABI.c]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/cc]
+  ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
+  ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+  ignore line: [Target: x86_64-linux-gnu]
+  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 7.5.0-3ubuntu1~18.04' --with-bugurl=file:///usr/share/doc/gcc-7/README.Bugs --enable-languages=c ada c++ go brig d fortran objc obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-7 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --enable-default-pie --with-system-zlib --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f4d00.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
+  ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/7/cc1 -quiet -v -imultiarch x86_64-linux-gnu /home/eicc/software/cmake/share/cmake-3.18/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_f4d00.dir/CMakeCCompilerABI.c.o -version -fstack-protector-strong -Wformat -Wformat-security -o /tmp/ccQKi6dq.s]
+  ignore line: [GNU C11 (Ubuntu 7.5.0-3ubuntu1~18.04) version 7.5.0 (x86_64-linux-gnu)]
+  ignore line: [	compiled by GNU C version 7.5.0  GMP version 6.1.2  MPFR version 4.0.1  MPC version 1.1.0  isl version isl-0.19-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"]
+  ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/7/../../../../x86_64-linux-gnu/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /data2/rwang/intel_packages/tbb/2021.7.0/env/../include]
+  ignore line: [ /data2/rwang/intel_packages/mpi/2021.7.0//include]
+  ignore line: [ /data2/rwang/intel_packages/dev-utilities/2021.7.0/include]
+  ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/7/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed]
+  ignore line: [ /usr/include/x86_64-linux-gnu]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C11 (Ubuntu 7.5.0-3ubuntu1~18.04) version 7.5.0 (x86_64-linux-gnu)]
+  ignore line: [	compiled by GNU C version 7.5.0  GMP version 6.1.2  MPFR version 4.0.1  MPC version 1.1.0  isl version isl-0.19-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: b62ed4a2880cd4159476ea8293b72fa8]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f4d00.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
+  ignore line: [ as -v --64 -o CMakeFiles/cmTC_f4d00.dir/CMakeCCompilerABI.c.o /tmp/ccQKi6dq.s]
+  ignore line: [GNU assembler version 2.30 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.30]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/../lib/:/data2/rwang/intel_packages/mpi/2021.7.0//lib/../lib/:/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/data2/rwang/intel_packages/tbb/2021.7.0/env/../lib/intel64/gcc4.8/:/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/:/data2/rwang/intel_packages/mpi/2021.7.0//lib/release/:/data2/rwang/intel_packages/mpi/2021.7.0//lib/:/data2/rwang/intel_packages/compiler/2022.2.0/linux/compiler/lib/intel64_lin/:/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/:/data2/rwang/intel_packages/clck/2021.7.0/lib/intel64/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f4d00.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
+  ignore line: [Linking C executable cmTC_f4d00]
+  ignore line: [/home/eicc/software/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f4d00.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc  -v CMakeFiles/cmTC_f4d00.dir/CMakeCCompilerABI.c.o -o cmTC_f4d00 ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/cc]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper]
+  ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
+  ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+  ignore line: [Target: x86_64-linux-gnu]
+  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 7.5.0-3ubuntu1~18.04' --with-bugurl=file:///usr/share/doc/gcc-7/README.Bugs --enable-languages=c ada c++ go brig d fortran objc obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-7 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --enable-default-pie --with-system-zlib --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/../lib/:/data2/rwang/intel_packages/mpi/2021.7.0//lib/../lib/:/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/data2/rwang/intel_packages/tbb/2021.7.0/env/../lib/intel64/gcc4.8/:/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/:/data2/rwang/intel_packages/mpi/2021.7.0//lib/release/:/data2/rwang/intel_packages/mpi/2021.7.0//lib/:/data2/rwang/intel_packages/compiler/2022.2.0/linux/compiler/lib/intel64_lin/:/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/:/data2/rwang/intel_packages/clck/2021.7.0/lib/intel64/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f4d00' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/cceqjpsw.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_f4d00 /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/../lib -L/data2/rwang/intel_packages/mpi/2021.7.0//lib/../lib -L/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/data2/rwang/intel_packages/tbb/2021.7.0/env/../lib/intel64/gcc4.8 -L/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib -L/data2/rwang/intel_packages/mpi/2021.7.0//lib/release -L/data2/rwang/intel_packages/mpi/2021.7.0//lib -L/data2/rwang/intel_packages/compiler/2022.2.0/linux/compiler/lib/intel64_lin -L/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib -L/data2/rwang/intel_packages/clck/2021.7.0/lib/intel64 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_f4d00.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
+    arg [/usr/lib/gcc/x86_64-linux-gnu/7/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/cceqjpsw.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-znow] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_f4d00] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o] ==> ignore
+    arg [-L/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/../lib] ==> dir [/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/../lib]
+    arg [-L/data2/rwang/intel_packages/mpi/2021.7.0//lib/../lib] ==> dir [/data2/rwang/intel_packages/mpi/2021.7.0//lib/../lib]
+    arg [-L/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/../lib] ==> dir [/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/../lib]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/7] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib]
+    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [-L/lib/../lib] ==> dir [/lib/../lib]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+    arg [-L/data2/rwang/intel_packages/tbb/2021.7.0/env/../lib/intel64/gcc4.8] ==> dir [/data2/rwang/intel_packages/tbb/2021.7.0/env/../lib/intel64/gcc4.8]
+    arg [-L/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib] ==> dir [/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib]
+    arg [-L/data2/rwang/intel_packages/mpi/2021.7.0//lib/release] ==> dir [/data2/rwang/intel_packages/mpi/2021.7.0//lib/release]
+    arg [-L/data2/rwang/intel_packages/mpi/2021.7.0//lib] ==> dir [/data2/rwang/intel_packages/mpi/2021.7.0//lib]
+    arg [-L/data2/rwang/intel_packages/compiler/2022.2.0/linux/compiler/lib/intel64_lin] ==> dir [/data2/rwang/intel_packages/compiler/2022.2.0/linux/compiler/lib/intel64_lin]
+    arg [-L/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib] ==> dir [/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib]
+    arg [-L/data2/rwang/intel_packages/clck/2021.7.0/lib/intel64] ==> dir [/data2/rwang/intel_packages/clck/2021.7.0/lib/intel64]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../..]
+    arg [CMakeFiles/cmTC_f4d00.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--push-state] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--pop-state] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--push-state] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--pop-state] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o] ==> ignore
+  collapse library dir [/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/../lib] ==> [/data2/rwang/intel_packages/mpi/2021.7.0/libfabric/lib]
+  collapse library dir [/data2/rwang/intel_packages/mpi/2021.7.0//lib/../lib] ==> [/data2/rwang/intel_packages/mpi/2021.7.0/lib]
+  collapse library dir [/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/../lib] ==> [/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/7] ==> [/usr/lib/gcc/x86_64-linux-gnu/7]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib] ==> [/usr/lib]
+  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/lib/../lib] ==> [/lib]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+  collapse library dir [/data2/rwang/intel_packages/tbb/2021.7.0/env/../lib/intel64/gcc4.8] ==> [/data2/rwang/intel_packages/tbb/2021.7.0/lib/intel64/gcc4.8]
+  collapse library dir [/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib] ==> [/data2/rwang/intel_packages/mpi/2021.7.0/libfabric/lib]
+  collapse library dir [/data2/rwang/intel_packages/mpi/2021.7.0//lib/release] ==> [/data2/rwang/intel_packages/mpi/2021.7.0/lib/release]
+  collapse library dir [/data2/rwang/intel_packages/mpi/2021.7.0//lib] ==> [/data2/rwang/intel_packages/mpi/2021.7.0/lib]
+  collapse library dir [/data2/rwang/intel_packages/compiler/2022.2.0/linux/compiler/lib/intel64_lin] ==> [/data2/rwang/intel_packages/compiler/2022.2.0/linux/compiler/lib/intel64_lin]
+  collapse library dir [/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib] ==> [/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib]
+  collapse library dir [/data2/rwang/intel_packages/clck/2021.7.0/lib/intel64] ==> [/data2/rwang/intel_packages/clck/2021.7.0/lib/intel64]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../..] ==> [/usr/lib]
+  implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+  implicit dirs: [/data2/rwang/intel_packages/mpi/2021.7.0/libfabric/lib;/data2/rwang/intel_packages/mpi/2021.7.0/lib;/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib;/usr/lib/gcc/x86_64-linux-gnu/7;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib;/data2/rwang/intel_packages/tbb/2021.7.0/lib/intel64/gcc4.8;/data2/rwang/intel_packages/mpi/2021.7.0/lib/release;/data2/rwang/intel_packages/compiler/2022.2.0/linux/compiler/lib/intel64_lin;/data2/rwang/intel_packages/clck/2021.7.0/lib/intel64]
+  implicit fwks: []
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_92b4b/fast && /usr/bin/make  -f CMakeFiles/cmTC_92b4b.dir/build.make CMakeFiles/cmTC_92b4b.dir/build
+make[1]: Entering directory '/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_92b4b.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++   -v -o CMakeFiles/cmTC_92b4b.dir/CMakeCXXCompilerABI.cpp.o -c /home/eicc/software/cmake/share/cmake-3.18/Modules/CMakeCXXCompilerABI.cpp
+Using built-in specs.
+COLLECT_GCC=/usr/bin/c++
+OFFLOAD_TARGET_NAMES=nvptx-none
+OFFLOAD_TARGET_DEFAULT=1
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 7.5.0-3ubuntu1~18.04' --with-bugurl=file:///usr/share/doc/gcc-7/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-7 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --enable-default-pie --with-system-zlib --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_92b4b.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/7/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /home/eicc/software/cmake/share/cmake-3.18/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_92b4b.dir/CMakeCXXCompilerABI.cpp.o -version -fstack-protector-strong -Wformat -Wformat-security -o /tmp/cc6mQlXt.s
+GNU C++14 (Ubuntu 7.5.0-3ubuntu1~18.04) version 7.5.0 (x86_64-linux-gnu)
+	compiled by GNU C version 7.5.0, GMP version 6.1.2, MPFR version 4.0.1, MPC version 1.1.0, isl version isl-0.19-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring duplicate directory "/usr/include/x86_64-linux-gnu/c++/7"
+ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"
+ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/7/../../../../x86_64-linux-gnu/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /data2/rwang/intel_packages/tbb/2021.7.0/env/../include
+ /data2/rwang/intel_packages/mpi/2021.7.0//include
+ /data2/rwang/intel_packages/dev-utilities/2021.7.0/include
+ /data2/rwang/intel_packages/clck/2021.7.0/include
+ /usr/include/c++/7
+ /usr/include/x86_64-linux-gnu/c++/7
+ /usr/include/c++/7/backward
+ /usr/lib/gcc/x86_64-linux-gnu/7/include
+ /usr/local/include
+ /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed
+ /usr/include/x86_64-linux-gnu
+ /usr/include
+End of search list.
+GNU C++14 (Ubuntu 7.5.0-3ubuntu1~18.04) version 7.5.0 (x86_64-linux-gnu)
+	compiled by GNU C version 7.5.0, GMP version 6.1.2, MPFR version 4.0.1, MPC version 1.1.0, isl version isl-0.19-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: 3eb3dc290cd5714c3e1c3ae751116f07
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_92b4b.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ as -v --64 -o CMakeFiles/cmTC_92b4b.dir/CMakeCXXCompilerABI.cpp.o /tmp/cc6mQlXt.s
+GNU assembler version 2.30 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.30
+COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/
+LIBRARY_PATH=/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/../lib/:/data2/rwang/intel_packages/mpi/2021.7.0//lib/../lib/:/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/data2/rwang/intel_packages/tbb/2021.7.0/env/../lib/intel64/gcc4.8/:/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/:/data2/rwang/intel_packages/mpi/2021.7.0//lib/release/:/data2/rwang/intel_packages/mpi/2021.7.0//lib/:/data2/rwang/intel_packages/compiler/2022.2.0/linux/compiler/lib/intel64_lin/:/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/:/data2/rwang/intel_packages/clck/2021.7.0/lib/intel64/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_92b4b.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+Linking CXX executable cmTC_92b4b
+/home/eicc/software/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_92b4b.dir/link.txt --verbose=1
+/usr/bin/c++  -v CMakeFiles/cmTC_92b4b.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_92b4b 
+Using built-in specs.
+COLLECT_GCC=/usr/bin/c++
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper
+OFFLOAD_TARGET_NAMES=nvptx-none
+OFFLOAD_TARGET_DEFAULT=1
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 7.5.0-3ubuntu1~18.04' --with-bugurl=file:///usr/share/doc/gcc-7/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-7 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --enable-default-pie --with-system-zlib --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) 
+COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/
+LIBRARY_PATH=/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/../lib/:/data2/rwang/intel_packages/mpi/2021.7.0//lib/../lib/:/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/data2/rwang/intel_packages/tbb/2021.7.0/env/../lib/intel64/gcc4.8/:/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/:/data2/rwang/intel_packages/mpi/2021.7.0//lib/release/:/data2/rwang/intel_packages/mpi/2021.7.0//lib/:/data2/rwang/intel_packages/compiler/2022.2.0/linux/compiler/lib/intel64_lin/:/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/:/data2/rwang/intel_packages/clck/2021.7.0/lib/intel64/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_92b4b' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccGmTU9u.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_92b4b /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/../lib -L/data2/rwang/intel_packages/mpi/2021.7.0//lib/../lib -L/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/data2/rwang/intel_packages/tbb/2021.7.0/env/../lib/intel64/gcc4.8 -L/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib -L/data2/rwang/intel_packages/mpi/2021.7.0//lib/release -L/data2/rwang/intel_packages/mpi/2021.7.0//lib -L/data2/rwang/intel_packages/compiler/2022.2.0/linux/compiler/lib/intel64_lin -L/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib -L/data2/rwang/intel_packages/clck/2021.7.0/lib/intel64 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_92b4b.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_92b4b' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+make[1]: Leaving directory '/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp'
+
+
+
+Parsed CXX implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/data2/rwang/intel_packages/tbb/2021.7.0/env/../include]
+    add: [/data2/rwang/intel_packages/mpi/2021.7.0//include]
+    add: [/data2/rwang/intel_packages/dev-utilities/2021.7.0/include]
+    add: [/data2/rwang/intel_packages/clck/2021.7.0/include]
+    add: [/usr/include/c++/7]
+    add: [/usr/include/x86_64-linux-gnu/c++/7]
+    add: [/usr/include/c++/7/backward]
+    add: [/usr/lib/gcc/x86_64-linux-gnu/7/include]
+    add: [/usr/local/include]
+    add: [/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed]
+    add: [/usr/include/x86_64-linux-gnu]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/data2/rwang/intel_packages/tbb/2021.7.0/env/../include] ==> [/data2/rwang/intel_packages/tbb/2021.7.0/include]
+  collapse include dir [/data2/rwang/intel_packages/mpi/2021.7.0//include] ==> [/data2/rwang/intel_packages/mpi/2021.7.0/include]
+  collapse include dir [/data2/rwang/intel_packages/dev-utilities/2021.7.0/include] ==> [/data2/rwang/intel_packages/dev-utilities/2021.7.0/include]
+  collapse include dir [/data2/rwang/intel_packages/clck/2021.7.0/include] ==> [/data2/rwang/intel_packages/clck/2021.7.0/include]
+  collapse include dir [/usr/include/c++/7] ==> [/usr/include/c++/7]
+  collapse include dir [/usr/include/x86_64-linux-gnu/c++/7] ==> [/usr/include/x86_64-linux-gnu/c++/7]
+  collapse include dir [/usr/include/c++/7/backward] ==> [/usr/include/c++/7/backward]
+  collapse include dir [/usr/lib/gcc/x86_64-linux-gnu/7/include] ==> [/usr/lib/gcc/x86_64-linux-gnu/7/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed] ==> [/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed]
+  collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/data2/rwang/intel_packages/tbb/2021.7.0/include;/data2/rwang/intel_packages/mpi/2021.7.0/include;/data2/rwang/intel_packages/dev-utilities/2021.7.0/include;/data2/rwang/intel_packages/clck/2021.7.0/include;/usr/include/c++/7;/usr/include/x86_64-linux-gnu/c++/7;/usr/include/c++/7/backward;/usr/lib/gcc/x86_64-linux-gnu/7/include;/usr/local/include;/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed;/usr/include/x86_64-linux-gnu;/usr/include]
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/make cmTC_92b4b/fast && /usr/bin/make  -f CMakeFiles/cmTC_92b4b.dir/build.make CMakeFiles/cmTC_92b4b.dir/build]
+  ignore line: [make[1]: Entering directory '/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_92b4b.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++   -v -o CMakeFiles/cmTC_92b4b.dir/CMakeCXXCompilerABI.cpp.o -c /home/eicc/software/cmake/share/cmake-3.18/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/c++]
+  ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
+  ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+  ignore line: [Target: x86_64-linux-gnu]
+  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 7.5.0-3ubuntu1~18.04' --with-bugurl=file:///usr/share/doc/gcc-7/README.Bugs --enable-languages=c ada c++ go brig d fortran objc obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-7 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --enable-default-pie --with-system-zlib --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_92b4b.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/7/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /home/eicc/software/cmake/share/cmake-3.18/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_92b4b.dir/CMakeCXXCompilerABI.cpp.o -version -fstack-protector-strong -Wformat -Wformat-security -o /tmp/cc6mQlXt.s]
+  ignore line: [GNU C++14 (Ubuntu 7.5.0-3ubuntu1~18.04) version 7.5.0 (x86_64-linux-gnu)]
+  ignore line: [	compiled by GNU C version 7.5.0  GMP version 6.1.2  MPFR version 4.0.1  MPC version 1.1.0  isl version isl-0.19-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring duplicate directory "/usr/include/x86_64-linux-gnu/c++/7"]
+  ignore line: [ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"]
+  ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/7/../../../../x86_64-linux-gnu/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /data2/rwang/intel_packages/tbb/2021.7.0/env/../include]
+  ignore line: [ /data2/rwang/intel_packages/mpi/2021.7.0//include]
+  ignore line: [ /data2/rwang/intel_packages/dev-utilities/2021.7.0/include]
+  ignore line: [ /data2/rwang/intel_packages/clck/2021.7.0/include]
+  ignore line: [ /usr/include/c++/7]
+  ignore line: [ /usr/include/x86_64-linux-gnu/c++/7]
+  ignore line: [ /usr/include/c++/7/backward]
+  ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/7/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed]
+  ignore line: [ /usr/include/x86_64-linux-gnu]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C++14 (Ubuntu 7.5.0-3ubuntu1~18.04) version 7.5.0 (x86_64-linux-gnu)]
+  ignore line: [	compiled by GNU C version 7.5.0  GMP version 6.1.2  MPFR version 4.0.1  MPC version 1.1.0  isl version isl-0.19-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: 3eb3dc290cd5714c3e1c3ae751116f07]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_92b4b.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  ignore line: [ as -v --64 -o CMakeFiles/cmTC_92b4b.dir/CMakeCXXCompilerABI.cpp.o /tmp/cc6mQlXt.s]
+  ignore line: [GNU assembler version 2.30 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.30]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/../lib/:/data2/rwang/intel_packages/mpi/2021.7.0//lib/../lib/:/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/data2/rwang/intel_packages/tbb/2021.7.0/env/../lib/intel64/gcc4.8/:/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/:/data2/rwang/intel_packages/mpi/2021.7.0//lib/release/:/data2/rwang/intel_packages/mpi/2021.7.0//lib/:/data2/rwang/intel_packages/compiler/2022.2.0/linux/compiler/lib/intel64_lin/:/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/:/data2/rwang/intel_packages/clck/2021.7.0/lib/intel64/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_92b4b.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  ignore line: [Linking CXX executable cmTC_92b4b]
+  ignore line: [/home/eicc/software/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_92b4b.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++  -v CMakeFiles/cmTC_92b4b.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_92b4b ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/c++]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper]
+  ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
+  ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+  ignore line: [Target: x86_64-linux-gnu]
+  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 7.5.0-3ubuntu1~18.04' --with-bugurl=file:///usr/share/doc/gcc-7/README.Bugs --enable-languages=c ada c++ go brig d fortran objc obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-7 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --enable-default-pie --with-system-zlib --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/../lib/:/data2/rwang/intel_packages/mpi/2021.7.0//lib/../lib/:/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/data2/rwang/intel_packages/tbb/2021.7.0/env/../lib/intel64/gcc4.8/:/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/:/data2/rwang/intel_packages/mpi/2021.7.0//lib/release/:/data2/rwang/intel_packages/mpi/2021.7.0//lib/:/data2/rwang/intel_packages/compiler/2022.2.0/linux/compiler/lib/intel64_lin/:/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/:/data2/rwang/intel_packages/clck/2021.7.0/lib/intel64/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_92b4b' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccGmTU9u.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_92b4b /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/../lib -L/data2/rwang/intel_packages/mpi/2021.7.0//lib/../lib -L/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/data2/rwang/intel_packages/tbb/2021.7.0/env/../lib/intel64/gcc4.8 -L/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib -L/data2/rwang/intel_packages/mpi/2021.7.0//lib/release -L/data2/rwang/intel_packages/mpi/2021.7.0//lib -L/data2/rwang/intel_packages/compiler/2022.2.0/linux/compiler/lib/intel64_lin -L/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib -L/data2/rwang/intel_packages/clck/2021.7.0/lib/intel64 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_92b4b.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
+    arg [/usr/lib/gcc/x86_64-linux-gnu/7/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccGmTU9u.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-znow] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_92b4b] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o] ==> ignore
+    arg [-L/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/../lib] ==> dir [/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/../lib]
+    arg [-L/data2/rwang/intel_packages/mpi/2021.7.0//lib/../lib] ==> dir [/data2/rwang/intel_packages/mpi/2021.7.0//lib/../lib]
+    arg [-L/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/../lib] ==> dir [/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/../lib]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/7] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib]
+    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [-L/lib/../lib] ==> dir [/lib/../lib]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+    arg [-L/data2/rwang/intel_packages/tbb/2021.7.0/env/../lib/intel64/gcc4.8] ==> dir [/data2/rwang/intel_packages/tbb/2021.7.0/env/../lib/intel64/gcc4.8]
+    arg [-L/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib] ==> dir [/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib]
+    arg [-L/data2/rwang/intel_packages/mpi/2021.7.0//lib/release] ==> dir [/data2/rwang/intel_packages/mpi/2021.7.0//lib/release]
+    arg [-L/data2/rwang/intel_packages/mpi/2021.7.0//lib] ==> dir [/data2/rwang/intel_packages/mpi/2021.7.0//lib]
+    arg [-L/data2/rwang/intel_packages/compiler/2022.2.0/linux/compiler/lib/intel64_lin] ==> dir [/data2/rwang/intel_packages/compiler/2022.2.0/linux/compiler/lib/intel64_lin]
+    arg [-L/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib] ==> dir [/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib]
+    arg [-L/data2/rwang/intel_packages/clck/2021.7.0/lib/intel64] ==> dir [/data2/rwang/intel_packages/clck/2021.7.0/lib/intel64]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../..]
+    arg [CMakeFiles/cmTC_92b4b.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o] ==> ignore
+  collapse library dir [/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib/../lib] ==> [/data2/rwang/intel_packages/mpi/2021.7.0/libfabric/lib]
+  collapse library dir [/data2/rwang/intel_packages/mpi/2021.7.0//lib/../lib] ==> [/data2/rwang/intel_packages/mpi/2021.7.0/lib]
+  collapse library dir [/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib/../lib] ==> [/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/7] ==> [/usr/lib/gcc/x86_64-linux-gnu/7]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib] ==> [/usr/lib]
+  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/lib/../lib] ==> [/lib]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+  collapse library dir [/data2/rwang/intel_packages/tbb/2021.7.0/env/../lib/intel64/gcc4.8] ==> [/data2/rwang/intel_packages/tbb/2021.7.0/lib/intel64/gcc4.8]
+  collapse library dir [/data2/rwang/intel_packages/mpi/2021.7.0//libfabric/lib] ==> [/data2/rwang/intel_packages/mpi/2021.7.0/libfabric/lib]
+  collapse library dir [/data2/rwang/intel_packages/mpi/2021.7.0//lib/release] ==> [/data2/rwang/intel_packages/mpi/2021.7.0/lib/release]
+  collapse library dir [/data2/rwang/intel_packages/mpi/2021.7.0//lib] ==> [/data2/rwang/intel_packages/mpi/2021.7.0/lib]
+  collapse library dir [/data2/rwang/intel_packages/compiler/2022.2.0/linux/compiler/lib/intel64_lin] ==> [/data2/rwang/intel_packages/compiler/2022.2.0/linux/compiler/lib/intel64_lin]
+  collapse library dir [/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib] ==> [/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib]
+  collapse library dir [/data2/rwang/intel_packages/clck/2021.7.0/lib/intel64] ==> [/data2/rwang/intel_packages/clck/2021.7.0/lib/intel64]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../..] ==> [/usr/lib]
+  implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+  implicit dirs: [/data2/rwang/intel_packages/mpi/2021.7.0/libfabric/lib;/data2/rwang/intel_packages/mpi/2021.7.0/lib;/data2/rwang/intel_packages/compiler/2022.2.0/linux/lib;/usr/lib/gcc/x86_64-linux-gnu/7;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib;/data2/rwang/intel_packages/tbb/2021.7.0/lib/intel64/gcc4.8;/data2/rwang/intel_packages/mpi/2021.7.0/lib/release;/data2/rwang/intel_packages/compiler/2022.2.0/linux/compiler/lib/intel64_lin;/data2/rwang/intel_packages/clck/2021.7.0/lib/intel64]
+  implicit fwks: []
+
+
+Determining if the function XOpenDisplay exists in the /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so passed with the following output:
+Change Dir: /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_8e345/fast && /usr/bin/make  -f CMakeFiles/cmTC_8e345.dir/build.make CMakeFiles/cmTC_8e345.dir/build
+make[1]: Entering directory '/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8e345.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=XOpenDisplay -o CMakeFiles/cmTC_8e345.dir/CheckFunctionExists.c.o -c /home/eicc/software/cmake/share/cmake-3.18/Modules/CheckFunctionExists.c
+Linking C executable cmTC_8e345
+/home/eicc/software/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8e345.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=XOpenDisplay CMakeFiles/cmTC_8e345.dir/CheckFunctionExists.c.o -o cmTC_8e345  /usr/lib/x86_64-linux-gnu/libX11.so /usr/lib/x86_64-linux-gnu/libXext.so 
+make[1]: Leaving directory '/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function gethostbyname exists passed with the following output:
+Change Dir: /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_c2b39/fast && /usr/bin/make  -f CMakeFiles/cmTC_c2b39.dir/build.make CMakeFiles/cmTC_c2b39.dir/build
+make[1]: Entering directory '/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c2b39.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=gethostbyname -o CMakeFiles/cmTC_c2b39.dir/CheckFunctionExists.c.o -c /home/eicc/software/cmake/share/cmake-3.18/Modules/CheckFunctionExists.c
+Linking C executable cmTC_c2b39
+/home/eicc/software/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c2b39.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=gethostbyname CMakeFiles/cmTC_c2b39.dir/CheckFunctionExists.c.o -o cmTC_c2b39 
+make[1]: Leaving directory '/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function connect exists passed with the following output:
+Change Dir: /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_c40ad/fast && /usr/bin/make  -f CMakeFiles/cmTC_c40ad.dir/build.make CMakeFiles/cmTC_c40ad.dir/build
+make[1]: Entering directory '/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c40ad.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=connect -o CMakeFiles/cmTC_c40ad.dir/CheckFunctionExists.c.o -c /home/eicc/software/cmake/share/cmake-3.18/Modules/CheckFunctionExists.c
+Linking C executable cmTC_c40ad
+/home/eicc/software/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c40ad.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=connect CMakeFiles/cmTC_c40ad.dir/CheckFunctionExists.c.o -o cmTC_c40ad 
+make[1]: Leaving directory '/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function remove exists passed with the following output:
+Change Dir: /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_e2945/fast && /usr/bin/make  -f CMakeFiles/cmTC_e2945.dir/build.make CMakeFiles/cmTC_e2945.dir/build
+make[1]: Entering directory '/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e2945.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=remove -o CMakeFiles/cmTC_e2945.dir/CheckFunctionExists.c.o -c /home/eicc/software/cmake/share/cmake-3.18/Modules/CheckFunctionExists.c
+Linking C executable cmTC_e2945
+/home/eicc/software/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e2945.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=remove CMakeFiles/cmTC_e2945.dir/CheckFunctionExists.c.o -o cmTC_e2945 
+make[1]: Leaving directory '/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function shmat exists passed with the following output:
+Change Dir: /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_59abc/fast && /usr/bin/make  -f CMakeFiles/cmTC_59abc.dir/build.make CMakeFiles/cmTC_59abc.dir/build
+make[1]: Entering directory '/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_59abc.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=shmat -o CMakeFiles/cmTC_59abc.dir/CheckFunctionExists.c.o -c /home/eicc/software/cmake/share/cmake-3.18/Modules/CheckFunctionExists.c
+Linking C executable cmTC_59abc
+/home/eicc/software/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_59abc.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=shmat CMakeFiles/cmTC_59abc.dir/CheckFunctionExists.c.o -o cmTC_59abc 
+make[1]: Leaving directory '/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function IceConnectionNumber exists in the ICE passed with the following output:
+Change Dir: /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_9af88/fast && /usr/bin/make  -f CMakeFiles/cmTC_9af88.dir/build.make CMakeFiles/cmTC_9af88.dir/build
+make[1]: Entering directory '/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9af88.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=IceConnectionNumber -o CMakeFiles/cmTC_9af88.dir/CheckFunctionExists.c.o -c /home/eicc/software/cmake/share/cmake-3.18/Modules/CheckFunctionExists.c
+Linking C executable cmTC_9af88
+/home/eicc/software/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9af88.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=IceConnectionNumber CMakeFiles/cmTC_9af88.dir/CheckFunctionExists.c.o -o cmTC_9af88  -lICE 
+make[1]: Leaving directory '/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_a4e81/fast && /usr/bin/make  -f CMakeFiles/cmTC_a4e81.dir/build.make CMakeFiles/cmTC_a4e81.dir/build
+make[1]: Entering directory '/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a4e81.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_a4e81.dir/CheckIncludeFile.c.o -c /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_a4e81
+/home/eicc/software/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a4e81.dir/link.txt --verbose=1
+/usr/bin/cc CMakeFiles/cmTC_a4e81.dir/CheckIncludeFile.c.o -o cmTC_a4e81 
+make[1]: Leaving directory '/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function pthread_create exists in the pthread passed with the following output:
+Change Dir: /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_dd645/fast && /usr/bin/make  -f CMakeFiles/cmTC_dd645.dir/build.make CMakeFiles/cmTC_dd645.dir/build
+make[1]: Entering directory '/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_dd645.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_dd645.dir/CheckFunctionExists.c.o -c /home/eicc/software/cmake/share/cmake-3.18/Modules/CheckFunctionExists.c
+Linking C executable cmTC_dd645
+/home/eicc/software/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dd645.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create CMakeFiles/cmTC_dd645.dir/CheckFunctionExists.c.o -o cmTC_dd645  -lpthread 
+make[1]: Leaving directory '/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp'
+
+
+
+Performing C++ SOURCE FILE Test _HAS_CXX11_FLAG succeeded with the following output:
+Change Dir: /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_ec626/fast && /usr/bin/make  -f CMakeFiles/cmTC_ec626.dir/build.make CMakeFiles/cmTC_ec626.dir/build
+make[1]: Entering directory '/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_ec626.dir/src.cxx.o
+/usr/bin/c++   -std=c++14 -D_HAS_CXX11_FLAG   -std=c++11 -o CMakeFiles/cmTC_ec626.dir/src.cxx.o -c /data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_ec626
+/home/eicc/software/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ec626.dir/link.txt --verbose=1
+/usr/bin/c++  -std=c++14 -D_HAS_CXX11_FLAG -rdynamic CMakeFiles/cmTC_ec626.dir/src.cxx.o -o cmTC_ec626 
+make[1]: Leaving directory '/data2/rwang/githubs/HIAF-etaFactory-Simulations/ChnsRoot_v2/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }

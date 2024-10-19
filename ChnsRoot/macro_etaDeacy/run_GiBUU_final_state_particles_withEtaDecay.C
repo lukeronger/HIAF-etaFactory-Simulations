@@ -3,7 +3,7 @@
 */
 
 
-int run_GiBUU_final_state_particles_withEtaDecay(int nevts=400000, int seed_num = 2023)
+int run_GiBUU_final_state_particles_withEtaDecay(int nevts= 27036, int seed_num = 2023)
 {
   TString input_file = "/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/GiBUU-data-evt/GiBUU_final_states_etaDecayEEG.evt";
 
@@ -16,7 +16,7 @@ int run_GiBUU_final_state_particles_withEtaDecay(int nevts=400000, int seed_num 
   // Load this example libraries
   TString outfile;
   if (outfile=="") {
-	outfile="/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/ChnsRoot-data/run_fsim_EvtGen_GiBUU_final_state_particles_withEtaDecay_"; //1.root";
+	outfile="/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/ChnsRoot-data/fsim_GiBUU_final_state_particles_withEtaEEGDecay_100percent_"; //1.root";
 	outfile+=1.8;
 	outfile+="GeV_";
   	outfile+= seed_num;

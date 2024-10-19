@@ -1,0 +1,48 @@
+////////////////////////////////////////////////////////////////
+/*********       Eicc Emc v0 release note             ********/
+/*********       Writen by Ye TIAN, 2022/01/26        ********/
+/*********       Contact with tianye@impcas.ac.cn     ********/
+
+This folder contains the emc simulation and reconstruction classes.
+
+How to:
+    1.  Run the EMC simulation and reconstruction, script in "run_macro" folder. ( Before run it, make sure 1)source environment and 2)"make" in buildEicc successfully. )
+            such as [ root -l 'run_sim_emc.C(10, 1, "test2.root")' ] (events, energy, filename)
+    2.  Main EMC function description of run_sim.C script 
+            Parameter file (no need to re-make after modification):
+                TString EmcParFile = "./EmcParams.par";
+            Load geometry file: 
+                EmcDet->SetGeometryFileName("[ filename ]"); // default path location is /geometry
+            Set the storage of intermediate data: (For a low level user, only MCTruth and Particle information are required.)
+                EmcDet->SetPersistance(kFALSE); // Close this will siignificantly decrease the storage usage 
+    3.  Geometry creation script.
+            Create the geometry root file, and file is generated in /geometry:
+                root -l [ script name ]
+			Geometry parameters could be modified through "/emc/par/ParEmcDet.h".
+
+Directory description:
+    EmcMC:      The MC simulation of EmcMC.
+    EmcReco:    The reconstruction class tasks.
+    EmcGeometry:   The scripts to build the Emc detector, geometry rootfile as output.
+    par:        The parameters file for geometry and construction.
+
+Useful class/file description:
+    .
+        ConstFact:  Contain all the parameters class that will be loaded.
+        ReadPar:    A general example of para reading class.
+    EmcMC
+        Emc:        Main class of MC simulation, including load Emc geometry, make sensitive detector and record the hit.
+        Point:      The format of MC data set that relevant to "Emc" class output.
+        Geo:        Not used now
+        GeoPar:     Not used now
+    EmcReco
+        DigiTask:   Point->Digi; collect MC hit point to gather energy deposit in blocks.
+        Digi:       DigiTask data set
+        ClusterTask:    Digi->Cluster; Reconstruct all neighbour blocks energy to form clusters.
+        Cluster:    ClusterTask data set
+        ParticleTask:   Cluster->4-Momentum; Reconstruct the 4-Momentum of particle based on PID. If no PID information is acquired(now), photon/electron is assumed as default.
+		Particle:	ParticleTask data set
+    par (namespce)
+        ParEmcDet.h:    Parameters for Emc geometry building. Loaded by "create_emc_geo.C"
+        ParEmcDetRe.h:  Parameters for geometry mapping in construction.
+        ParEmcReConstants.h:    Parameters for reconstruction task, including cuts and others.

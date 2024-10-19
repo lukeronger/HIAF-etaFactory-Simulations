@@ -2,8 +2,8 @@
 int runGiBUU_etaDecay2evt(){
 	TChain *chain = new TChain("RootTuple","RootTuple");
 
-	ifstream listin("/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/GiBUU-data-evt/filelist_combined");
-	int N_files = 8;
+	ifstream listin("/data/rwang/simulation_works/HIAF-etaFactory-Simulations-localData2/GiBUU-data/filelist");
+	int N_files = 300;
 	for(int i=0; i<N_files; i++){
 	//for(int i=0;i<10;i++){
 		string filename;
